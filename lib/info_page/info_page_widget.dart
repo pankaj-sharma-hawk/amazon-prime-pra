@@ -287,11 +287,26 @@ class _InfoPageWidgetState extends State<InfoPageWidget> {
                             InkWell(
                               onTap: () async {
                                 final usersUpdateData = {
-                                  'videoref': FieldValue.arrayUnion(
-                                      [widget.infodocument!.reference]),
+                                  'videorefint': FieldValue.arrayUnion(
+                                      [widget.infodocument!.id]),
                                 };
                                 await currentUserReference!
                                     .update(usersUpdateData);
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                      'Successfully Added to Watchlist ....',
+                                      style: TextStyle(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryBtnText,
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 18,
+                                      ),
+                                    ),
+                                    duration: Duration(milliseconds: 3000),
+                                    backgroundColor: Color(0xFF3FE37C),
+                                  ),
+                                );
                               },
                               child: Column(
                                 mainAxisSize: MainAxisSize.min,

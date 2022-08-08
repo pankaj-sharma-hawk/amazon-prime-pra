@@ -69,6 +69,43 @@ abstract class VideodataRecord
       .get()
       .then((s) => serializers.deserializeWith(serializer, serializedData(s))!);
 
+  static VideodataRecord fromAlgolia(AlgoliaObjectSnapshot snapshot) =>
+      VideodataRecord(
+        (c) => c
+          ..id = snapshot.data['id']?.round()
+          ..name = snapshot.data['name']
+          ..imageurl = snapshot.data['imageurl']
+          ..description = snapshot.data['description']
+          ..imdbrating = snapshot.data['imdbrating']?.toDouble()
+          ..releasedyear = snapshot.data['releasedyear']?.round()
+          ..minutes = snapshot.data['minutes']?.round()
+          ..adultcategory = snapshot.data['adultcategory']
+          ..category = snapshot.data['category']
+          ..subcategory = snapshot.data['subcategory']
+          ..videourl = snapshot.data['videourl']
+          ..moviedate = safeGet(() =>
+              DateTime.fromMillisecondsSinceEpoch(snapshot.data['moviedate']))
+          ..languages = safeGet(() => ListBuilder(snapshot.data['languages']))
+          ..subtitlelang =
+              safeGet(() => ListBuilder(snapshot.data['subtitlelang']))
+          ..ffRef = VideodataRecord.collection.doc(snapshot.objectID),
+      );
+
+  static Future<List<VideodataRecord>> search(
+          {String? term,
+          FutureOr<LatLng>? location,
+          int? maxResults,
+          double? searchRadiusMeters}) =>
+      FFAlgoliaManager.instance
+          .algoliaQuery(
+            index: 'videodata',
+            term: term,
+            maxResults: maxResults,
+            location: location,
+            searchRadiusMeters: searchRadiusMeters,
+          )
+          .then((r) => r.map(fromAlgolia).toList());
+
   VideodataRecord._();
   factory VideodataRecord([void Function(VideodataRecordBuilder) updates]) =
       _$VideodataRecord;
