@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "868077930419",
+    "project_id": "prime-76b09",
+    "storage_bucket": "prime-76b09.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:868077930419:android:bd25c0e68327780adbedc6",
+        "android_client_info": {
+          "package_name": "com.mycompany.amazonprime"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "868077930419-ndri34i6p93nqkd2cclmr3k5hrjlcers.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mycompany.amazonprime",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "868077930419-q5bb8dli6oar33thbr7jjrsprli0l73i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDxsuU-XyUNC0vcV6Nzs44cIlfKGhhFExI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "868077930419-q5bb8dli6oar33thbr7jjrsprli0l73i.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "868077930419-bissl4tlg725jhibcpp922b4jbsf0p20.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mycompany.amazonprime"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
