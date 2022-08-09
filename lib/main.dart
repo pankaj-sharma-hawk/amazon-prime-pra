@@ -118,6 +118,7 @@ class _NavBarPageState extends State<NavBarPage> {
       'Home': HomeWidget(),
       'Search': SearchWidget(),
       'MyStuff': MyStuffWidget(),
+      'HomeCopy': HomeCopyWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPage);
     return Scaffold(
@@ -158,6 +159,18 @@ class _NavBarPageState extends State<NavBarPage> {
               size: 30,
             ),
             label: 'My Stuff',
+            tooltip: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.home,
+              size: 24,
+            ),
+            activeIcon: Icon(
+              Icons.home,
+              size: 24,
+            ),
+            label: 'Home',
             tooltip: '',
           )
         ],

@@ -7,14 +7,14 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-class HomeWidget extends StatefulWidget {
-  const HomeWidget({Key? key}) : super(key: key);
+class HomeCopyWidget extends StatefulWidget {
+  const HomeCopyWidget({Key? key}) : super(key: key);
 
   @override
-  _HomeWidgetState createState() => _HomeWidgetState();
+  _HomeCopyWidgetState createState() => _HomeCopyWidgetState();
 }
 
-class _HomeWidgetState extends State<HomeWidget> {
+class _HomeCopyWidgetState extends State<HomeCopyWidget> {
   PageController? pageViewController1;
   PageController? pageViewController2;
   PagingController<DocumentSnapshot?, VideodataRecord>? _pagingController;
@@ -54,6 +54,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                       ),
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
                           Row(
                             mainAxisSize: MainAxisSize.max,
@@ -107,7 +108,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                           child: Column(
                                             mainAxisSize: MainAxisSize.min,
                                             crossAxisAlignment:
-                                                CrossAxisAlignment.start,
+                                                CrossAxisAlignment.stretch,
                                             children: [
                                               StreamBuilder<
                                                   List<VideodataRecord>>(
@@ -298,7 +299,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                           MainAxisSize.max,
                                                       crossAxisAlignment:
                                                           CrossAxisAlignment
-                                                              .start,
+                                                              .stretch,
                                                       children: [
                                                         Padding(
                                                           padding:
@@ -320,7 +321,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                           .max,
                                                                   crossAxisAlignment:
                                                                       CrossAxisAlignment
-                                                                          .start,
+                                                                          .stretch,
                                                                   children: [
                                                                     Row(
                                                                       mainAxisSize:
@@ -362,8 +363,8 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                       ],
                                                                     ),
                                                                     Container(
-                                                                      width:
-                                                                          390,
+                                                                      width: double
+                                                                          .infinity,
                                                                       height:
                                                                           100,
                                                                       decoration:

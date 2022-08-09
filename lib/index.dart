@@ -8,3 +8,6 @@ export 'signin/signin_widget.dart' show SigninWidget;
 export 'search/search_widget.dart' show SearchWidget;
 export 'my_stuff/my_stuff_widget.dart' show MyStuffWidget;
 export 'mystuffmenu/mystuffmenu_widget.dart' show MystuffmenuWidget;
+export 'xxxx/xxxx_widget.dart' show XxxxWidget;
+export 'prime/prime_widget.dart' show PrimeWidget;
+export 'home_copy/home_copy_widget.dart' show HomeCopyWidget;
