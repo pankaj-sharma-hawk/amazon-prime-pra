@@ -104,224 +104,382 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget> {
                                   Expanded(
                                     child: TabBarView(
                                       children: [
-                                        SingleChildScrollView(
-                                          child: Column(
-                                            mainAxisSize: MainAxisSize.min,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.stretch,
-                                            children: [
-                                              StreamBuilder<
-                                                  List<VideodataRecord>>(
-                                                stream: queryVideodataRecord(
-                                                  queryBuilder:
-                                                      (videodataRecord) =>
-                                                          videodataRecord
-                                                              .where(
-                                                                  'category',
-                                                                  isEqualTo:
-                                                                      'Movies')
-                                                              .orderBy(
-                                                                  'moviedate',
-                                                                  descending:
-                                                                      true),
-                                                  limit: 8,
-                                                ),
-                                                builder: (context, snapshot) {
-                                                  // Customize what your widget looks like when it's loading.
-                                                  if (!snapshot.hasData) {
-                                                    return Center(
-                                                      child: SizedBox(
-                                                        width: 50,
-                                                        height: 50,
-                                                        child:
-                                                            CircularProgressIndicator(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primaryColor,
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  5, 0, 0, 0),
+                                          child: SingleChildScrollView(
+                                            child: Column(
+                                              mainAxisSize: MainAxisSize.min,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.stretch,
+                                              children: [
+                                                StreamBuilder<
+                                                    List<VideodataRecord>>(
+                                                  stream: queryVideodataRecord(
+                                                    queryBuilder:
+                                                        (videodataRecord) =>
+                                                            videodataRecord
+                                                                .where(
+                                                                    'category',
+                                                                    isEqualTo:
+                                                                        'Movies')
+                                                                .orderBy(
+                                                                    'moviedate',
+                                                                    descending:
+                                                                        true),
+                                                    limit: 8,
+                                                  ),
+                                                  builder: (context, snapshot) {
+                                                    // Customize what your widget looks like when it's loading.
+                                                    if (!snapshot.hasData) {
+                                                      return Center(
+                                                        child: SizedBox(
+                                                          width: 50,
+                                                          height: 50,
+                                                          child:
+                                                              CircularProgressIndicator(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .primaryColor,
+                                                          ),
                                                         ),
+                                                      );
+                                                    }
+                                                    List<VideodataRecord>
+                                                        pageViewVideodataRecordList =
+                                                        snapshot.data!;
+                                                    return Container(
+                                                      width: double.infinity,
+                                                      height: 220,
+                                                      child: Stack(
+                                                        children: [
+                                                          PageView.builder(
+                                                            controller: pageViewController1 ??=
+                                                                PageController(
+                                                                    initialPage: min(
+                                                                        0,
+                                                                        pageViewVideodataRecordList.length -
+                                                                            1)),
+                                                            scrollDirection:
+                                                                Axis.horizontal,
+                                                            itemCount:
+                                                                pageViewVideodataRecordList
+                                                                    .length,
+                                                            itemBuilder: (context,
+                                                                pageViewIndex) {
+                                                              final pageViewVideodataRecord =
+                                                                  pageViewVideodataRecordList[
+                                                                      pageViewIndex];
+                                                              return Container(
+                                                                width: double
+                                                                    .infinity,
+                                                                height: 220,
+                                                                child: Stack(
+                                                                  children: [
+                                                                    InkWell(
+                                                                      onTap:
+                                                                          () async {
+                                                                        await Navigator
+                                                                            .push(
+                                                                          context,
+                                                                          MaterialPageRoute(
+                                                                            builder: (context) =>
+                                                                                InfoPageWidget(
+                                                                              infodocument: pageViewVideodataRecord,
+                                                                            ),
+                                                                          ),
+                                                                        );
+                                                                        await Future.delayed(const Duration(
+                                                                            milliseconds:
+                                                                                2000));
+                                                                      },
+                                                                      child: Image
+                                                                          .network(
+                                                                        pageViewVideodataRecord
+                                                                            .imageurl!,
+                                                                        width: double
+                                                                            .infinity,
+                                                                        height:
+                                                                            220,
+                                                                        fit: BoxFit
+                                                                            .cover,
+                                                                      ),
+                                                                    ),
+                                                                    Align(
+                                                                      alignment: AlignmentDirectional(
+                                                                          0.02,
+                                                                          0.77),
+                                                                      child:
+                                                                          Text(
+                                                                        pageViewVideodataRecord
+                                                                            .name!,
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .bodyText1
+                                                                            .override(
+                                                                              fontFamily: 'Poppins',
+                                                                              color: FlutterFlowTheme.of(context).primaryBtnText,
+                                                                              fontSize: 18,
+                                                                            ),
+                                                                      ),
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                              );
+                                                            },
+                                                          ),
+                                                          Align(
+                                                            alignment:
+                                                                AlignmentDirectional(
+                                                                    0, 1),
+                                                            child: Padding(
+                                                              padding:
+                                                                  EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0,
+                                                                          0,
+                                                                          0,
+                                                                          5),
+                                                              child:
+                                                                  SmoothPageIndicator(
+                                                                controller: pageViewController1 ??=
+                                                                    PageController(
+                                                                        initialPage: min(
+                                                                            0,
+                                                                            pageViewVideodataRecordList.length -
+                                                                                1)),
+                                                                count:
+                                                                    pageViewVideodataRecordList
+                                                                        .length,
+                                                                axisDirection: Axis
+                                                                    .horizontal,
+                                                                onDotClicked:
+                                                                    (i) {
+                                                                  pageViewController1!
+                                                                      .animateToPage(
+                                                                    i,
+                                                                    duration: Duration(
+                                                                        milliseconds:
+                                                                            500),
+                                                                    curve: Curves
+                                                                        .ease,
+                                                                  );
+                                                                },
+                                                                effect:
+                                                                    SlideEffect(
+                                                                  spacing: 5,
+                                                                  radius: 10,
+                                                                  dotWidth: 10,
+                                                                  dotHeight: 10,
+                                                                  dotColor: Color(
+                                                                      0xFF9E9E9E),
+                                                                  activeDotColor:
+                                                                      Color(
+                                                                          0xFF3F51B5),
+                                                                  paintStyle:
+                                                                      PaintingStyle
+                                                                          .fill,
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ],
                                                       ),
                                                     );
-                                                  }
-                                                  List<VideodataRecord>
-                                                      pageViewVideodataRecordList =
-                                                      snapshot.data!;
-                                                  return Container(
-                                                    width: double.infinity,
-                                                    height: 220,
-                                                    child: Stack(
-                                                      children: [
-                                                        PageView.builder(
-                                                          controller: pageViewController1 ??=
-                                                              PageController(
-                                                                  initialPage: min(
-                                                                      0,
-                                                                      pageViewVideodataRecordList
-                                                                              .length -
-                                                                          1)),
-                                                          scrollDirection:
-                                                              Axis.horizontal,
-                                                          itemCount:
-                                                              pageViewVideodataRecordList
-                                                                  .length,
-                                                          itemBuilder: (context,
-                                                              pageViewIndex) {
-                                                            final pageViewVideodataRecord =
-                                                                pageViewVideodataRecordList[
-                                                                    pageViewIndex];
-                                                            return Container(
-                                                              width: double
-                                                                  .infinity,
-                                                              height: 220,
-                                                              child: Stack(
-                                                                children: [
-                                                                  InkWell(
-                                                                    onTap:
-                                                                        () async {
-                                                                      await Navigator
-                                                                          .push(
-                                                                        context,
-                                                                        MaterialPageRoute(
-                                                                          builder: (context) =>
-                                                                              InfoPageWidget(
-                                                                            infodocument:
-                                                                                pageViewVideodataRecord,
-                                                                          ),
-                                                                        ),
-                                                                      );
-                                                                      await Future.delayed(const Duration(
-                                                                          milliseconds:
-                                                                              2000));
-                                                                    },
-                                                                    child: Image
-                                                                        .network(
-                                                                      pageViewVideodataRecord
-                                                                          .imageurl!,
-                                                                      width: double
-                                                                          .infinity,
-                                                                      height:
-                                                                          220,
-                                                                      fit: BoxFit
-                                                                          .cover,
-                                                                    ),
-                                                                  ),
-                                                                  Align(
-                                                                    alignment:
-                                                                        AlignmentDirectional(
-                                                                            0.02,
-                                                                            0.77),
-                                                                    child: Text(
-                                                                      pageViewVideodataRecord
-                                                                          .name!,
-                                                                      style: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyText1
-                                                                          .override(
-                                                                            fontFamily:
-                                                                                'Poppins',
-                                                                            color:
-                                                                                FlutterFlowTheme.of(context).primaryBtnText,
-                                                                            fontSize:
-                                                                                18,
-                                                                          ),
-                                                                    ),
-                                                                  ),
-                                                                ],
-                                                              ),
-                                                            );
-                                                          },
-                                                        ),
-                                                        Align(
-                                                          alignment:
-                                                              AlignmentDirectional(
-                                                                  0, 1),
-                                                          child: Padding(
+                                                  },
+                                                ),
+                                                Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  children: [
+                                                    Expanded(
+                                                      child: Column(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .stretch,
+                                                        children: [
+                                                          Padding(
                                                             padding:
                                                                 EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0,
+                                                                        10,
                                                                         0,
-                                                                        0,
-                                                                        5),
-                                                            child:
-                                                                SmoothPageIndicator(
-                                                              controller: pageViewController1 ??=
-                                                                  PageController(
-                                                                      initialPage: min(
-                                                                          0,
-                                                                          pageViewVideodataRecordList.length -
-                                                                              1)),
-                                                              count:
-                                                                  pageViewVideodataRecordList
-                                                                      .length,
-                                                              axisDirection: Axis
-                                                                  .horizontal,
-                                                              onDotClicked:
-                                                                  (i) {
-                                                                pageViewController1!
-                                                                    .animateToPage(
-                                                                  i,
-                                                                  duration: Duration(
-                                                                      milliseconds:
-                                                                          500),
-                                                                  curve: Curves
-                                                                      .ease,
-                                                                );
-                                                              },
-                                                              effect:
-                                                                  SlideEffect(
-                                                                spacing: 5,
-                                                                radius: 10,
-                                                                dotWidth: 10,
-                                                                dotHeight: 10,
-                                                                dotColor: Color(
-                                                                    0xFF9E9E9E),
-                                                                activeDotColor:
-                                                                    Color(
-                                                                        0xFF3F51B5),
-                                                                paintStyle:
-                                                                    PaintingStyle
-                                                                        .fill,
-                                                              ),
+                                                                        10),
+                                                            child: Row(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              children: [
+                                                                Expanded(
+                                                                  child: Column(
+                                                                    mainAxisSize:
+                                                                        MainAxisSize
+                                                                            .max,
+                                                                    crossAxisAlignment:
+                                                                        CrossAxisAlignment
+                                                                            .stretch,
+                                                                    children: [
+                                                                      Row(
+                                                                        mainAxisSize:
+                                                                            MainAxisSize.max,
+                                                                        children: [
+                                                                          Padding(
+                                                                            padding: EdgeInsetsDirectional.fromSTEB(
+                                                                                15,
+                                                                                0,
+                                                                                0,
+                                                                                0),
+                                                                            child:
+                                                                                Text(
+                                                                              'Latest Movies',
+                                                                              style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                    fontFamily: 'Poppins',
+                                                                                    color: FlutterFlowTheme.of(context).primaryBtnText,
+                                                                                    fontSize: 15,
+                                                                                  ),
+                                                                            ),
+                                                                          ),
+                                                                          Padding(
+                                                                            padding: EdgeInsetsDirectional.fromSTEB(
+                                                                                15,
+                                                                                0,
+                                                                                0,
+                                                                                0),
+                                                                            child:
+                                                                                Text(
+                                                                              '>',
+                                                                              style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                    fontFamily: 'Poppins',
+                                                                                    color: FlutterFlowTheme.of(context).primaryBtnText,
+                                                                                    fontSize: 18,
+                                                                                  ),
+                                                                            ),
+                                                                          ),
+                                                                        ],
+                                                                      ),
+                                                                      Container(
+                                                                        width: double
+                                                                            .infinity,
+                                                                        height:
+                                                                            100,
+                                                                        decoration:
+                                                                            BoxDecoration(
+                                                                          color:
+                                                                              Color(0xDF000000),
+                                                                        ),
+                                                                        child: StreamBuilder<
+                                                                            List<VideodataRecord>>(
+                                                                          stream:
+                                                                              queryVideodataRecord(
+                                                                            queryBuilder: (videodataRecord) =>
+                                                                                videodataRecord.where('category', isEqualTo: 'Movies').orderBy('moviedate', descending: true),
+                                                                          ),
+                                                                          builder:
+                                                                              (context, snapshot) {
+                                                                            // Customize what your widget looks like when it's loading.
+                                                                            if (!snapshot.hasData) {
+                                                                              return Center(
+                                                                                child: SizedBox(
+                                                                                  width: 50,
+                                                                                  height: 50,
+                                                                                  child: CircularProgressIndicator(
+                                                                                    color: FlutterFlowTheme.of(context).primaryColor,
+                                                                                  ),
+                                                                                ),
+                                                                              );
+                                                                            }
+                                                                            List<VideodataRecord>
+                                                                                listViewVideodataRecordList =
+                                                                                snapshot.data!;
+                                                                            return ListView.builder(
+                                                                              padding: EdgeInsets.zero,
+                                                                              scrollDirection: Axis.horizontal,
+                                                                              itemCount: listViewVideodataRecordList.length,
+                                                                              itemBuilder: (context, listViewIndex) {
+                                                                                final listViewVideodataRecord = listViewVideodataRecordList[listViewIndex];
+                                                                                return Padding(
+                                                                                  padding: EdgeInsetsDirectional.fromSTEB(7, 0, 7, 0),
+                                                                                  child: InkWell(
+                                                                                    onTap: () async {
+                                                                                      await Navigator.push(
+                                                                                        context,
+                                                                                        MaterialPageRoute(
+                                                                                          builder: (context) => InfoPageWidget(
+                                                                                            infodocument: listViewVideodataRecord,
+                                                                                          ),
+                                                                                        ),
+                                                                                      );
+                                                                                      await Future.delayed(const Duration(milliseconds: 2000));
+                                                                                    },
+                                                                                    child: Material(
+                                                                                      color: Colors.transparent,
+                                                                                      elevation: 10,
+                                                                                      child: Container(
+                                                                                        width: 130,
+                                                                                        height: 130,
+                                                                                        decoration: BoxDecoration(
+                                                                                          color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                        ),
+                                                                                        child: Stack(
+                                                                                          children: [
+                                                                                            Image.network(
+                                                                                              listViewVideodataRecord.imageurl!,
+                                                                                              width: 130,
+                                                                                              height: 100,
+                                                                                              fit: BoxFit.cover,
+                                                                                            ),
+                                                                                            Align(
+                                                                                              alignment: AlignmentDirectional(0, 0.94),
+                                                                                              child: Text(
+                                                                                                listViewVideodataRecord.name!,
+                                                                                                style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                                      fontFamily: 'Poppins',
+                                                                                                      color: FlutterFlowTheme.of(context).primaryBtnText,
+                                                                                                      fontSize: 16,
+                                                                                                      fontWeight: FontWeight.bold,
+                                                                                                    ),
+                                                                                              ),
+                                                                                            ),
+                                                                                          ],
+                                                                                        ),
+                                                                                      ),
+                                                                                    ),
+                                                                                  ),
+                                                                                );
+                                                                              },
+                                                                            );
+                                                                          },
+                                                                        ),
+                                                                      ),
+                                                                    ],
+                                                                  ),
+                                                                ),
+                                                              ],
                                                             ),
                                                           ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  );
-                                                },
-                                              ),
-                                              Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                children: [
-                                                  Expanded(
-                                                    child: Column(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .stretch,
-                                                      children: [
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      0,
-                                                                      10,
-                                                                      0,
-                                                                      10),
-                                                          child: Row(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                            children: [
-                                                              Expanded(
-                                                                child: Column(
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0,
+                                                                        10,
+                                                                        0,
+                                                                        10),
+                                                            child: Row(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              children: [
+                                                                Column(
                                                                   mainAxisSize:
                                                                       MainAxisSize
                                                                           .max,
                                                                   crossAxisAlignment:
                                                                       CrossAxisAlignment
-                                                                          .stretch,
+                                                                          .start,
                                                                   children: [
                                                                     Row(
                                                                       mainAxisSize:
@@ -336,7 +494,7 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget> {
                                                                               0),
                                                                           child:
                                                                               Text(
-                                                                            'Latest Movies',
+                                                                            'Comedy',
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                   fontFamily: 'Poppins',
                                                                                   color: FlutterFlowTheme.of(context).primaryBtnText,
@@ -362,1207 +520,959 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget> {
                                                                         ),
                                                                       ],
                                                                     ),
-                                                                    Container(
-                                                                      width: double
-                                                                          .infinity,
-                                                                      height:
-                                                                          100,
-                                                                      decoration:
-                                                                          BoxDecoration(
-                                                                        color: Color(
-                                                                            0xDF000000),
-                                                                      ),
-                                                                      child: StreamBuilder<
-                                                                          List<
-                                                                              VideodataRecord>>(
-                                                                        stream:
-                                                                            queryVideodataRecord(
-                                                                          queryBuilder: (videodataRecord) => videodataRecord.where('category', isEqualTo: 'Movies').orderBy(
-                                                                              'moviedate',
-                                                                              descending: true),
+                                                                    Padding(
+                                                                      padding: EdgeInsetsDirectional
+                                                                          .fromSTEB(
+                                                                              8,
+                                                                              0,
+                                                                              0,
+                                                                              0),
+                                                                      child:
+                                                                          Container(
+                                                                        width:
+                                                                            362,
+                                                                        height:
+                                                                            100,
+                                                                        decoration:
+                                                                            BoxDecoration(
+                                                                          color:
+                                                                              Color(0xDF000000),
                                                                         ),
-                                                                        builder:
-                                                                            (context,
-                                                                                snapshot) {
-                                                                          // Customize what your widget looks like when it's loading.
-                                                                          if (!snapshot
-                                                                              .hasData) {
-                                                                            return Center(
-                                                                              child: SizedBox(
-                                                                                width: 50,
-                                                                                height: 50,
-                                                                                child: CircularProgressIndicator(
-                                                                                  color: FlutterFlowTheme.of(context).primaryColor,
-                                                                                ),
-                                                                              ),
-                                                                            );
-                                                                          }
-                                                                          List<VideodataRecord>
-                                                                              listViewVideodataRecordList =
-                                                                              snapshot.data!;
-                                                                          return ListView
-                                                                              .builder(
-                                                                            padding:
-                                                                                EdgeInsets.zero,
-                                                                            scrollDirection:
-                                                                                Axis.horizontal,
-                                                                            itemCount:
-                                                                                listViewVideodataRecordList.length,
-                                                                            itemBuilder:
-                                                                                (context, listViewIndex) {
-                                                                              final listViewVideodataRecord = listViewVideodataRecordList[listViewIndex];
-                                                                              return Padding(
-                                                                                padding: EdgeInsetsDirectional.fromSTEB(7, 0, 7, 0),
-                                                                                child: InkWell(
-                                                                                  onTap: () async {
-                                                                                    await Navigator.push(
-                                                                                      context,
-                                                                                      MaterialPageRoute(
-                                                                                        builder: (context) => InfoPageWidget(
-                                                                                          infodocument: listViewVideodataRecord,
-                                                                                        ),
-                                                                                      ),
-                                                                                    );
-                                                                                    await Future.delayed(const Duration(milliseconds: 2000));
-                                                                                  },
-                                                                                  child: Material(
-                                                                                    color: Colors.transparent,
-                                                                                    elevation: 10,
-                                                                                    child: Container(
-                                                                                      width: 130,
-                                                                                      height: 130,
-                                                                                      decoration: BoxDecoration(
-                                                                                        color: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                      ),
-                                                                                      child: Stack(
-                                                                                        children: [
-                                                                                          Image.network(
-                                                                                            listViewVideodataRecord.imageurl!,
-                                                                                            width: 130,
-                                                                                            height: 100,
-                                                                                            fit: BoxFit.cover,
-                                                                                          ),
-                                                                                          Align(
-                                                                                            alignment: AlignmentDirectional(0, 0.94),
-                                                                                            child: Text(
-                                                                                              listViewVideodataRecord.name!,
-                                                                                              style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                    fontFamily: 'Poppins',
-                                                                                                    color: FlutterFlowTheme.of(context).primaryBtnText,
-                                                                                                    fontSize: 16,
-                                                                                                    fontWeight: FontWeight.bold,
-                                                                                                  ),
-                                                                                            ),
-                                                                                          ),
-                                                                                        ],
-                                                                                      ),
-                                                                                    ),
+                                                                        child: StreamBuilder<
+                                                                            List<VideodataRecord>>(
+                                                                          stream:
+                                                                              queryVideodataRecord(
+                                                                            queryBuilder: (videodataRecord) =>
+                                                                                videodataRecord.where('category', isEqualTo: 'Movies').where('subcategory', isEqualTo: 'Comedy').orderBy('imdbrating', descending: true),
+                                                                          ),
+                                                                          builder:
+                                                                              (context, snapshot) {
+                                                                            // Customize what your widget looks like when it's loading.
+                                                                            if (!snapshot.hasData) {
+                                                                              return Center(
+                                                                                child: SizedBox(
+                                                                                  width: 50,
+                                                                                  height: 50,
+                                                                                  child: CircularProgressIndicator(
+                                                                                    color: FlutterFlowTheme.of(context).primaryColor,
                                                                                   ),
                                                                                 ),
                                                                               );
-                                                                            },
-                                                                          );
-                                                                        },
+                                                                            }
+                                                                            List<VideodataRecord>
+                                                                                listViewVideodataRecordList =
+                                                                                snapshot.data!;
+                                                                            return ListView.builder(
+                                                                              padding: EdgeInsets.zero,
+                                                                              scrollDirection: Axis.horizontal,
+                                                                              itemCount: listViewVideodataRecordList.length,
+                                                                              itemBuilder: (context, listViewIndex) {
+                                                                                final listViewVideodataRecord = listViewVideodataRecordList[listViewIndex];
+                                                                                return Padding(
+                                                                                  padding: EdgeInsetsDirectional.fromSTEB(7, 0, 7, 0),
+                                                                                  child: InkWell(
+                                                                                    onTap: () async {
+                                                                                      await Navigator.push(
+                                                                                        context,
+                                                                                        MaterialPageRoute(
+                                                                                          builder: (context) => InfoPageWidget(
+                                                                                            infodocument: listViewVideodataRecord,
+                                                                                          ),
+                                                                                        ),
+                                                                                      );
+                                                                                      await Future.delayed(const Duration(milliseconds: 2000));
+                                                                                    },
+                                                                                    child: Material(
+                                                                                      color: Colors.transparent,
+                                                                                      elevation: 10,
+                                                                                      child: Container(
+                                                                                        width: 130,
+                                                                                        height: 130,
+                                                                                        decoration: BoxDecoration(
+                                                                                          color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                        ),
+                                                                                        child: Stack(
+                                                                                          children: [
+                                                                                            Image.network(
+                                                                                              listViewVideodataRecord.imageurl!,
+                                                                                              width: 130,
+                                                                                              height: 100,
+                                                                                              fit: BoxFit.cover,
+                                                                                            ),
+                                                                                            Align(
+                                                                                              alignment: AlignmentDirectional(0, 0.94),
+                                                                                              child: Text(
+                                                                                                listViewVideodataRecord.name!,
+                                                                                                style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                                      fontFamily: 'Poppins',
+                                                                                                      color: FlutterFlowTheme.of(context).primaryBtnText,
+                                                                                                      fontSize: 16,
+                                                                                                      fontWeight: FontWeight.bold,
+                                                                                                    ),
+                                                                                              ),
+                                                                                            ),
+                                                                                          ],
+                                                                                        ),
+                                                                                      ),
+                                                                                    ),
+                                                                                  ),
+                                                                                );
+                                                                              },
+                                                                            );
+                                                                          },
+                                                                        ),
                                                                       ),
                                                                     ),
                                                                   ],
                                                                 ),
-                                                              ),
-                                                            ],
+                                                              ],
+                                                            ),
                                                           ),
-                                                        ),
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      0,
-                                                                      10,
-                                                                      0,
-                                                                      10),
-                                                          child: Row(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                            children: [
-                                                              Column(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                crossAxisAlignment:
-                                                                    CrossAxisAlignment
-                                                                        .start,
-                                                                children: [
-                                                                  Row(
-                                                                    mainAxisSize:
-                                                                        MainAxisSize
-                                                                            .max,
-                                                                    children: [
-                                                                      Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                                                            15,
-                                                                            0,
-                                                                            0,
-                                                                            0),
-                                                                        child:
-                                                                            Text(
-                                                                          'Comedy',
-                                                                          style: FlutterFlowTheme.of(context)
-                                                                              .bodyText1
-                                                                              .override(
-                                                                                fontFamily: 'Poppins',
-                                                                                color: FlutterFlowTheme.of(context).primaryBtnText,
-                                                                                fontSize: 15,
-                                                                              ),
-                                                                        ),
-                                                                      ),
-                                                                      Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                                                            15,
-                                                                            0,
-                                                                            0,
-                                                                            0),
-                                                                        child:
-                                                                            Text(
-                                                                          '>',
-                                                                          style: FlutterFlowTheme.of(context)
-                                                                              .bodyText1
-                                                                              .override(
-                                                                                fontFamily: 'Poppins',
-                                                                                color: FlutterFlowTheme.of(context).primaryBtnText,
-                                                                                fontSize: 18,
-                                                                              ),
-                                                                        ),
-                                                                      ),
-                                                                    ],
-                                                                  ),
-                                                                  Padding(
-                                                                    padding: EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            8,
-                                                                            0,
-                                                                            0,
-                                                                            0),
-                                                                    child:
-                                                                        Container(
-                                                                      width:
-                                                                          362,
-                                                                      height:
-                                                                          100,
-                                                                      decoration:
-                                                                          BoxDecoration(
-                                                                        color: Color(
-                                                                            0xDF000000),
-                                                                      ),
-                                                                      child: StreamBuilder<
-                                                                          List<
-                                                                              VideodataRecord>>(
-                                                                        stream:
-                                                                            queryVideodataRecord(
-                                                                          queryBuilder: (videodataRecord) => videodataRecord
-                                                                              .where('category', isEqualTo: 'Movies')
-                                                                              .where('subcategory', isEqualTo: 'Comedy')
-                                                                              .orderBy('imdbrating', descending: true),
-                                                                        ),
-                                                                        builder:
-                                                                            (context,
-                                                                                snapshot) {
-                                                                          // Customize what your widget looks like when it's loading.
-                                                                          if (!snapshot
-                                                                              .hasData) {
-                                                                            return Center(
-                                                                              child: SizedBox(
-                                                                                width: 50,
-                                                                                height: 50,
-                                                                                child: CircularProgressIndicator(
-                                                                                  color: FlutterFlowTheme.of(context).primaryColor,
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0,
+                                                                        10,
+                                                                        0,
+                                                                        10),
+                                                            child: Row(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              children: [
+                                                                Column(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                  crossAxisAlignment:
+                                                                      CrossAxisAlignment
+                                                                          .start,
+                                                                  children: [
+                                                                    Row(
+                                                                      mainAxisSize:
+                                                                          MainAxisSize
+                                                                              .max,
+                                                                      children: [
+                                                                        Padding(
+                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                              15,
+                                                                              0,
+                                                                              0,
+                                                                              0),
+                                                                          child:
+                                                                              Text(
+                                                                            'Action',
+                                                                            style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                  fontFamily: 'Poppins',
+                                                                                  color: FlutterFlowTheme.of(context).primaryBtnText,
+                                                                                  fontSize: 15,
                                                                                 ),
-                                                                              ),
-                                                                            );
-                                                                          }
-                                                                          List<VideodataRecord>
-                                                                              listViewVideodataRecordList =
-                                                                              snapshot.data!;
-                                                                          return ListView
-                                                                              .builder(
-                                                                            padding:
-                                                                                EdgeInsets.zero,
-                                                                            scrollDirection:
-                                                                                Axis.horizontal,
-                                                                            itemCount:
-                                                                                listViewVideodataRecordList.length,
-                                                                            itemBuilder:
-                                                                                (context, listViewIndex) {
-                                                                              final listViewVideodataRecord = listViewVideodataRecordList[listViewIndex];
-                                                                              return Padding(
-                                                                                padding: EdgeInsetsDirectional.fromSTEB(7, 0, 7, 0),
-                                                                                child: InkWell(
-                                                                                  onTap: () async {
-                                                                                    await Navigator.push(
-                                                                                      context,
-                                                                                      MaterialPageRoute(
-                                                                                        builder: (context) => InfoPageWidget(
-                                                                                          infodocument: listViewVideodataRecord,
+                                                                          ),
+                                                                        ),
+                                                                        Padding(
+                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                              15,
+                                                                              0,
+                                                                              0,
+                                                                              0),
+                                                                          child:
+                                                                              Text(
+                                                                            '>',
+                                                                            style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                  fontFamily: 'Poppins',
+                                                                                  color: FlutterFlowTheme.of(context).primaryBtnText,
+                                                                                  fontSize: 18,
+                                                                                ),
+                                                                          ),
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                    Padding(
+                                                                      padding: EdgeInsetsDirectional
+                                                                          .fromSTEB(
+                                                                              8,
+                                                                              0,
+                                                                              0,
+                                                                              0),
+                                                                      child:
+                                                                          Container(
+                                                                        width:
+                                                                            362,
+                                                                        height:
+                                                                            100,
+                                                                        decoration:
+                                                                            BoxDecoration(
+                                                                          color:
+                                                                              Color(0xDF000000),
+                                                                        ),
+                                                                        child: StreamBuilder<
+                                                                            List<VideodataRecord>>(
+                                                                          stream:
+                                                                              queryVideodataRecord(
+                                                                            queryBuilder: (videodataRecord) =>
+                                                                                videodataRecord.where('category', isEqualTo: 'Movies').where('subcategory', isEqualTo: 'Action').orderBy('imdbrating', descending: true),
+                                                                          ),
+                                                                          builder:
+                                                                              (context, snapshot) {
+                                                                            // Customize what your widget looks like when it's loading.
+                                                                            if (!snapshot.hasData) {
+                                                                              return Center(
+                                                                                child: SizedBox(
+                                                                                  width: 50,
+                                                                                  height: 50,
+                                                                                  child: CircularProgressIndicator(
+                                                                                    color: FlutterFlowTheme.of(context).primaryColor,
+                                                                                  ),
+                                                                                ),
+                                                                              );
+                                                                            }
+                                                                            List<VideodataRecord>
+                                                                                listViewVideodataRecordList =
+                                                                                snapshot.data!;
+                                                                            return ListView.builder(
+                                                                              padding: EdgeInsets.zero,
+                                                                              scrollDirection: Axis.horizontal,
+                                                                              itemCount: listViewVideodataRecordList.length,
+                                                                              itemBuilder: (context, listViewIndex) {
+                                                                                final listViewVideodataRecord = listViewVideodataRecordList[listViewIndex];
+                                                                                return Padding(
+                                                                                  padding: EdgeInsetsDirectional.fromSTEB(7, 0, 7, 0),
+                                                                                  child: InkWell(
+                                                                                    onTap: () async {
+                                                                                      await Navigator.push(
+                                                                                        context,
+                                                                                        MaterialPageRoute(
+                                                                                          builder: (context) => InfoPageWidget(
+                                                                                            infodocument: listViewVideodataRecord,
+                                                                                          ),
+                                                                                        ),
+                                                                                      );
+                                                                                      await Future.delayed(const Duration(milliseconds: 2000));
+                                                                                    },
+                                                                                    child: Material(
+                                                                                      color: Colors.transparent,
+                                                                                      elevation: 10,
+                                                                                      child: Container(
+                                                                                        width: 130,
+                                                                                        height: 130,
+                                                                                        decoration: BoxDecoration(
+                                                                                          color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                        ),
+                                                                                        child: Stack(
+                                                                                          children: [
+                                                                                            Image.network(
+                                                                                              listViewVideodataRecord.imageurl!,
+                                                                                              width: 130,
+                                                                                              height: 100,
+                                                                                              fit: BoxFit.cover,
+                                                                                            ),
+                                                                                            Align(
+                                                                                              alignment: AlignmentDirectional(0, 0.94),
+                                                                                              child: Text(
+                                                                                                listViewVideodataRecord.name!,
+                                                                                                style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                                      fontFamily: 'Poppins',
+                                                                                                      color: FlutterFlowTheme.of(context).primaryBtnText,
+                                                                                                      fontSize: 16,
+                                                                                                      fontWeight: FontWeight.bold,
+                                                                                                    ),
+                                                                                              ),
+                                                                                            ),
+                                                                                          ],
                                                                                         ),
                                                                                       ),
-                                                                                    );
-                                                                                    await Future.delayed(const Duration(milliseconds: 2000));
-                                                                                  },
-                                                                                  child: Material(
-                                                                                    color: Colors.transparent,
-                                                                                    elevation: 10,
-                                                                                    child: Container(
-                                                                                      width: 130,
-                                                                                      height: 130,
-                                                                                      decoration: BoxDecoration(
-                                                                                        color: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                      ),
-                                                                                      child: Stack(
-                                                                                        children: [
-                                                                                          Image.network(
-                                                                                            listViewVideodataRecord.imageurl!,
-                                                                                            width: 130,
-                                                                                            height: 100,
-                                                                                            fit: BoxFit.cover,
-                                                                                          ),
-                                                                                          Align(
-                                                                                            alignment: AlignmentDirectional(0, 0.94),
-                                                                                            child: Text(
-                                                                                              listViewVideodataRecord.name!,
-                                                                                              style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                    fontFamily: 'Poppins',
-                                                                                                    color: FlutterFlowTheme.of(context).primaryBtnText,
-                                                                                                    fontSize: 16,
-                                                                                                    fontWeight: FontWeight.bold,
-                                                                                                  ),
-                                                                                            ),
-                                                                                          ),
-                                                                                        ],
-                                                                                      ),
                                                                                     ),
+                                                                                  ),
+                                                                                );
+                                                                              },
+                                                                            );
+                                                                          },
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0,
+                                                                        10,
+                                                                        0,
+                                                                        10),
+                                                            child: Row(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              children: [
+                                                                Column(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                  crossAxisAlignment:
+                                                                      CrossAxisAlignment
+                                                                          .start,
+                                                                  children: [
+                                                                    Row(
+                                                                      mainAxisSize:
+                                                                          MainAxisSize
+                                                                              .max,
+                                                                      children: [
+                                                                        Padding(
+                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                              15,
+                                                                              0,
+                                                                              0,
+                                                                              0),
+                                                                          child:
+                                                                              Text(
+                                                                            'Highly Rated',
+                                                                            style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                  fontFamily: 'Poppins',
+                                                                                  color: FlutterFlowTheme.of(context).primaryBtnText,
+                                                                                  fontSize: 15,
+                                                                                ),
+                                                                          ),
+                                                                        ),
+                                                                        Padding(
+                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                              15,
+                                                                              0,
+                                                                              0,
+                                                                              0),
+                                                                          child:
+                                                                              Text(
+                                                                            '>',
+                                                                            style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                  fontFamily: 'Poppins',
+                                                                                  color: FlutterFlowTheme.of(context).primaryBtnText,
+                                                                                  fontSize: 18,
+                                                                                ),
+                                                                          ),
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                    Padding(
+                                                                      padding: EdgeInsetsDirectional
+                                                                          .fromSTEB(
+                                                                              8,
+                                                                              0,
+                                                                              0,
+                                                                              0),
+                                                                      child:
+                                                                          Container(
+                                                                        width:
+                                                                            362,
+                                                                        height:
+                                                                            100,
+                                                                        decoration:
+                                                                            BoxDecoration(
+                                                                          color:
+                                                                              Color(0xDF000000),
+                                                                        ),
+                                                                        child: StreamBuilder<
+                                                                            List<VideodataRecord>>(
+                                                                          stream:
+                                                                              queryVideodataRecord(
+                                                                            queryBuilder: (videodataRecord) =>
+                                                                                videodataRecord.where('category', isEqualTo: 'Movies').orderBy('imdbrating', descending: true),
+                                                                          ),
+                                                                          builder:
+                                                                              (context, snapshot) {
+                                                                            // Customize what your widget looks like when it's loading.
+                                                                            if (!snapshot.hasData) {
+                                                                              return Center(
+                                                                                child: SizedBox(
+                                                                                  width: 50,
+                                                                                  height: 50,
+                                                                                  child: CircularProgressIndicator(
+                                                                                    color: FlutterFlowTheme.of(context).primaryColor,
                                                                                   ),
                                                                                 ),
                                                                               );
-                                                                            },
-                                                                          );
-                                                                        },
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                ],
-                                                              ),
-                                                            ],
-                                                          ),
-                                                        ),
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      0,
-                                                                      10,
-                                                                      0,
-                                                                      10),
-                                                          child: Row(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                            children: [
-                                                              Column(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                crossAxisAlignment:
-                                                                    CrossAxisAlignment
-                                                                        .start,
-                                                                children: [
-                                                                  Row(
-                                                                    mainAxisSize:
-                                                                        MainAxisSize
-                                                                            .max,
-                                                                    children: [
-                                                                      Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                                                            15,
-                                                                            0,
-                                                                            0,
-                                                                            0),
-                                                                        child:
-                                                                            Text(
-                                                                          'Action',
-                                                                          style: FlutterFlowTheme.of(context)
-                                                                              .bodyText1
-                                                                              .override(
-                                                                                fontFamily: 'Poppins',
-                                                                                color: FlutterFlowTheme.of(context).primaryBtnText,
-                                                                                fontSize: 15,
-                                                                              ),
-                                                                        ),
-                                                                      ),
-                                                                      Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                                                            15,
-                                                                            0,
-                                                                            0,
-                                                                            0),
-                                                                        child:
-                                                                            Text(
-                                                                          '>',
-                                                                          style: FlutterFlowTheme.of(context)
-                                                                              .bodyText1
-                                                                              .override(
-                                                                                fontFamily: 'Poppins',
-                                                                                color: FlutterFlowTheme.of(context).primaryBtnText,
-                                                                                fontSize: 18,
-                                                                              ),
-                                                                        ),
-                                                                      ),
-                                                                    ],
-                                                                  ),
-                                                                  Padding(
-                                                                    padding: EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            8,
-                                                                            0,
-                                                                            0,
-                                                                            0),
-                                                                    child:
-                                                                        Container(
-                                                                      width:
-                                                                          362,
-                                                                      height:
-                                                                          100,
-                                                                      decoration:
-                                                                          BoxDecoration(
-                                                                        color: Color(
-                                                                            0xDF000000),
-                                                                      ),
-                                                                      child: StreamBuilder<
-                                                                          List<
-                                                                              VideodataRecord>>(
-                                                                        stream:
-                                                                            queryVideodataRecord(
-                                                                          queryBuilder: (videodataRecord) => videodataRecord
-                                                                              .where('category', isEqualTo: 'Movies')
-                                                                              .where('subcategory', isEqualTo: 'Action')
-                                                                              .orderBy('imdbrating', descending: true),
-                                                                        ),
-                                                                        builder:
-                                                                            (context,
-                                                                                snapshot) {
-                                                                          // Customize what your widget looks like when it's loading.
-                                                                          if (!snapshot
-                                                                              .hasData) {
-                                                                            return Center(
-                                                                              child: SizedBox(
-                                                                                width: 50,
-                                                                                height: 50,
-                                                                                child: CircularProgressIndicator(
-                                                                                  color: FlutterFlowTheme.of(context).primaryColor,
-                                                                                ),
-                                                                              ),
-                                                                            );
-                                                                          }
-                                                                          List<VideodataRecord>
-                                                                              listViewVideodataRecordList =
-                                                                              snapshot.data!;
-                                                                          return ListView
-                                                                              .builder(
-                                                                            padding:
-                                                                                EdgeInsets.zero,
-                                                                            scrollDirection:
-                                                                                Axis.horizontal,
-                                                                            itemCount:
-                                                                                listViewVideodataRecordList.length,
-                                                                            itemBuilder:
-                                                                                (context, listViewIndex) {
-                                                                              final listViewVideodataRecord = listViewVideodataRecordList[listViewIndex];
-                                                                              return Padding(
-                                                                                padding: EdgeInsetsDirectional.fromSTEB(7, 0, 7, 0),
-                                                                                child: InkWell(
-                                                                                  onTap: () async {
-                                                                                    await Navigator.push(
-                                                                                      context,
-                                                                                      MaterialPageRoute(
-                                                                                        builder: (context) => InfoPageWidget(
-                                                                                          infodocument: listViewVideodataRecord,
+                                                                            }
+                                                                            List<VideodataRecord>
+                                                                                listViewVideodataRecordList =
+                                                                                snapshot.data!;
+                                                                            return ListView.builder(
+                                                                              padding: EdgeInsets.zero,
+                                                                              scrollDirection: Axis.horizontal,
+                                                                              itemCount: listViewVideodataRecordList.length,
+                                                                              itemBuilder: (context, listViewIndex) {
+                                                                                final listViewVideodataRecord = listViewVideodataRecordList[listViewIndex];
+                                                                                return Padding(
+                                                                                  padding: EdgeInsetsDirectional.fromSTEB(7, 0, 7, 0),
+                                                                                  child: InkWell(
+                                                                                    onTap: () async {
+                                                                                      await Navigator.push(
+                                                                                        context,
+                                                                                        MaterialPageRoute(
+                                                                                          builder: (context) => InfoPageWidget(
+                                                                                            infodocument: listViewVideodataRecord,
+                                                                                          ),
+                                                                                        ),
+                                                                                      );
+                                                                                      await Future.delayed(const Duration(milliseconds: 2000));
+                                                                                    },
+                                                                                    child: Material(
+                                                                                      color: Colors.transparent,
+                                                                                      elevation: 10,
+                                                                                      child: Container(
+                                                                                        width: 130,
+                                                                                        height: 130,
+                                                                                        decoration: BoxDecoration(
+                                                                                          color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                        ),
+                                                                                        child: Stack(
+                                                                                          children: [
+                                                                                            Image.network(
+                                                                                              listViewVideodataRecord.imageurl!,
+                                                                                              width: 130,
+                                                                                              height: 100,
+                                                                                              fit: BoxFit.cover,
+                                                                                            ),
+                                                                                            Align(
+                                                                                              alignment: AlignmentDirectional(0, 0.94),
+                                                                                              child: Text(
+                                                                                                listViewVideodataRecord.name!,
+                                                                                                style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                                      fontFamily: 'Poppins',
+                                                                                                      color: FlutterFlowTheme.of(context).primaryBtnText,
+                                                                                                      fontSize: 16,
+                                                                                                      fontWeight: FontWeight.bold,
+                                                                                                    ),
+                                                                                              ),
+                                                                                            ),
+                                                                                          ],
                                                                                         ),
                                                                                       ),
-                                                                                    );
-                                                                                    await Future.delayed(const Duration(milliseconds: 2000));
-                                                                                  },
-                                                                                  child: Material(
-                                                                                    color: Colors.transparent,
-                                                                                    elevation: 10,
-                                                                                    child: Container(
-                                                                                      width: 130,
-                                                                                      height: 130,
-                                                                                      decoration: BoxDecoration(
-                                                                                        color: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                      ),
-                                                                                      child: Stack(
-                                                                                        children: [
-                                                                                          Image.network(
-                                                                                            listViewVideodataRecord.imageurl!,
-                                                                                            width: 130,
-                                                                                            height: 100,
-                                                                                            fit: BoxFit.cover,
-                                                                                          ),
-                                                                                          Align(
-                                                                                            alignment: AlignmentDirectional(0, 0.94),
-                                                                                            child: Text(
-                                                                                              listViewVideodataRecord.name!,
-                                                                                              style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                    fontFamily: 'Poppins',
-                                                                                                    color: FlutterFlowTheme.of(context).primaryBtnText,
-                                                                                                    fontSize: 16,
-                                                                                                    fontWeight: FontWeight.bold,
-                                                                                                  ),
-                                                                                            ),
-                                                                                          ),
-                                                                                        ],
-                                                                                      ),
                                                                                     ),
+                                                                                  ),
+                                                                                );
+                                                                              },
+                                                                            );
+                                                                          },
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0,
+                                                                        10,
+                                                                        0,
+                                                                        10),
+                                                            child: Row(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              children: [
+                                                                Column(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                  crossAxisAlignment:
+                                                                      CrossAxisAlignment
+                                                                          .start,
+                                                                  children: [
+                                                                    Row(
+                                                                      mainAxisSize:
+                                                                          MainAxisSize
+                                                                              .max,
+                                                                      children: [
+                                                                        Padding(
+                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                              15,
+                                                                              0,
+                                                                              0,
+                                                                              0),
+                                                                          child:
+                                                                              Text(
+                                                                            'Watch In Hindi',
+                                                                            style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                  fontFamily: 'Poppins',
+                                                                                  color: FlutterFlowTheme.of(context).primaryBtnText,
+                                                                                  fontSize: 15,
+                                                                                ),
+                                                                          ),
+                                                                        ),
+                                                                        Padding(
+                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                              15,
+                                                                              0,
+                                                                              0,
+                                                                              0),
+                                                                          child:
+                                                                              Text(
+                                                                            '>',
+                                                                            style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                  fontFamily: 'Poppins',
+                                                                                  color: FlutterFlowTheme.of(context).primaryBtnText,
+                                                                                  fontSize: 18,
+                                                                                ),
+                                                                          ),
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                    Padding(
+                                                                      padding: EdgeInsetsDirectional
+                                                                          .fromSTEB(
+                                                                              8,
+                                                                              0,
+                                                                              0,
+                                                                              0),
+                                                                      child:
+                                                                          Container(
+                                                                        width:
+                                                                            362,
+                                                                        height:
+                                                                            100,
+                                                                        decoration:
+                                                                            BoxDecoration(
+                                                                          color:
+                                                                              Color(0xDF000000),
+                                                                        ),
+                                                                        child: StreamBuilder<
+                                                                            List<VideodataRecord>>(
+                                                                          stream:
+                                                                              queryVideodataRecord(
+                                                                            queryBuilder: (videodataRecord) =>
+                                                                                videodataRecord.where('category', isEqualTo: 'Movies').where('languages', arrayContains: FFAppState().hinditag),
+                                                                          ),
+                                                                          builder:
+                                                                              (context, snapshot) {
+                                                                            // Customize what your widget looks like when it's loading.
+                                                                            if (!snapshot.hasData) {
+                                                                              return Center(
+                                                                                child: SizedBox(
+                                                                                  width: 50,
+                                                                                  height: 50,
+                                                                                  child: CircularProgressIndicator(
+                                                                                    color: FlutterFlowTheme.of(context).primaryColor,
                                                                                   ),
                                                                                 ),
                                                                               );
-                                                                            },
-                                                                          );
-                                                                        },
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                ],
-                                                              ),
-                                                            ],
-                                                          ),
-                                                        ),
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      0,
-                                                                      10,
-                                                                      0,
-                                                                      10),
-                                                          child: Row(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                            children: [
-                                                              Column(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                crossAxisAlignment:
-                                                                    CrossAxisAlignment
-                                                                        .start,
-                                                                children: [
-                                                                  Row(
-                                                                    mainAxisSize:
-                                                                        MainAxisSize
-                                                                            .max,
-                                                                    children: [
-                                                                      Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                                                            15,
-                                                                            0,
-                                                                            0,
-                                                                            0),
-                                                                        child:
-                                                                            Text(
-                                                                          'Highly Rated',
-                                                                          style: FlutterFlowTheme.of(context)
-                                                                              .bodyText1
-                                                                              .override(
-                                                                                fontFamily: 'Poppins',
-                                                                                color: FlutterFlowTheme.of(context).primaryBtnText,
-                                                                                fontSize: 15,
-                                                                              ),
-                                                                        ),
-                                                                      ),
-                                                                      Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                                                            15,
-                                                                            0,
-                                                                            0,
-                                                                            0),
-                                                                        child:
-                                                                            Text(
-                                                                          '>',
-                                                                          style: FlutterFlowTheme.of(context)
-                                                                              .bodyText1
-                                                                              .override(
-                                                                                fontFamily: 'Poppins',
-                                                                                color: FlutterFlowTheme.of(context).primaryBtnText,
-                                                                                fontSize: 18,
-                                                                              ),
-                                                                        ),
-                                                                      ),
-                                                                    ],
-                                                                  ),
-                                                                  Padding(
-                                                                    padding: EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            8,
-                                                                            0,
-                                                                            0,
-                                                                            0),
-                                                                    child:
-                                                                        Container(
-                                                                      width:
-                                                                          362,
-                                                                      height:
-                                                                          100,
-                                                                      decoration:
-                                                                          BoxDecoration(
-                                                                        color: Color(
-                                                                            0xDF000000),
-                                                                      ),
-                                                                      child: StreamBuilder<
-                                                                          List<
-                                                                              VideodataRecord>>(
-                                                                        stream:
-                                                                            queryVideodataRecord(
-                                                                          queryBuilder: (videodataRecord) => videodataRecord.where('category', isEqualTo: 'Movies').orderBy(
-                                                                              'imdbrating',
-                                                                              descending: true),
-                                                                        ),
-                                                                        builder:
-                                                                            (context,
-                                                                                snapshot) {
-                                                                          // Customize what your widget looks like when it's loading.
-                                                                          if (!snapshot
-                                                                              .hasData) {
-                                                                            return Center(
-                                                                              child: SizedBox(
-                                                                                width: 50,
-                                                                                height: 50,
-                                                                                child: CircularProgressIndicator(
-                                                                                  color: FlutterFlowTheme.of(context).primaryColor,
-                                                                                ),
-                                                                              ),
-                                                                            );
-                                                                          }
-                                                                          List<VideodataRecord>
-                                                                              listViewVideodataRecordList =
-                                                                              snapshot.data!;
-                                                                          return ListView
-                                                                              .builder(
-                                                                            padding:
-                                                                                EdgeInsets.zero,
-                                                                            scrollDirection:
-                                                                                Axis.horizontal,
-                                                                            itemCount:
-                                                                                listViewVideodataRecordList.length,
-                                                                            itemBuilder:
-                                                                                (context, listViewIndex) {
-                                                                              final listViewVideodataRecord = listViewVideodataRecordList[listViewIndex];
-                                                                              return Padding(
-                                                                                padding: EdgeInsetsDirectional.fromSTEB(7, 0, 7, 0),
-                                                                                child: InkWell(
-                                                                                  onTap: () async {
-                                                                                    await Navigator.push(
-                                                                                      context,
-                                                                                      MaterialPageRoute(
-                                                                                        builder: (context) => InfoPageWidget(
-                                                                                          infodocument: listViewVideodataRecord,
+                                                                            }
+                                                                            List<VideodataRecord>
+                                                                                listViewVideodataRecordList =
+                                                                                snapshot.data!;
+                                                                            return ListView.builder(
+                                                                              padding: EdgeInsets.zero,
+                                                                              scrollDirection: Axis.horizontal,
+                                                                              itemCount: listViewVideodataRecordList.length,
+                                                                              itemBuilder: (context, listViewIndex) {
+                                                                                final listViewVideodataRecord = listViewVideodataRecordList[listViewIndex];
+                                                                                return Padding(
+                                                                                  padding: EdgeInsetsDirectional.fromSTEB(7, 0, 7, 0),
+                                                                                  child: InkWell(
+                                                                                    onTap: () async {
+                                                                                      await Navigator.push(
+                                                                                        context,
+                                                                                        MaterialPageRoute(
+                                                                                          builder: (context) => InfoPageWidget(),
+                                                                                        ),
+                                                                                      );
+                                                                                      await Future.delayed(const Duration(milliseconds: 2000));
+                                                                                    },
+                                                                                    child: Material(
+                                                                                      color: Colors.transparent,
+                                                                                      elevation: 10,
+                                                                                      child: Container(
+                                                                                        width: 130,
+                                                                                        height: 130,
+                                                                                        decoration: BoxDecoration(
+                                                                                          color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                        ),
+                                                                                        child: Stack(
+                                                                                          children: [
+                                                                                            Image.network(
+                                                                                              listViewVideodataRecord.imageurl!,
+                                                                                              width: 130,
+                                                                                              height: 100,
+                                                                                              fit: BoxFit.cover,
+                                                                                            ),
+                                                                                            Align(
+                                                                                              alignment: AlignmentDirectional(0, 0.94),
+                                                                                              child: Text(
+                                                                                                listViewVideodataRecord.name!,
+                                                                                                style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                                      fontFamily: 'Poppins',
+                                                                                                      color: FlutterFlowTheme.of(context).primaryBtnText,
+                                                                                                      fontSize: 16,
+                                                                                                      fontWeight: FontWeight.bold,
+                                                                                                    ),
+                                                                                              ),
+                                                                                            ),
+                                                                                          ],
                                                                                         ),
                                                                                       ),
-                                                                                    );
-                                                                                    await Future.delayed(const Duration(milliseconds: 2000));
-                                                                                  },
-                                                                                  child: Material(
-                                                                                    color: Colors.transparent,
-                                                                                    elevation: 10,
-                                                                                    child: Container(
-                                                                                      width: 130,
-                                                                                      height: 130,
-                                                                                      decoration: BoxDecoration(
-                                                                                        color: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                      ),
-                                                                                      child: Stack(
-                                                                                        children: [
-                                                                                          Image.network(
-                                                                                            listViewVideodataRecord.imageurl!,
-                                                                                            width: 130,
-                                                                                            height: 100,
-                                                                                            fit: BoxFit.cover,
-                                                                                          ),
-                                                                                          Align(
-                                                                                            alignment: AlignmentDirectional(0, 0.94),
-                                                                                            child: Text(
-                                                                                              listViewVideodataRecord.name!,
-                                                                                              style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                    fontFamily: 'Poppins',
-                                                                                                    color: FlutterFlowTheme.of(context).primaryBtnText,
-                                                                                                    fontSize: 16,
-                                                                                                    fontWeight: FontWeight.bold,
-                                                                                                  ),
-                                                                                            ),
-                                                                                          ),
-                                                                                        ],
-                                                                                      ),
                                                                                     ),
+                                                                                  ),
+                                                                                );
+                                                                              },
+                                                                            );
+                                                                          },
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0,
+                                                                        10,
+                                                                        0,
+                                                                        10),
+                                                            child: Row(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              children: [
+                                                                Column(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                  crossAxisAlignment:
+                                                                      CrossAxisAlignment
+                                                                          .start,
+                                                                  children: [
+                                                                    Row(
+                                                                      mainAxisSize:
+                                                                          MainAxisSize
+                                                                              .max,
+                                                                      children: [
+                                                                        Padding(
+                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                              15,
+                                                                              0,
+                                                                              0,
+                                                                              0),
+                                                                          child:
+                                                                              Text(
+                                                                            'Scifi',
+                                                                            style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                  fontFamily: 'Poppins',
+                                                                                  color: FlutterFlowTheme.of(context).primaryBtnText,
+                                                                                  fontSize: 15,
+                                                                                ),
+                                                                          ),
+                                                                        ),
+                                                                        Padding(
+                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                              15,
+                                                                              0,
+                                                                              0,
+                                                                              0),
+                                                                          child:
+                                                                              Text(
+                                                                            '>',
+                                                                            style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                  fontFamily: 'Poppins',
+                                                                                  color: FlutterFlowTheme.of(context).primaryBtnText,
+                                                                                  fontSize: 18,
+                                                                                ),
+                                                                          ),
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                    Padding(
+                                                                      padding: EdgeInsetsDirectional
+                                                                          .fromSTEB(
+                                                                              8,
+                                                                              0,
+                                                                              0,
+                                                                              0),
+                                                                      child:
+                                                                          Container(
+                                                                        width:
+                                                                            362,
+                                                                        height:
+                                                                            100,
+                                                                        decoration:
+                                                                            BoxDecoration(
+                                                                          color:
+                                                                              Color(0xDF000000),
+                                                                        ),
+                                                                        child: StreamBuilder<
+                                                                            List<VideodataRecord>>(
+                                                                          stream:
+                                                                              queryVideodataRecord(
+                                                                            queryBuilder: (videodataRecord) =>
+                                                                                videodataRecord.where('category', isEqualTo: 'Movies').where('subcategory', isEqualTo: 'Scifi'),
+                                                                          ),
+                                                                          builder:
+                                                                              (context, snapshot) {
+                                                                            // Customize what your widget looks like when it's loading.
+                                                                            if (!snapshot.hasData) {
+                                                                              return Center(
+                                                                                child: SizedBox(
+                                                                                  width: 50,
+                                                                                  height: 50,
+                                                                                  child: CircularProgressIndicator(
+                                                                                    color: FlutterFlowTheme.of(context).primaryColor,
                                                                                   ),
                                                                                 ),
                                                                               );
-                                                                            },
-                                                                          );
-                                                                        },
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                ],
-                                                              ),
-                                                            ],
-                                                          ),
-                                                        ),
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      0,
-                                                                      10,
-                                                                      0,
-                                                                      10),
-                                                          child: Row(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                            children: [
-                                                              Column(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                crossAxisAlignment:
-                                                                    CrossAxisAlignment
-                                                                        .start,
-                                                                children: [
-                                                                  Row(
-                                                                    mainAxisSize:
-                                                                        MainAxisSize
-                                                                            .max,
-                                                                    children: [
-                                                                      Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                                                            15,
-                                                                            0,
-                                                                            0,
-                                                                            0),
-                                                                        child:
-                                                                            Text(
-                                                                          'Watch In Hindi',
-                                                                          style: FlutterFlowTheme.of(context)
-                                                                              .bodyText1
-                                                                              .override(
-                                                                                fontFamily: 'Poppins',
-                                                                                color: FlutterFlowTheme.of(context).primaryBtnText,
-                                                                                fontSize: 15,
-                                                                              ),
-                                                                        ),
-                                                                      ),
-                                                                      Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                                                            15,
-                                                                            0,
-                                                                            0,
-                                                                            0),
-                                                                        child:
-                                                                            Text(
-                                                                          '>',
-                                                                          style: FlutterFlowTheme.of(context)
-                                                                              .bodyText1
-                                                                              .override(
-                                                                                fontFamily: 'Poppins',
-                                                                                color: FlutterFlowTheme.of(context).primaryBtnText,
-                                                                                fontSize: 18,
-                                                                              ),
-                                                                        ),
-                                                                      ),
-                                                                    ],
-                                                                  ),
-                                                                  Padding(
-                                                                    padding: EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            8,
-                                                                            0,
-                                                                            0,
-                                                                            0),
-                                                                    child:
-                                                                        Container(
-                                                                      width:
-                                                                          362,
-                                                                      height:
-                                                                          100,
-                                                                      decoration:
-                                                                          BoxDecoration(
-                                                                        color: Color(
-                                                                            0xDF000000),
-                                                                      ),
-                                                                      child: StreamBuilder<
-                                                                          List<
-                                                                              VideodataRecord>>(
-                                                                        stream:
-                                                                            queryVideodataRecord(
-                                                                          queryBuilder: (videodataRecord) => videodataRecord.where('category', isEqualTo: 'Movies').where(
-                                                                              'languages',
-                                                                              arrayContains: FFAppState().hinditag),
-                                                                        ),
-                                                                        builder:
-                                                                            (context,
-                                                                                snapshot) {
-                                                                          // Customize what your widget looks like when it's loading.
-                                                                          if (!snapshot
-                                                                              .hasData) {
-                                                                            return Center(
-                                                                              child: SizedBox(
-                                                                                width: 50,
-                                                                                height: 50,
-                                                                                child: CircularProgressIndicator(
-                                                                                  color: FlutterFlowTheme.of(context).primaryColor,
-                                                                                ),
-                                                                              ),
-                                                                            );
-                                                                          }
-                                                                          List<VideodataRecord>
-                                                                              listViewVideodataRecordList =
-                                                                              snapshot.data!;
-                                                                          return ListView
-                                                                              .builder(
-                                                                            padding:
-                                                                                EdgeInsets.zero,
-                                                                            scrollDirection:
-                                                                                Axis.horizontal,
-                                                                            itemCount:
-                                                                                listViewVideodataRecordList.length,
-                                                                            itemBuilder:
-                                                                                (context, listViewIndex) {
-                                                                              final listViewVideodataRecord = listViewVideodataRecordList[listViewIndex];
-                                                                              return Padding(
-                                                                                padding: EdgeInsetsDirectional.fromSTEB(7, 0, 7, 0),
-                                                                                child: InkWell(
-                                                                                  onTap: () async {
-                                                                                    await Navigator.push(
-                                                                                      context,
-                                                                                      MaterialPageRoute(
-                                                                                        builder: (context) => InfoPageWidget(),
-                                                                                      ),
-                                                                                    );
-                                                                                    await Future.delayed(const Duration(milliseconds: 2000));
-                                                                                  },
-                                                                                  child: Material(
-                                                                                    color: Colors.transparent,
-                                                                                    elevation: 10,
-                                                                                    child: Container(
-                                                                                      width: 130,
-                                                                                      height: 130,
-                                                                                      decoration: BoxDecoration(
-                                                                                        color: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                      ),
-                                                                                      child: Stack(
-                                                                                        children: [
-                                                                                          Image.network(
-                                                                                            listViewVideodataRecord.imageurl!,
-                                                                                            width: 130,
-                                                                                            height: 100,
-                                                                                            fit: BoxFit.cover,
+                                                                            }
+                                                                            List<VideodataRecord>
+                                                                                listViewVideodataRecordList =
+                                                                                snapshot.data!;
+                                                                            return ListView.builder(
+                                                                              padding: EdgeInsets.zero,
+                                                                              scrollDirection: Axis.horizontal,
+                                                                              itemCount: listViewVideodataRecordList.length,
+                                                                              itemBuilder: (context, listViewIndex) {
+                                                                                final listViewVideodataRecord = listViewVideodataRecordList[listViewIndex];
+                                                                                return Padding(
+                                                                                  padding: EdgeInsetsDirectional.fromSTEB(7, 0, 7, 0),
+                                                                                  child: InkWell(
+                                                                                    onTap: () async {
+                                                                                      await Navigator.push(
+                                                                                        context,
+                                                                                        MaterialPageRoute(
+                                                                                          builder: (context) => InfoPageWidget(
+                                                                                            infodocument: listViewVideodataRecord,
                                                                                           ),
-                                                                                          Align(
-                                                                                            alignment: AlignmentDirectional(0, 0.94),
-                                                                                            child: Text(
-                                                                                              listViewVideodataRecord.name!,
-                                                                                              style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                    fontFamily: 'Poppins',
-                                                                                                    color: FlutterFlowTheme.of(context).primaryBtnText,
-                                                                                                    fontSize: 16,
-                                                                                                    fontWeight: FontWeight.bold,
-                                                                                                  ),
+                                                                                        ),
+                                                                                      );
+                                                                                      await Future.delayed(const Duration(milliseconds: 2000));
+                                                                                    },
+                                                                                    child: Material(
+                                                                                      color: Colors.transparent,
+                                                                                      elevation: 10,
+                                                                                      child: Container(
+                                                                                        width: 130,
+                                                                                        height: 130,
+                                                                                        decoration: BoxDecoration(
+                                                                                          color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                        ),
+                                                                                        child: Stack(
+                                                                                          children: [
+                                                                                            Image.network(
+                                                                                              listViewVideodataRecord.imageurl!,
+                                                                                              width: 130,
+                                                                                              height: 100,
+                                                                                              fit: BoxFit.cover,
                                                                                             ),
-                                                                                          ),
-                                                                                        ],
-                                                                                      ),
-                                                                                    ),
-                                                                                  ),
-                                                                                ),
-                                                                              );
-                                                                            },
-                                                                          );
-                                                                        },
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                ],
-                                                              ),
-                                                            ],
-                                                          ),
-                                                        ),
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      0,
-                                                                      10,
-                                                                      0,
-                                                                      10),
-                                                          child: Row(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                            children: [
-                                                              Column(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                crossAxisAlignment:
-                                                                    CrossAxisAlignment
-                                                                        .start,
-                                                                children: [
-                                                                  Row(
-                                                                    mainAxisSize:
-                                                                        MainAxisSize
-                                                                            .max,
-                                                                    children: [
-                                                                      Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                                                            15,
-                                                                            0,
-                                                                            0,
-                                                                            0),
-                                                                        child:
-                                                                            Text(
-                                                                          'Scifi',
-                                                                          style: FlutterFlowTheme.of(context)
-                                                                              .bodyText1
-                                                                              .override(
-                                                                                fontFamily: 'Poppins',
-                                                                                color: FlutterFlowTheme.of(context).primaryBtnText,
-                                                                                fontSize: 15,
-                                                                              ),
-                                                                        ),
-                                                                      ),
-                                                                      Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                                                            15,
-                                                                            0,
-                                                                            0,
-                                                                            0),
-                                                                        child:
-                                                                            Text(
-                                                                          '>',
-                                                                          style: FlutterFlowTheme.of(context)
-                                                                              .bodyText1
-                                                                              .override(
-                                                                                fontFamily: 'Poppins',
-                                                                                color: FlutterFlowTheme.of(context).primaryBtnText,
-                                                                                fontSize: 18,
-                                                                              ),
-                                                                        ),
-                                                                      ),
-                                                                    ],
-                                                                  ),
-                                                                  Padding(
-                                                                    padding: EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            8,
-                                                                            0,
-                                                                            0,
-                                                                            0),
-                                                                    child:
-                                                                        Container(
-                                                                      width:
-                                                                          362,
-                                                                      height:
-                                                                          100,
-                                                                      decoration:
-                                                                          BoxDecoration(
-                                                                        color: Color(
-                                                                            0xDF000000),
-                                                                      ),
-                                                                      child: StreamBuilder<
-                                                                          List<
-                                                                              VideodataRecord>>(
-                                                                        stream:
-                                                                            queryVideodataRecord(
-                                                                          queryBuilder: (videodataRecord) => videodataRecord.where('category', isEqualTo: 'Movies').where(
-                                                                              'subcategory',
-                                                                              isEqualTo: 'Scifi'),
-                                                                        ),
-                                                                        builder:
-                                                                            (context,
-                                                                                snapshot) {
-                                                                          // Customize what your widget looks like when it's loading.
-                                                                          if (!snapshot
-                                                                              .hasData) {
-                                                                            return Center(
-                                                                              child: SizedBox(
-                                                                                width: 50,
-                                                                                height: 50,
-                                                                                child: CircularProgressIndicator(
-                                                                                  color: FlutterFlowTheme.of(context).primaryColor,
-                                                                                ),
-                                                                              ),
-                                                                            );
-                                                                          }
-                                                                          List<VideodataRecord>
-                                                                              listViewVideodataRecordList =
-                                                                              snapshot.data!;
-                                                                          return ListView
-                                                                              .builder(
-                                                                            padding:
-                                                                                EdgeInsets.zero,
-                                                                            scrollDirection:
-                                                                                Axis.horizontal,
-                                                                            itemCount:
-                                                                                listViewVideodataRecordList.length,
-                                                                            itemBuilder:
-                                                                                (context, listViewIndex) {
-                                                                              final listViewVideodataRecord = listViewVideodataRecordList[listViewIndex];
-                                                                              return Padding(
-                                                                                padding: EdgeInsetsDirectional.fromSTEB(7, 0, 7, 0),
-                                                                                child: InkWell(
-                                                                                  onTap: () async {
-                                                                                    await Navigator.push(
-                                                                                      context,
-                                                                                      MaterialPageRoute(
-                                                                                        builder: (context) => InfoPageWidget(
-                                                                                          infodocument: listViewVideodataRecord,
+                                                                                            Align(
+                                                                                              alignment: AlignmentDirectional(0, 0.94),
+                                                                                              child: Text(
+                                                                                                listViewVideodataRecord.name!,
+                                                                                                style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                                      fontFamily: 'Poppins',
+                                                                                                      color: FlutterFlowTheme.of(context).primaryBtnText,
+                                                                                                      fontSize: 16,
+                                                                                                      fontWeight: FontWeight.bold,
+                                                                                                    ),
+                                                                                              ),
+                                                                                            ),
+                                                                                          ],
                                                                                         ),
                                                                                       ),
-                                                                                    );
-                                                                                    await Future.delayed(const Duration(milliseconds: 2000));
-                                                                                  },
-                                                                                  child: Material(
-                                                                                    color: Colors.transparent,
-                                                                                    elevation: 10,
-                                                                                    child: Container(
-                                                                                      width: 130,
-                                                                                      height: 130,
-                                                                                      decoration: BoxDecoration(
-                                                                                        color: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                      ),
-                                                                                      child: Stack(
-                                                                                        children: [
-                                                                                          Image.network(
-                                                                                            listViewVideodataRecord.imageurl!,
-                                                                                            width: 130,
-                                                                                            height: 100,
-                                                                                            fit: BoxFit.cover,
-                                                                                          ),
-                                                                                          Align(
-                                                                                            alignment: AlignmentDirectional(0, 0.94),
-                                                                                            child: Text(
-                                                                                              listViewVideodataRecord.name!,
-                                                                                              style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                    fontFamily: 'Poppins',
-                                                                                                    color: FlutterFlowTheme.of(context).primaryBtnText,
-                                                                                                    fontSize: 16,
-                                                                                                    fontWeight: FontWeight.bold,
-                                                                                                  ),
-                                                                                            ),
-                                                                                          ),
-                                                                                        ],
-                                                                                      ),
                                                                                     ),
+                                                                                  ),
+                                                                                );
+                                                                              },
+                                                                            );
+                                                                          },
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0,
+                                                                        10,
+                                                                        0,
+                                                                        10),
+                                                            child: Row(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              children: [
+                                                                Column(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                  crossAxisAlignment:
+                                                                      CrossAxisAlignment
+                                                                          .start,
+                                                                  children: [
+                                                                    Row(
+                                                                      mainAxisSize:
+                                                                          MainAxisSize
+                                                                              .max,
+                                                                      children: [
+                                                                        Padding(
+                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                              15,
+                                                                              0,
+                                                                              0,
+                                                                              0),
+                                                                          child:
+                                                                              Text(
+                                                                            'Watch In English',
+                                                                            style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                  fontFamily: 'Poppins',
+                                                                                  color: FlutterFlowTheme.of(context).primaryBtnText,
+                                                                                  fontSize: 15,
+                                                                                ),
+                                                                          ),
+                                                                        ),
+                                                                        Padding(
+                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                              15,
+                                                                              0,
+                                                                              0,
+                                                                              0),
+                                                                          child:
+                                                                              Text(
+                                                                            '>',
+                                                                            style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                  fontFamily: 'Poppins',
+                                                                                  color: FlutterFlowTheme.of(context).primaryBtnText,
+                                                                                  fontSize: 18,
+                                                                                ),
+                                                                          ),
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                    Padding(
+                                                                      padding: EdgeInsetsDirectional
+                                                                          .fromSTEB(
+                                                                              8,
+                                                                              0,
+                                                                              0,
+                                                                              0),
+                                                                      child:
+                                                                          Container(
+                                                                        width:
+                                                                            362,
+                                                                        height:
+                                                                            100,
+                                                                        decoration:
+                                                                            BoxDecoration(
+                                                                          color:
+                                                                              Color(0xDF000000),
+                                                                        ),
+                                                                        child: StreamBuilder<
+                                                                            List<VideodataRecord>>(
+                                                                          stream:
+                                                                              queryVideodataRecord(
+                                                                            queryBuilder: (videodataRecord) =>
+                                                                                videodataRecord.where('category', isEqualTo: 'Movies').where('languages', arrayContains: FFAppState().hinditag),
+                                                                          ),
+                                                                          builder:
+                                                                              (context, snapshot) {
+                                                                            // Customize what your widget looks like when it's loading.
+                                                                            if (!snapshot.hasData) {
+                                                                              return Center(
+                                                                                child: SizedBox(
+                                                                                  width: 50,
+                                                                                  height: 50,
+                                                                                  child: CircularProgressIndicator(
+                                                                                    color: FlutterFlowTheme.of(context).primaryColor,
                                                                                   ),
                                                                                 ),
                                                                               );
-                                                                            },
-                                                                          );
-                                                                        },
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                ],
-                                                              ),
-                                                            ],
-                                                          ),
-                                                        ),
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      0,
-                                                                      10,
-                                                                      0,
-                                                                      10),
-                                                          child: Row(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                            children: [
-                                                              Column(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                crossAxisAlignment:
-                                                                    CrossAxisAlignment
-                                                                        .start,
-                                                                children: [
-                                                                  Row(
-                                                                    mainAxisSize:
-                                                                        MainAxisSize
-                                                                            .max,
-                                                                    children: [
-                                                                      Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                                                            15,
-                                                                            0,
-                                                                            0,
-                                                                            0),
-                                                                        child:
-                                                                            Text(
-                                                                          'Watch In English',
-                                                                          style: FlutterFlowTheme.of(context)
-                                                                              .bodyText1
-                                                                              .override(
-                                                                                fontFamily: 'Poppins',
-                                                                                color: FlutterFlowTheme.of(context).primaryBtnText,
-                                                                                fontSize: 15,
-                                                                              ),
-                                                                        ),
-                                                                      ),
-                                                                      Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                                                            15,
-                                                                            0,
-                                                                            0,
-                                                                            0),
-                                                                        child:
-                                                                            Text(
-                                                                          '>',
-                                                                          style: FlutterFlowTheme.of(context)
-                                                                              .bodyText1
-                                                                              .override(
-                                                                                fontFamily: 'Poppins',
-                                                                                color: FlutterFlowTheme.of(context).primaryBtnText,
-                                                                                fontSize: 18,
-                                                                              ),
-                                                                        ),
-                                                                      ),
-                                                                    ],
-                                                                  ),
-                                                                  Padding(
-                                                                    padding: EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            8,
-                                                                            0,
-                                                                            0,
-                                                                            0),
-                                                                    child:
-                                                                        Container(
-                                                                      width:
-                                                                          362,
-                                                                      height:
-                                                                          100,
-                                                                      decoration:
-                                                                          BoxDecoration(
-                                                                        color: Color(
-                                                                            0xDF000000),
-                                                                      ),
-                                                                      child: StreamBuilder<
-                                                                          List<
-                                                                              VideodataRecord>>(
-                                                                        stream:
-                                                                            queryVideodataRecord(
-                                                                          queryBuilder: (videodataRecord) => videodataRecord.where('category', isEqualTo: 'Movies').where(
-                                                                              'languages',
-                                                                              arrayContains: FFAppState().hinditag),
-                                                                        ),
-                                                                        builder:
-                                                                            (context,
-                                                                                snapshot) {
-                                                                          // Customize what your widget looks like when it's loading.
-                                                                          if (!snapshot
-                                                                              .hasData) {
-                                                                            return Center(
-                                                                              child: SizedBox(
-                                                                                width: 50,
-                                                                                height: 50,
-                                                                                child: CircularProgressIndicator(
-                                                                                  color: FlutterFlowTheme.of(context).primaryColor,
-                                                                                ),
-                                                                              ),
-                                                                            );
-                                                                          }
-                                                                          List<VideodataRecord>
-                                                                              listViewVideodataRecordList =
-                                                                              snapshot.data!;
-                                                                          return ListView
-                                                                              .builder(
-                                                                            padding:
-                                                                                EdgeInsets.zero,
-                                                                            scrollDirection:
-                                                                                Axis.horizontal,
-                                                                            itemCount:
-                                                                                listViewVideodataRecordList.length,
-                                                                            itemBuilder:
-                                                                                (context, listViewIndex) {
-                                                                              final listViewVideodataRecord = listViewVideodataRecordList[listViewIndex];
-                                                                              return Padding(
-                                                                                padding: EdgeInsetsDirectional.fromSTEB(7, 0, 7, 0),
-                                                                                child: InkWell(
-                                                                                  onTap: () async {
-                                                                                    await Navigator.push(
-                                                                                      context,
-                                                                                      MaterialPageRoute(
-                                                                                        builder: (context) => InfoPageWidget(
-                                                                                          infodocument: listViewVideodataRecord,
+                                                                            }
+                                                                            List<VideodataRecord>
+                                                                                listViewVideodataRecordList =
+                                                                                snapshot.data!;
+                                                                            return ListView.builder(
+                                                                              padding: EdgeInsets.zero,
+                                                                              scrollDirection: Axis.horizontal,
+                                                                              itemCount: listViewVideodataRecordList.length,
+                                                                              itemBuilder: (context, listViewIndex) {
+                                                                                final listViewVideodataRecord = listViewVideodataRecordList[listViewIndex];
+                                                                                return Padding(
+                                                                                  padding: EdgeInsetsDirectional.fromSTEB(7, 0, 7, 0),
+                                                                                  child: InkWell(
+                                                                                    onTap: () async {
+                                                                                      await Navigator.push(
+                                                                                        context,
+                                                                                        MaterialPageRoute(
+                                                                                          builder: (context) => InfoPageWidget(
+                                                                                            infodocument: listViewVideodataRecord,
+                                                                                          ),
+                                                                                        ),
+                                                                                      );
+                                                                                      await Future.delayed(const Duration(milliseconds: 2000));
+                                                                                    },
+                                                                                    child: Material(
+                                                                                      color: Colors.transparent,
+                                                                                      elevation: 10,
+                                                                                      child: Container(
+                                                                                        width: 130,
+                                                                                        height: 130,
+                                                                                        decoration: BoxDecoration(
+                                                                                          color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                        ),
+                                                                                        child: Stack(
+                                                                                          children: [
+                                                                                            Image.network(
+                                                                                              listViewVideodataRecord.imageurl!,
+                                                                                              width: 130,
+                                                                                              height: 100,
+                                                                                              fit: BoxFit.cover,
+                                                                                            ),
+                                                                                            Align(
+                                                                                              alignment: AlignmentDirectional(0, 0.94),
+                                                                                              child: Text(
+                                                                                                listViewVideodataRecord.name!,
+                                                                                                style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                                      fontFamily: 'Poppins',
+                                                                                                      color: FlutterFlowTheme.of(context).primaryBtnText,
+                                                                                                      fontSize: 16,
+                                                                                                      fontWeight: FontWeight.bold,
+                                                                                                    ),
+                                                                                              ),
+                                                                                            ),
+                                                                                          ],
                                                                                         ),
                                                                                       ),
-                                                                                    );
-                                                                                    await Future.delayed(const Duration(milliseconds: 2000));
-                                                                                  },
-                                                                                  child: Material(
-                                                                                    color: Colors.transparent,
-                                                                                    elevation: 10,
-                                                                                    child: Container(
-                                                                                      width: 130,
-                                                                                      height: 130,
-                                                                                      decoration: BoxDecoration(
-                                                                                        color: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                      ),
-                                                                                      child: Stack(
-                                                                                        children: [
-                                                                                          Image.network(
-                                                                                            listViewVideodataRecord.imageurl!,
-                                                                                            width: 130,
-                                                                                            height: 100,
-                                                                                            fit: BoxFit.cover,
-                                                                                          ),
-                                                                                          Align(
-                                                                                            alignment: AlignmentDirectional(0, 0.94),
-                                                                                            child: Text(
-                                                                                              listViewVideodataRecord.name!,
-                                                                                              style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                    fontFamily: 'Poppins',
-                                                                                                    color: FlutterFlowTheme.of(context).primaryBtnText,
-                                                                                                    fontSize: 16,
-                                                                                                    fontWeight: FontWeight.bold,
-                                                                                                  ),
-                                                                                            ),
-                                                                                          ),
-                                                                                        ],
-                                                                                      ),
                                                                                     ),
                                                                                   ),
-                                                                                ),
-                                                                              );
-                                                                            },
-                                                                          );
-                                                                        },
+                                                                                );
+                                                                              },
+                                                                            );
+                                                                          },
+                                                                        ),
                                                                       ),
                                                                     ),
-                                                                  ),
-                                                                ],
-                                                              ),
-                                                            ],
+                                                                  ],
+                                                                ),
+                                                              ],
+                                                            ),
                                                           ),
-                                                        ),
-                                                      ],
+                                                        ],
+                                                      ),
                                                     ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ],
+                                                  ],
+                                                ),
+                                              ],
+                                            ),
                                           ),
                                         ),
                                         SingleChildScrollView(

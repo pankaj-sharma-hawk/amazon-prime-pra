@@ -1,7 +1,6 @@
 import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
-import '../flutter_flow/flutter_flow_widgets.dart';
 import '../info_page/info_page_widget.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
@@ -47,7 +46,7 @@ class _SearchWidgetState extends State<SearchWidget> {
                     ),
                     child: Container(
                       width: double.infinity,
-                      height: 50,
+                      height: 40,
                       decoration: BoxDecoration(
                         color: FlutterFlowTheme.of(context).secondaryBackground,
                         boxShadow: [
@@ -62,77 +61,59 @@ class _SearchWidgetState extends State<SearchWidget> {
                           width: 2,
                         ),
                       ),
-                      child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
-                        child: TextFormField(
-                          controller: textController,
-                          onChanged: (_) => EasyDebounce.debounce(
-                            'textController',
-                            Duration(milliseconds: 200),
-                            () => setState(() {}),
-                          ),
-                          autofocus: true,
-                          obscureText: false,
-                          decoration: InputDecoration(
-                            hintText: '[Some hint text...]',
-                            hintStyle: FlutterFlowTheme.of(context).bodyText2,
-                            enabledBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Color(0x00000000),
-                                width: 1,
-                              ),
-                              borderRadius: const BorderRadius.only(
-                                topLeft: Radius.circular(4.0),
-                                topRight: Radius.circular(4.0),
-                              ),
-                            ),
-                            focusedBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Color(0x00000000),
-                                width: 1,
-                              ),
-                              borderRadius: const BorderRadius.only(
-                                topLeft: Radius.circular(4.0),
-                                topRight: Radius.circular(4.0),
-                              ),
-                            ),
-                          ),
-                          style: FlutterFlowTheme.of(context).bodyText1,
+                      child: TextFormField(
+                        controller: textController,
+                        onChanged: (_) => EasyDebounce.debounce(
+                          'textController',
+                          Duration(milliseconds: 200),
+                          () async {
+                            setState(() => algoliaSearchResults = null);
+                            await VideodataRecord.search(
+                              term: textController!.text,
+                              maxResults: 10,
+                            )
+                                .then((r) => algoliaSearchResults = r)
+                                .onError((_, __) => algoliaSearchResults = [])
+                                .whenComplete(() => setState(() {}));
+                          },
                         ),
+                        autofocus: true,
+                        obscureText: false,
+                        decoration: InputDecoration(
+                          hintText: 'Search',
+                          hintStyle: FlutterFlowTheme.of(context).bodyText2,
+                          enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color(0x00000000),
+                              width: 1,
+                            ),
+                            borderRadius: const BorderRadius.only(
+                              topLeft: Radius.circular(4.0),
+                              topRight: Radius.circular(4.0),
+                            ),
+                          ),
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color(0x00000000),
+                              width: 1,
+                            ),
+                            borderRadius: const BorderRadius.only(
+                              topLeft: Radius.circular(4.0),
+                              topRight: Radius.circular(4.0),
+                            ),
+                          ),
+                          prefixIcon: Icon(
+                            Icons.search_rounded,
+                          ),
+                        ),
+                        style: FlutterFlowTheme.of(context).bodyText1,
                       ),
                     ),
                   ),
                 ),
-                FFButtonWidget(
-                  onPressed: () async {
-                    setState(() => algoliaSearchResults = null);
-                    await VideodataRecord.search(
-                      term: textController!.text,
-                      maxResults: 10,
-                    )
-                        .then((r) => algoliaSearchResults = r)
-                        .onError((_, __) => algoliaSearchResults = [])
-                        .whenComplete(() => setState(() {}));
-                  },
-                  text: 'Search',
-                  options: FFButtonOptions(
-                    width: 130,
-                    height: 40,
-                    color: FlutterFlowTheme.of(context).primaryColor,
-                    textStyle: FlutterFlowTheme.of(context).subtitle2.override(
-                          fontFamily: 'Poppins',
-                          color: Colors.white,
-                        ),
-                    borderSide: BorderSide(
-                      color: Colors.transparent,
-                      width: 1,
-                    ),
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                ),
                 Builder(
                   builder: (context) {
-                    if (algoliaSearchResults!.map((e) => e).toList() == null) {
+                    if (algoliaSearchResults! == null) {
                       return Center(
                         child: SizedBox(
                           width: 50,
@@ -143,8 +124,7 @@ class _SearchWidgetState extends State<SearchWidget> {
                         ),
                       );
                     }
-                    final searchchild =
-                        algoliaSearchResults!.map((e) => e).toList();
+                    final searchchild = algoliaSearchResults!.toList();
                     if (searchchild.isEmpty) {
                       return Image.asset(
                         'assets/images/49e58d5922019b8ec4642a2e2b9291c2.png',

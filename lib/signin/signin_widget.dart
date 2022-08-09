@@ -36,108 +36,71 @@ class _SigninWidgetState extends State<SigninWidget> {
       body: SafeArea(
         child: GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Row(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Image.asset(
-                    'assets/images/download_(4).png',
-                    width: 150,
-                    height: 35,
-                    fit: BoxFit.cover,
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset(
+                      'assets/images/download_(4).png',
+                      width: 150,
+                      height: 35,
+                      fit: BoxFit.cover,
+                    ),
+                  ],
+                ),
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Text(
+                        'Sign-In',
+                        style: FlutterFlowTheme.of(context).bodyText1.override(
+                              fontFamily: 'Poppins',
+                              color:
+                                  FlutterFlowTheme.of(context).primaryBtnText,
+                              fontSize: 24,
+                            ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Text(
-                      'Sign-In',
-                      style: FlutterFlowTheme.of(context).bodyText1.override(
-                            fontFamily: 'Poppins',
-                            color: FlutterFlowTheme.of(context).primaryBtnText,
-                            fontSize: 24,
-                          ),
-                    ),
-                  ],
                 ),
-              ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(5, 0, 5, 0),
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0, 0, 5, 0),
-                      child: Text(
-                        'Forget password?',
-                        style: FlutterFlowTheme.of(context).bodyText1.override(
-                              fontFamily: 'Poppins',
-                              color: Color(0xFF0F78AF),
-                            ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Expanded(
-                      child: TextFormField(
-                        controller: emailIdTextFieldController,
-                        obscureText: false,
-                        decoration: InputDecoration(
-                          hintText: 'Email Id',
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Color(0xFFD8C7C7),
-                              width: 0.5,
-                            ),
-                            borderRadius: BorderRadius.circular(0),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Color(0xFFD8C7C7),
-                              width: 0.5,
-                            ),
-                            borderRadius: BorderRadius.circular(0),
-                          ),
-                          filled: true,
-                          fillColor: FlutterFlowTheme.of(context).primaryText,
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(5, 0, 5, 0),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 5, 0),
+                        child: Text(
+                          'Forget password?',
+                          style:
+                              FlutterFlowTheme.of(context).bodyText1.override(
+                                    fontFamily: 'Poppins',
+                                    color: Color(0xFF0F78AF),
+                                  ),
                         ),
-                        style: FlutterFlowTheme.of(context).bodyText1.override(
-                              fontFamily: 'Poppins',
-                              color: FlutterFlowTheme.of(context).secondaryText,
-                              fontSize: 18,
-                              fontWeight: FontWeight.w500,
-                            ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(10, 5, 10, 0),
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Expanded(
-                      child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 1, 0, 0),
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Expanded(
                         child: TextFormField(
-                          controller: passwordTextFieldController,
-                          obscureText: !passwordTextFieldVisibility,
+                          controller: emailIdTextFieldController,
+                          obscureText: false,
                           decoration: InputDecoration(
-                            hintText: 'Password',
+                            hintText: 'Email Id',
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
                                 color: Color(0xFFD8C7C7),
@@ -154,20 +117,6 @@ class _SigninWidgetState extends State<SigninWidget> {
                             ),
                             filled: true,
                             fillColor: FlutterFlowTheme.of(context).primaryText,
-                            suffixIcon: InkWell(
-                              onTap: () => setState(
-                                () => passwordTextFieldVisibility =
-                                    !passwordTextFieldVisibility,
-                              ),
-                              focusNode: FocusNode(skipTraversal: true),
-                              child: Icon(
-                                passwordTextFieldVisibility
-                                    ? Icons.visibility_outlined
-                                    : Icons.visibility_off_outlined,
-                                color: Color(0xFF757575),
-                                size: 22,
-                              ),
-                            ),
                           ),
                           style: FlutterFlowTheme.of(context)
                               .bodyText1
@@ -180,205 +129,269 @@ class _SigninWidgetState extends State<SigninWidget> {
                               ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 35, 0, 0),
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    FFButtonWidget(
-                      onPressed: () async {
-                        final user = await signInWithEmail(
-                          context,
-                          emailIdTextFieldController!.text,
-                          passwordTextFieldController!.text,
-                        );
-                        if (user == null) {
-                          return;
-                        }
-
-                        await Navigator.pushAndRemoveUntil(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) =>
-                                NavBarPage(initialPage: 'Home'),
-                          ),
-                          (r) => false,
-                        );
-                      },
-                      text: 'Sign-In',
-                      options: FFButtonOptions(
-                        width: 340,
-                        height: 40,
-                        color: Color(0xFFFF7639),
-                        textStyle:
-                            FlutterFlowTheme.of(context).subtitle2.override(
-                                  fontFamily: 'Poppins',
-                                  color: Colors.white,
-                                ),
-                        borderSide: BorderSide(
-                          color: Colors.transparent,
-                          width: 1,
-                        ),
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(10, 20, 10, 0),
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Expanded(
-                      child: Text(
-                        'By Continuing , you agree to Amazon\'s Conditions of Use and Privacy Notice.',
-                        maxLines: 2,
-                        style: FlutterFlowTheme.of(context).bodyText1.override(
-                              fontFamily: 'Poppins',
-                              color:
-                                  FlutterFlowTheme.of(context).primaryBtnText,
-                            ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 35, 0, 0),
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Divider(
-                          height: 5,
-                          thickness: 5,
-                          color: FlutterFlowTheme.of(context).primaryBackground,
-                        ),
-                      ],
-                    ),
-                    Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Text(
-                          'New to Amazon ?',
-                          style:
-                              FlutterFlowTheme.of(context).bodyText1.override(
-                                    fontFamily: 'Poppins',
-                                    color: Color(0xFFD8C7C7),
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.normal,
-                                  ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    FFButtonWidget(
-                      onPressed: () async {
-                        await Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => SignupWidget(),
-                          ),
-                        );
-                      },
-                      text: 'Create a new Amazon Account',
-                      options: FFButtonOptions(
-                        width: 340,
-                        height: 40,
-                        color: FlutterFlowTheme.of(context).secondaryText,
-                        textStyle:
-                            FlutterFlowTheme.of(context).subtitle2.override(
-                                  fontFamily: 'Poppins',
-                                  color: Colors.white,
-                                ),
-                        borderSide: BorderSide(
-                          color: Colors.transparent,
-                          width: 1,
-                        ),
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 50, 0, 0),
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Text(
-                      'Condition of Use',
-                      style: FlutterFlowTheme.of(context).bodyText1.override(
-                            fontFamily: 'Poppins',
-                            color: Color(0xFF0F78AF),
-                            fontSize: 16,
-                          ),
-                    ),
-                    Text(
-                      'Privacy Notice',
-                      style: FlutterFlowTheme.of(context).bodyText1.override(
-                            fontFamily: 'Poppins',
-                            color: Color(0xFF0F78AF),
-                            fontSize: 16,
-                          ),
-                    ),
-                    Text(
-                      'Help',
-                      style: FlutterFlowTheme.of(context).bodyText1.override(
-                            fontFamily: 'Poppins',
-                            color: Color(0xFF0F78AF),
-                            fontSize: 16,
-                          ),
-                    ),
-                  ],
-                ),
-              ),
-              Row(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Row(
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(10, 5, 10, 0),
+                  child: Row(
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      Icon(
-                        Icons.copyright_outlined,
-                        color: FlutterFlowTheme.of(context).primaryBtnText,
-                        size: 24,
+                      Expanded(
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(0, 1, 0, 0),
+                          child: TextFormField(
+                            controller: passwordTextFieldController,
+                            obscureText: !passwordTextFieldVisibility,
+                            decoration: InputDecoration(
+                              hintText: 'Password',
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Color(0xFFD8C7C7),
+                                  width: 0.5,
+                                ),
+                                borderRadius: BorderRadius.circular(0),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Color(0xFFD8C7C7),
+                                  width: 0.5,
+                                ),
+                                borderRadius: BorderRadius.circular(0),
+                              ),
+                              filled: true,
+                              fillColor:
+                                  FlutterFlowTheme.of(context).primaryText,
+                              suffixIcon: InkWell(
+                                onTap: () => setState(
+                                  () => passwordTextFieldVisibility =
+                                      !passwordTextFieldVisibility,
+                                ),
+                                focusNode: FocusNode(skipTraversal: true),
+                                child: Icon(
+                                  passwordTextFieldVisibility
+                                      ? Icons.visibility_outlined
+                                      : Icons.visibility_off_outlined,
+                                  color: Color(0xFF757575),
+                                  size: 22,
+                                ),
+                              ),
+                            ),
+                            style:
+                                FlutterFlowTheme.of(context).bodyText1.override(
+                                      fontFamily: 'Poppins',
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryText,
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                          ),
+                        ),
                       ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 35, 0, 0),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      FFButtonWidget(
+                        onPressed: () async {
+                          final user = await signInWithEmail(
+                            context,
+                            emailIdTextFieldController!.text,
+                            passwordTextFieldController!.text,
+                          );
+                          if (user == null) {
+                            return;
+                          }
+
+                          await Navigator.pushAndRemoveUntil(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  NavBarPage(initialPage: 'Home'),
+                            ),
+                            (r) => false,
+                          );
+                        },
+                        text: 'Sign-In',
+                        options: FFButtonOptions(
+                          width: 340,
+                          height: 40,
+                          color: Color(0xFFFF7639),
+                          textStyle:
+                              FlutterFlowTheme.of(context).subtitle2.override(
+                                    fontFamily: 'Poppins',
+                                    color: Colors.white,
+                                  ),
+                          borderSide: BorderSide(
+                            color: Colors.transparent,
+                            width: 1,
+                          ),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(10, 20, 10, 0),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Expanded(
+                        child: Text(
+                          'By Continuing , you agree to Amazon\'s Conditions of Use and Privacy Notice.',
+                          maxLines: 2,
+                          style: FlutterFlowTheme.of(context)
+                              .bodyText1
+                              .override(
+                                fontFamily: 'Poppins',
+                                color:
+                                    FlutterFlowTheme.of(context).primaryBtnText,
+                              ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 35, 0, 0),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Column(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Divider(
+                            height: 5,
+                            thickness: 5,
+                            color:
+                                FlutterFlowTheme.of(context).primaryBackground,
+                          ),
+                        ],
+                      ),
+                      Column(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Text(
+                            'New to Amazon ?',
+                            style:
+                                FlutterFlowTheme.of(context).bodyText1.override(
+                                      fontFamily: 'Poppins',
+                                      color: Color(0xFFD8C7C7),
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.normal,
+                                    ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      FFButtonWidget(
+                        onPressed: () async {
+                          await Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => SignupWidget(),
+                            ),
+                          );
+                        },
+                        text: 'Create a new Amazon Account',
+                        options: FFButtonOptions(
+                          width: 340,
+                          height: 40,
+                          color: FlutterFlowTheme.of(context).secondaryText,
+                          textStyle:
+                              FlutterFlowTheme.of(context).subtitle2.override(
+                                    fontFamily: 'Poppins',
+                                    color: Colors.white,
+                                  ),
+                          borderSide: BorderSide(
+                            color: Colors.transparent,
+                            width: 1,
+                          ),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 50, 0, 0),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
                       Text(
-                        '1996-2022, Amazon.com, inc. ',
+                        'Condition of Use',
                         style: FlutterFlowTheme.of(context).bodyText1.override(
                               fontFamily: 'Poppins',
-                              color:
-                                  FlutterFlowTheme.of(context).primaryBtnText,
-                              fontSize: 12,
-                              fontWeight: FontWeight.normal,
+                              color: Color(0xFF0F78AF),
+                              fontSize: 16,
+                            ),
+                      ),
+                      Text(
+                        'Privacy Notice',
+                        style: FlutterFlowTheme.of(context).bodyText1.override(
+                              fontFamily: 'Poppins',
+                              color: Color(0xFF0F78AF),
+                              fontSize: 16,
+                            ),
+                      ),
+                      Text(
+                        'Help',
+                        style: FlutterFlowTheme.of(context).bodyText1.override(
+                              fontFamily: 'Poppins',
+                              color: Color(0xFF0F78AF),
+                              fontSize: 16,
                             ),
                       ),
                     ],
                   ),
-                ],
-              ),
-            ],
+                ),
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Icon(
+                          Icons.copyright_outlined,
+                          color: FlutterFlowTheme.of(context).primaryBtnText,
+                          size: 24,
+                        ),
+                        Text(
+                          '1996-2022, Amazon.com, inc. ',
+                          style: FlutterFlowTheme.of(context)
+                              .bodyText1
+                              .override(
+                                fontFamily: 'Poppins',
+                                color:
+                                    FlutterFlowTheme.of(context).primaryBtnText,
+                                fontSize: 12,
+                                fontWeight: FontWeight.normal,
+                              ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),
