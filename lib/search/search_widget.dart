@@ -1,6 +1,7 @@
 import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
+import '../flutter_flow/flutter_flow_widgets.dart';
 import '../info_page/info_page_widget.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
@@ -45,7 +46,7 @@ class _SearchWidgetState extends State<SearchWidget> {
                       borderRadius: BorderRadius.circular(2),
                     ),
                     child: Container(
-                      width: 370,
+                      width: double.infinity,
                       height: 50,
                       decoration: BoxDecoration(
                         color: FlutterFlowTheme.of(context).secondaryBackground,
@@ -68,16 +69,7 @@ class _SearchWidgetState extends State<SearchWidget> {
                           onChanged: (_) => EasyDebounce.debounce(
                             'textController',
                             Duration(milliseconds: 200),
-                            () async {
-                              setState(() => algoliaSearchResults = null);
-                              await VideodataRecord.search(
-                                term: textController!.text,
-                                maxResults: 50,
-                              )
-                                  .then((r) => algoliaSearchResults = r)
-                                  .onError((_, __) => algoliaSearchResults = [])
-                                  .whenComplete(() => setState(() {}));
-                            },
+                            () => setState(() {}),
                           ),
                           autofocus: true,
                           obscureText: false,
@@ -111,9 +103,36 @@ class _SearchWidgetState extends State<SearchWidget> {
                     ),
                   ),
                 ),
+                FFButtonWidget(
+                  onPressed: () async {
+                    setState(() => algoliaSearchResults = null);
+                    await VideodataRecord.search(
+                      term: textController!.text,
+                      maxResults: 10,
+                    )
+                        .then((r) => algoliaSearchResults = r)
+                        .onError((_, __) => algoliaSearchResults = [])
+                        .whenComplete(() => setState(() {}));
+                  },
+                  text: 'Search',
+                  options: FFButtonOptions(
+                    width: 130,
+                    height: 40,
+                    color: FlutterFlowTheme.of(context).primaryColor,
+                    textStyle: FlutterFlowTheme.of(context).subtitle2.override(
+                          fontFamily: 'Poppins',
+                          color: Colors.white,
+                        ),
+                    borderSide: BorderSide(
+                      color: Colors.transparent,
+                      width: 1,
+                    ),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                ),
                 Builder(
                   builder: (context) {
-                    if (algoliaSearchResults! == null) {
+                    if (algoliaSearchResults!.map((e) => e).toList() == null) {
                       return Center(
                         child: SizedBox(
                           width: 50,
@@ -124,7 +143,8 @@ class _SearchWidgetState extends State<SearchWidget> {
                         ),
                       );
                     }
-                    final searchchild = algoliaSearchResults!.toList();
+                    final searchchild =
+                        algoliaSearchResults!.map((e) => e).toList();
                     if (searchchild.isEmpty) {
                       return Image.asset(
                         'assets/images/49e58d5922019b8ec4642a2e2b9291c2.png',

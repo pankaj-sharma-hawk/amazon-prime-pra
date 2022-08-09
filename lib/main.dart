@@ -78,10 +78,10 @@ class _MyAppState extends State<MyApp> {
       themeMode: _themeMode,
       home: initialUser == null || displaySplashImage
           ? Container(
-              color: Colors.transparent,
+              color: FlutterFlowTheme.of(context).primaryText,
               child: Builder(
                 builder: (context) => Image.asset(
-                  'assets/images/Prime_Video-Logo.wine.png',
+                  'assets/images/87705a2ddfc57918abcc7bdb574aec94.jpg',
                   fit: BoxFit.contain,
                 ),
               ),
