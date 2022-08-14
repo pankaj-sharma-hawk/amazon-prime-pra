@@ -142,6 +142,9 @@ class _MyStuffWidgetState extends State<MyStuffWidget> {
                                                         InfoPageWidget(
                                                       infodocument:
                                                           rowVideodataRecord,
+                                                      epno: 1,
+                                                      epmin: rowVideodataRecord
+                                                          .minutes,
                                                     ),
                                                   ),
                                                 );
@@ -196,18 +199,22 @@ class _MyStuffWidgetState extends State<MyStuffWidget> {
                                                                   MainAxisSize
                                                                       .max,
                                                               children: [
-                                                                AutoSizeText(
-                                                                  rowVideodataRecord
-                                                                      .name!,
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyText1
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            'Poppins',
-                                                                        fontSize:
-                                                                            16,
-                                                                      ),
+                                                                Expanded(
+                                                                  child:
+                                                                      AutoSizeText(
+                                                                    rowVideodataRecord
+                                                                        .name!,
+                                                                    maxLines: 2,
+                                                                    style: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyText1
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              'Poppins',
+                                                                          fontSize:
+                                                                              16,
+                                                                        ),
+                                                                  ),
                                                                 ),
                                                               ],
                                                             ),

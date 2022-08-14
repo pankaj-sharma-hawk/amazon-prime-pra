@@ -67,7 +67,6 @@ class _HomeWidgetState extends State<HomeWidget> {
                             child: Column(
                               children: [
                                 TabBar(
-                                  isScrollable: true,
                                   labelColor: FlutterFlowTheme.of(context)
                                       .primaryBtnText,
                                   unselectedLabelColor: Color(0xFFD8C7C7),

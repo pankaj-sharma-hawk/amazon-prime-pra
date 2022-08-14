@@ -2,6 +2,7 @@ import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../info_page/info_page_widget.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -146,6 +147,8 @@ class _SearchWidgetState extends State<SearchWidget> {
                                 MaterialPageRoute(
                                   builder: (context) => InfoPageWidget(
                                     infodocument: searchchildItem,
+                                    epno: 1,
+                                    epmin: searchchildItem.minutes,
                                   ),
                                 ),
                               );
@@ -185,15 +188,18 @@ class _SearchWidgetState extends State<SearchWidget> {
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
-                                              Text(
-                                                searchchildItem.name!,
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyText1
-                                                        .override(
-                                                          fontFamily: 'Poppins',
-                                                          fontSize: 16,
-                                                        ),
+                                              Expanded(
+                                                child: AutoSizeText(
+                                                  searchchildItem.name!,
+                                                  maxLines: 2,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyText1
+                                                      .override(
+                                                        fontFamily: 'Poppins',
+                                                        fontSize: 16,
+                                                      ),
+                                                ),
                                               ),
                                             ],
                                           ),

@@ -4,7 +4,6 @@ import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../main.dart';
 import '../watch_page/watch_page_widget.dart';
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
@@ -115,8 +114,9 @@ class _InfoPageWidgetState extends State<InfoPageWidget> {
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Expanded(
-                              child: AutoSizeText(
+                              child: Text(
                                 widget.infodocument!.name!,
+                                maxLines: 3,
                                 style: FlutterFlowTheme.of(context)
                                     .title1
                                     .override(
@@ -148,16 +148,20 @@ class _InfoPageWidgetState extends State<InfoPageWidget> {
                                         fontSize: 18,
                                       ),
                                 ),
-                                Text(
-                                  'Included with Prime',
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyText1
-                                      .override(
-                                        fontFamily: 'Poppins',
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryBtnText,
-                                        fontSize: 12,
-                                      ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0, 0, 0, 2),
+                                  child: Text(
+                                    'Included with Prime',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyText1
+                                        .override(
+                                          fontFamily: 'Poppins',
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryBtnText,
+                                          fontSize: 12,
+                                        ),
+                                  ),
                                 ),
                               ],
                             ),
