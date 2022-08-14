@@ -4,3 +4,4 @@ export 'package:built_collection/built_collection.dart';
 export '../../flutter_flow/lat_lng.dart';
 
 export 'structs/movie_object_struct.dart';
+export 'structs/series_struct.dart';

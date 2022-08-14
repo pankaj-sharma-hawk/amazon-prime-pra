@@ -2,7 +2,9 @@ import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
+import '../main.dart';
 import '../watch_page/watch_page_widget.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
@@ -14,9 +16,13 @@ class InfoPageWidget extends StatefulWidget {
   const InfoPageWidget({
     Key? key,
     this.infodocument,
+    this.epno,
+    this.epmin,
   }) : super(key: key);
 
   final VideodataRecord? infodocument;
+  final int? epno;
+  final int? epmin;
 
   @override
   _InfoPageWidgetState createState() => _InfoPageWidgetState();
@@ -53,21 +59,27 @@ class _InfoPageWidgetState extends State<InfoPageWidget> {
                                       2, 2, 2, 2),
                                   child: Image.network(
                                     widget.infodocument!.imageurl!,
-                                    width: 370,
+                                    width: double.infinity,
                                     height: 225,
                                     fit: BoxFit.cover,
                                   ),
                                 ),
                                 Align(
-                                  alignment: AlignmentDirectional(-0.91, -0.95),
+                                  alignment: AlignmentDirectional(-0.95, -0.94),
                                   child: InkWell(
                                     onTap: () async {
-                                      Navigator.pop(context);
+                                      await Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              NavBarPage(initialPage: 'Home'),
+                                        ),
+                                      );
                                     },
                                     child: FaIcon(
                                       FontAwesomeIcons.arrowLeft,
                                       color: Color(0xDF000000),
-                                      size: 40,
+                                      size: 30,
                                     ),
                                   ),
                                 ),
@@ -76,19 +88,43 @@ class _InfoPageWidgetState extends State<InfoPageWidget> {
                           ),
                         ],
                       ),
+                      if (widget.infodocument!.category == 'TV')
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Text(
+                                'Episode ${widget.epno?.toString()}',
+                                maxLines: 2,
+                                style: FlutterFlowTheme.of(context)
+                                    .title1
+                                    .override(
+                                      fontFamily: 'Poppins',
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryBtnText,
+                                      fontSize: 20,
+                                    ),
+                              ),
+                            ],
+                          ),
+                        ),
                       Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(10, 8, 0, 0),
                         child: Row(
-                          mainAxisSize: MainAxisSize.min,
+                          mainAxisSize: MainAxisSize.max,
                           children: [
-                            Text(
-                              widget.infodocument!.name!,
-                              style:
-                                  FlutterFlowTheme.of(context).title1.override(
-                                        fontFamily: 'Poppins',
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryBtnText,
-                                      ),
+                            Expanded(
+                              child: AutoSizeText(
+                                widget.infodocument!.name!,
+                                style: FlutterFlowTheme.of(context)
+                                    .title1
+                                    .override(
+                                      fontFamily: 'Poppins',
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryBtnText,
+                                    ),
+                              ),
                             ),
                           ],
                         ),
@@ -130,62 +166,67 @@ class _InfoPageWidgetState extends State<InfoPageWidget> {
                       ),
                       Row(
                         mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
-                            child: Material(
-                              color: Colors.transparent,
-                              elevation: 20,
-                              child: Container(
-                                width: 352,
-                                height: 50,
-                                decoration: BoxDecoration(
-                                  color: Color(0xFF0F78AF),
-                                ),
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0, 2, 0, 0),
-                                  child: InkWell(
-                                    onTap: () async {
-                                      await Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) => WatchPageWidget(
-                                            videolink:
-                                                widget.infodocument!.videourl,
+                          Expanded(
+                            child: Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
+                              child: Material(
+                                color: Colors.transparent,
+                                elevation: 20,
+                                child: Container(
+                                  width: 352,
+                                  height: 50,
+                                  decoration: BoxDecoration(
+                                    color: Color(0xFF0F78AF),
+                                  ),
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0, 2, 0, 0),
+                                    child: InkWell(
+                                      onTap: () async {
+                                        await Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                WatchPageWidget(
+                                              videolink:
+                                                  widget.infodocument!.videourl,
+                                            ),
                                           ),
-                                        ),
-                                      );
-                                    },
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  9, 0, 6, 0),
-                                          child: Icon(
-                                            Icons.play_arrow,
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryBtnText,
-                                            size: 36,
+                                        );
+                                      },
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    9, 0, 6, 0),
+                                            child: Icon(
+                                              Icons.play_arrow,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryBtnText,
+                                              size: 36,
+                                            ),
                                           ),
-                                        ),
-                                        Text(
-                                          'Watch Now',
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyText1
-                                              .override(
-                                                fontFamily: 'Poppins',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryBtnText,
-                                                fontSize: 16,
-                                                fontWeight: FontWeight.w500,
-                                              ),
-                                        ),
-                                      ],
+                                          Text(
+                                            'Watch Now',
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyText1
+                                                .override(
+                                                  fontFamily: 'Poppins',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryBtnText,
+                                                  fontSize: 16,
+                                                  fontWeight: FontWeight.w500,
+                                                ),
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -458,7 +499,7 @@ class _InfoPageWidgetState extends State<InfoPageWidget> {
                               padding:
                                   EdgeInsetsDirectional.fromSTEB(0, 0, 4, 0),
                               child: Text(
-                                widget.infodocument!.minutes!.toString(),
+                                widget.epmin!.toString(),
                                 style: FlutterFlowTheme.of(context)
                                     .bodyText1
                                     .override(
@@ -518,77 +559,77 @@ class _InfoPageWidgetState extends State<InfoPageWidget> {
                                     ),
                               ),
                             ),
-                            Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(5, 0, 0, 0),
-                              child: Container(
-                                width: 80,
-                                color: Color(0xDF000000),
-                                child: ExpandableNotifier(
-                                  initialExpanded: false,
-                                  child: ExpandablePanel(
-                                    header: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Text(
-                                          'Audio',
-                                          style: FlutterFlowTheme.of(context)
-                                              .title1
-                                              .override(
-                                                fontFamily: 'Poppins',
-                                                color:
+                            Expanded(
+                              child: Padding(
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(5, 0, 0, 0),
+                                child: Container(
+                                  width: 90,
+                                  color: Color(0xDF000000),
+                                  child: ExpandableNotifier(
+                                    initialExpanded: false,
+                                    child: ExpandablePanel(
+                                      header: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Text(
+                                            'Audio',
+                                            style: FlutterFlowTheme.of(context)
+                                                .title1
+                                                .override(
+                                                  fontFamily: 'Poppins',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryBtnText,
+                                                  fontSize: 14,
+                                                ),
+                                          ),
+                                        ],
+                                      ),
+                                      collapsed: Container(),
+                                      expanded: Builder(
+                                        builder: (context) {
+                                          final langchild = widget
+                                              .infodocument!.languages!
+                                              .toList();
+                                          return Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children:
+                                                List.generate(langchild.length,
+                                                    (langchildIndex) {
+                                              final langchildItem =
+                                                  langchild[langchildIndex];
+                                              return Text(
+                                                langchildItem,
+                                                style:
                                                     FlutterFlowTheme.of(context)
-                                                        .primaryBtnText,
-                                                fontSize: 14,
-                                              ),
-                                        ),
-                                        Icon(
-                                          Icons.keyboard_arrow_down,
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryBtnText,
-                                          size: 24,
-                                        ),
-                                      ],
-                                    ),
-                                    collapsed: Container(),
-                                    expanded: Builder(
-                                      builder: (context) {
-                                        final langchild = widget
-                                            .infodocument!.languages!
-                                            .toList();
-                                        return Column(
-                                          mainAxisSize: MainAxisSize.max,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children:
-                                              List.generate(langchild.length,
-                                                  (langchildIndex) {
-                                            final langchildItem =
-                                                langchild[langchildIndex];
-                                            return Text(
-                                              langchildItem,
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyText1
-                                                      .override(
-                                                        fontFamily: 'Poppins',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryBtnText,
-                                                      ),
-                                            );
-                                          }),
-                                        );
-                                      },
-                                    ),
-                                    theme: ExpandableThemeData(
-                                      tapHeaderToExpand: true,
-                                      tapBodyToExpand: false,
-                                      tapBodyToCollapse: false,
-                                      headerAlignment:
-                                          ExpandablePanelHeaderAlignment.center,
-                                      hasIcon: false,
+                                                        .bodyText1
+                                                        .override(
+                                                          fontFamily: 'Poppins',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryBtnText,
+                                                        ),
+                                              );
+                                            }),
+                                          );
+                                        },
+                                      ),
+                                      theme: ExpandableThemeData(
+                                        tapHeaderToExpand: true,
+                                        tapBodyToExpand: false,
+                                        tapBodyToCollapse: false,
+                                        headerAlignment:
+                                            ExpandablePanelHeaderAlignment.top,
+                                        hasIcon: true,
+                                        expandIcon:
+                                            Icons.keyboard_arrow_down_rounded,
+                                        collapseIcon: Icons.keyboard_arrow_up,
+                                        iconColor: FlutterFlowTheme.of(context)
+                                            .primaryBtnText,
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -596,13 +637,13 @@ class _InfoPageWidgetState extends State<InfoPageWidget> {
                             ),
                             Expanded(
                               child: Container(
-                                width: 110,
+                                width: 80,
                                 color: Color(0xDF000000),
                                 child: ExpandableNotifier(
                                   initialExpanded: false,
                                   child: ExpandablePanel(
                                     header: Row(
-                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisSize: MainAxisSize.min,
                                       children: [
                                         Text(
                                           'SubTitles',
@@ -615,12 +656,6 @@ class _InfoPageWidgetState extends State<InfoPageWidget> {
                                                         .primaryBtnText,
                                                 fontSize: 14,
                                               ),
-                                        ),
-                                        Icon(
-                                          Icons.keyboard_arrow_down,
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryBtnText,
-                                          size: 24,
                                         ),
                                       ],
                                     ),
@@ -662,8 +697,12 @@ class _InfoPageWidgetState extends State<InfoPageWidget> {
                                       tapBodyToExpand: false,
                                       tapBodyToCollapse: false,
                                       headerAlignment:
-                                          ExpandablePanelHeaderAlignment.center,
-                                      hasIcon: false,
+                                          ExpandablePanelHeaderAlignment.top,
+                                      hasIcon: true,
+                                      expandIcon: Icons.keyboard_arrow_down,
+                                      collapseIcon: Icons.keyboard_arrow_up,
+                                      iconColor: FlutterFlowTheme.of(context)
+                                          .primaryBtnText,
                                     ),
                                   ),
                                 ),
@@ -672,6 +711,88 @@ class _InfoPageWidgetState extends State<InfoPageWidget> {
                           ],
                         ),
                       ),
+                      if (widget.infodocument!.category == 'TV')
+                        Column(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Text(
+                                    'List of Episodes  - ',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyText1
+                                        .override(
+                                          fontFamily: 'Poppins',
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryBtnText,
+                                          fontSize: 24,
+                                        ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(10, 5, 10, 0),
+                              child: Builder(
+                                builder: (context) {
+                                  final episodeschild = widget
+                                      .infodocument!.episodesinfo!
+                                      .toList();
+                                  return ListView.builder(
+                                    padding: EdgeInsets.zero,
+                                    shrinkWrap: true,
+                                    scrollDirection: Axis.vertical,
+                                    itemCount: episodeschild.length,
+                                    itemBuilder: (context, episodeschildIndex) {
+                                      final episodeschildItem =
+                                          episodeschild[episodeschildIndex];
+                                      return Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            10, 10, 10, 10),
+                                        child: InkWell(
+                                          onTap: () async {
+                                            await Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) =>
+                                                    InfoPageWidget(
+                                                  infodocument:
+                                                      widget.infodocument,
+                                                  epno: valueOrDefault<int>(
+                                                    episodeschildItem.id,
+                                                    1,
+                                                  ),
+                                                  epmin: episodeschildItem.min,
+                                                ),
+                                              ),
+                                            );
+                                          },
+                                          child: Text(
+                                            'Episode ${episodeschildItem.id?.toString()}',
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyText1
+                                                .override(
+                                                  fontFamily: 'Poppins',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryBtnText,
+                                                  fontSize: 18,
+                                                ),
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                  );
+                                },
+                              ),
+                            ),
+                          ],
+                        ),
                     ],
                   ),
                 ),

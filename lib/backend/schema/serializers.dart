@@ -22,6 +22,7 @@ const kDocumentReferenceField = 'Document__Reference__Field';
   HomeDesignRecord,
   TestRecord,
   MovieObjectStruct,
+  SeriesStruct,
 ])
 final Serializers serializers = (_$serializers.toBuilder()
       ..add(DocumentReferenceSerializer())

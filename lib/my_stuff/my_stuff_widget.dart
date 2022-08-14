@@ -5,6 +5,7 @@ import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../info_page/info_page_widget.dart';
 import '../mystuffmenu/mystuffmenu_widget.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -195,7 +196,7 @@ class _MyStuffWidgetState extends State<MyStuffWidget> {
                                                                   MainAxisSize
                                                                       .max,
                                                               children: [
-                                                                Text(
+                                                                AutoSizeText(
                                                                   rowVideodataRecord
                                                                       .name!,
                                                                   style: FlutterFlowTheme.of(

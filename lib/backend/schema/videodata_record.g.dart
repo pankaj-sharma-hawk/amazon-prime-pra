@@ -118,6 +118,14 @@ class _$VideodataRecordSerializer
             specifiedType:
                 const FullType(BuiltList, const [const FullType(String)])));
     }
+    value = object.episodesinfo;
+    if (value != null) {
+      result
+        ..add('episodesinfo')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(
+                BuiltList, const [const FullType(SeriesStruct)])));
+    }
     value = object.ffRef;
     if (value != null) {
       result
@@ -201,6 +209,12 @@ class _$VideodataRecordSerializer
                       BuiltList, const [const FullType(String)]))!
               as BuiltList<Object?>);
           break;
+        case 'episodesinfo':
+          result.episodesinfo.replace(serializers.deserialize(value,
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(SeriesStruct)]))!
+              as BuiltList<Object?>);
+          break;
         case 'Document__Reference__Field':
           result.ffRef = serializers.deserialize(value,
               specifiedType: const FullType(DocumentReference, const [
@@ -244,6 +258,8 @@ class _$VideodataRecord extends VideodataRecord {
   @override
   final BuiltList<String>? subtitlelang;
   @override
+  final BuiltList<SeriesStruct>? episodesinfo;
+  @override
   final DocumentReference<Object?>? ffRef;
 
   factory _$VideodataRecord([void Function(VideodataRecordBuilder)? updates]) =>
@@ -264,6 +280,7 @@ class _$VideodataRecord extends VideodataRecord {
       this.moviedate,
       this.languages,
       this.subtitlelang,
+      this.episodesinfo,
       this.ffRef})
       : super._();
 
@@ -293,6 +310,7 @@ class _$VideodataRecord extends VideodataRecord {
         moviedate == other.moviedate &&
         languages == other.languages &&
         subtitlelang == other.subtitlelang &&
+        episodesinfo == other.episodesinfo &&
         ffRef == other.ffRef;
   }
 
@@ -311,20 +329,24 @@ class _$VideodataRecord extends VideodataRecord {
                                             $jc(
                                                 $jc(
                                                     $jc(
-                                                        $jc($jc(0, id.hashCode),
-                                                            name.hashCode),
-                                                        imageurl.hashCode),
-                                                    description.hashCode),
-                                                imdbrating.hashCode),
-                                            releasedyear.hashCode),
-                                        minutes.hashCode),
-                                    adultcategory.hashCode),
-                                category.hashCode),
-                            subcategory.hashCode),
-                        videourl.hashCode),
-                    moviedate.hashCode),
-                languages.hashCode),
-            subtitlelang.hashCode),
+                                                        $jc(
+                                                            $jc(
+                                                                $jc(0,
+                                                                    id.hashCode),
+                                                                name.hashCode),
+                                                            imageurl.hashCode),
+                                                        description.hashCode),
+                                                    imdbrating.hashCode),
+                                                releasedyear.hashCode),
+                                            minutes.hashCode),
+                                        adultcategory.hashCode),
+                                    category.hashCode),
+                                subcategory.hashCode),
+                            videourl.hashCode),
+                        moviedate.hashCode),
+                    languages.hashCode),
+                subtitlelang.hashCode),
+            episodesinfo.hashCode),
         ffRef.hashCode));
   }
 
@@ -345,6 +367,7 @@ class _$VideodataRecord extends VideodataRecord {
           ..add('moviedate', moviedate)
           ..add('languages', languages)
           ..add('subtitlelang', subtitlelang)
+          ..add('episodesinfo', episodesinfo)
           ..add('ffRef', ffRef))
         .toString();
   }
@@ -415,6 +438,12 @@ class VideodataRecordBuilder
   set subtitlelang(ListBuilder<String>? subtitlelang) =>
       _$this._subtitlelang = subtitlelang;
 
+  ListBuilder<SeriesStruct>? _episodesinfo;
+  ListBuilder<SeriesStruct> get episodesinfo =>
+      _$this._episodesinfo ??= new ListBuilder<SeriesStruct>();
+  set episodesinfo(ListBuilder<SeriesStruct>? episodesinfo) =>
+      _$this._episodesinfo = episodesinfo;
+
   DocumentReference<Object?>? _ffRef;
   DocumentReference<Object?>? get ffRef => _$this._ffRef;
   set ffRef(DocumentReference<Object?>? ffRef) => _$this._ffRef = ffRef;
@@ -440,6 +469,7 @@ class VideodataRecordBuilder
       _moviedate = $v.moviedate;
       _languages = $v.languages?.toBuilder();
       _subtitlelang = $v.subtitlelang?.toBuilder();
+      _episodesinfo = $v.episodesinfo?.toBuilder();
       _ffRef = $v.ffRef;
       _$v = null;
     }
@@ -479,6 +509,7 @@ class VideodataRecordBuilder
               moviedate: moviedate,
               languages: _languages?.build(),
               subtitlelang: _subtitlelang?.build(),
+              episodesinfo: _episodesinfo?.build(),
               ffRef: ffRef);
     } catch (_) {
       late String _$failedField;
@@ -487,6 +518,8 @@ class VideodataRecordBuilder
         _languages?.build();
         _$failedField = 'subtitlelang';
         _subtitlelang?.build();
+        _$failedField = 'episodesinfo';
+        _episodesinfo?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             r'VideodataRecord', _$failedField, e.toString());

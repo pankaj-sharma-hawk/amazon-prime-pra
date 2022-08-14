@@ -39,6 +39,8 @@ abstract class VideodataRecord
 
   BuiltList<String>? get subtitlelang;
 
+  BuiltList<SeriesStruct>? get episodesinfo;
+
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference? get ffRef;
   DocumentReference get reference => ffRef!;
@@ -56,7 +58,8 @@ abstract class VideodataRecord
     ..subcategory = ''
     ..videourl = ''
     ..languages = ListBuilder()
-    ..subtitlelang = ListBuilder();
+    ..subtitlelang = ListBuilder()
+    ..episodesinfo = ListBuilder();
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('videodata');
@@ -88,6 +91,8 @@ abstract class VideodataRecord
           ..languages = safeGet(() => ListBuilder(snapshot.data['languages']))
           ..subtitlelang =
               safeGet(() => ListBuilder(snapshot.data['subtitlelang']))
+          ..episodesinfo =
+              safeGet(() => ListBuilder(snapshot.data['episodesinfo']))
           ..ffRef = VideodataRecord.collection.doc(snapshot.objectID),
       );
 
@@ -147,7 +152,8 @@ Map<String, dynamic> createVideodataRecordData({
         ..videourl = videourl
         ..moviedate = moviedate
         ..languages = null
-        ..subtitlelang = null,
+        ..subtitlelang = null
+        ..episodesinfo = null,
     ),
   );
 

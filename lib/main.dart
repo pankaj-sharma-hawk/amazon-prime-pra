@@ -78,11 +78,11 @@ class _MyAppState extends State<MyApp> {
       themeMode: _themeMode,
       home: initialUser == null || displaySplashImage
           ? Container(
-              color: FlutterFlowTheme.of(context).primaryText,
+              color: Color(0xFF0B1415),
               child: Builder(
                 builder: (context) => Image.asset(
-                  'assets/images/87705a2ddfc57918abcc7bdb574aec94.jpg',
-                  fit: BoxFit.contain,
+                  'assets/images/unnamed.png',
+                  fit: BoxFit.fitWidth,
                 ),
               ),
             )
@@ -118,7 +118,6 @@ class _NavBarPageState extends State<NavBarPage> {
       'Home': HomeWidget(),
       'Search': SearchWidget(),
       'MyStuff': MyStuffWidget(),
-      'HomeCopy': HomeCopyWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPage);
     return Scaffold(
@@ -159,18 +158,6 @@ class _NavBarPageState extends State<NavBarPage> {
               size: 30,
             ),
             label: 'My Stuff',
-            tooltip: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.home,
-              size: 24,
-            ),
-            activeIcon: Icon(
-              Icons.home,
-              size: 24,
-            ),
-            label: 'Home',
             tooltip: '',
           )
         ],
