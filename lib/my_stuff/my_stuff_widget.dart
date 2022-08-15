@@ -4,6 +4,7 @@ import '../components/videodelete_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../info_page/info_page_widget.dart';
+import '../main.dart';
 import '../mystuffmenu/mystuffmenu_widget.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
@@ -347,6 +348,17 @@ class _MyStuffWidgetState extends State<MyStuffWidget> {
                                                                           ),
                                                                         );
                                                                       },
+                                                                    );
+                                                                    await Navigator
+                                                                        .pushAndRemoveUntil(
+                                                                      context,
+                                                                      MaterialPageRoute(
+                                                                        builder:
+                                                                            (context) =>
+                                                                                NavBarPage(initialPage: 'MyStuff'),
+                                                                      ),
+                                                                      (r) =>
+                                                                          false,
                                                                     );
                                                                   },
                                                                   child: Icon(
