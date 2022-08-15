@@ -51,11 +51,12 @@ class _VideodeleteWidgetState extends State<VideodeleteWidget> {
                 backgroundColor: Color(0xFF79C394),
               ),
             );
-            await Navigator.push(
+            await Navigator.pushAndRemoveUntil(
               context,
               MaterialPageRoute(
                 builder: (context) => NavBarPage(initialPage: 'MyStuff'),
               ),
+              (r) => false,
             );
           },
           child: SingleChildScrollView(

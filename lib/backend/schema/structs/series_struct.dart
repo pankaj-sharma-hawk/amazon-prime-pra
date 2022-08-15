@@ -83,7 +83,7 @@ void addSeriesStructData(
     return;
   }
   if (!forFieldValue && series.firestoreUtilData.clearUnsetFields) {
-    firestoreData[fieldName] = {};
+    firestoreData[fieldName] = <String, dynamic>{};
   }
   final seriesData = getSeriesFirestoreData(series, forFieldValue);
   final nestedData = seriesData.map((k, v) => MapEntry('$fieldName.$k', v));

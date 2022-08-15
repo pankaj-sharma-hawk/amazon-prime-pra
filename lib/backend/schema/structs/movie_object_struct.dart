@@ -109,7 +109,7 @@ void addMovieObjectStructData(
     return;
   }
   if (!forFieldValue && movieObject.firestoreUtilData.clearUnsetFields) {
-    firestoreData[fieldName] = {};
+    firestoreData[fieldName] = <String, dynamic>{};
   }
   final movieObjectData =
       getMovieObjectFirestoreData(movieObject, forFieldValue);

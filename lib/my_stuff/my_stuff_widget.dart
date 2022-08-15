@@ -132,7 +132,11 @@ class _MyStuffWidgetState extends State<MyStuffWidget> {
                                               return Container();
                                             }
                                             final rowVideodataRecord =
-                                                rowVideodataRecordList.first;
+                                                rowVideodataRecordList
+                                                        .isNotEmpty
+                                                    ? rowVideodataRecordList
+                                                        .first
+                                                    : null;
                                             return InkWell(
                                               onTap: () async {
                                                 await Navigator.push(
@@ -143,7 +147,7 @@ class _MyStuffWidgetState extends State<MyStuffWidget> {
                                                       infodocument:
                                                           rowVideodataRecord,
                                                       epno: 1,
-                                                      epmin: rowVideodataRecord
+                                                      epmin: rowVideodataRecord!
                                                           .minutes,
                                                     ),
                                                   ),
@@ -162,7 +166,7 @@ class _MyStuffWidgetState extends State<MyStuffWidget> {
                                                         MainAxisSize.max,
                                                     children: [
                                                       Image.network(
-                                                        rowVideodataRecord
+                                                        rowVideodataRecord!
                                                             .imageurl!,
                                                         width: 140,
                                                         height: 100,
@@ -202,7 +206,7 @@ class _MyStuffWidgetState extends State<MyStuffWidget> {
                                                                 Expanded(
                                                                   child:
                                                                       AutoSizeText(
-                                                                    rowVideodataRecord
+                                                                    rowVideodataRecord!
                                                                         .name!,
                                                                     maxLines: 2,
                                                                     style: FlutterFlowTheme.of(
@@ -233,7 +237,7 @@ class _MyStuffWidgetState extends State<MyStuffWidget> {
                                                                       .max,
                                                               children: [
                                                                 Text(
-                                                                  rowVideodataRecord
+                                                                  rowVideodataRecord!
                                                                       .releasedyear!
                                                                       .toString(),
                                                                   style: FlutterFlowTheme.of(
@@ -253,7 +257,7 @@ class _MyStuffWidgetState extends State<MyStuffWidget> {
                                                                             .max,
                                                                     children: [
                                                                       Text(
-                                                                        rowVideodataRecord
+                                                                        rowVideodataRecord!
                                                                             .minutes!
                                                                             .toString(),
                                                                         style: FlutterFlowTheme.of(context)
@@ -338,7 +342,7 @@ class _MyStuffWidgetState extends State<MyStuffWidget> {
                                                                                 100,
                                                                             child:
                                                                                 VideodeleteWidget(
-                                                                              vid: rowVideodataRecord.id,
+                                                                              vid: rowVideodataRecord!.id,
                                                                             ),
                                                                           ),
                                                                         );
