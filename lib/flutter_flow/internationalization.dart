@@ -401,7 +401,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ta': 'முதல் மற்றும் இறுதி பெயர்',
     },
     'koym4lc6': {
-      'en': 'mobile number or email',
+      'en': 'Email Id',
       'es': 'Número de móvil o correo electrónico',
       'fr': 'numéro de portable ou e-mail',
       'hi': 'मोबाइल नंबर या ईमेल',
@@ -513,6 +513,41 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ta': 'வீடு',
     },
   },
+  // Search
+  {
+    'yax1mldp': {
+      'en': 'Search',
+      'es': 'Búsqueda',
+      'fr': 'Chercher',
+      'hi': 'खोज',
+      'pa': 'ਖੋਜ',
+      'ta': 'தேடு',
+    },
+    '7j480fmr': {
+      'en': 'Min',
+      'es': 'mínimo',
+      'fr': 'Min',
+      'hi': 'मिनट',
+      'pa': 'ਘੱਟੋ-ਘੱਟ',
+      'ta': 'குறைந்தபட்சம்',
+    },
+    'y4xffxu1': {
+      'en': 'prime',
+      'es': 'principal',
+      'fr': 'prime',
+      'hi': 'प्रधान',
+      'pa': 'ਪ੍ਰਧਾਨ',
+      'ta': 'முதன்மை',
+    },
+    'uol6hk3r': {
+      'en': 'Search',
+      'es': 'Búsqueda',
+      'fr': 'Chercher',
+      'hi': 'खोज',
+      'pa': 'ਖੋਜ',
+      'ta': 'தேடு',
+    },
+  },
   // Signin
   {
     'lkg07g3j': {
@@ -555,19 +590,37 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'pa': 'ਸਾਈਨ - ਇਨ',
       'ta': 'உள்நுழையவும்',
     },
-    'z2ky61t8': {
-      'en':
-          'By Continuing , you agree to Amazon\'s Conditions of Use and Privacy Notice.',
-      'es':
-          'Al continuar, acepta las Condiciones de uso y el Aviso de privacidad de Amazon.',
-      'fr':
-          'En continuant, vous acceptez les conditions d&#39;utilisation et l&#39;avis de confidentialité d&#39;Amazon.',
-      'hi':
-          'जारी रखते हुए, आप Amazon की उपयोग की शर्तों और गोपनीयता नोटिस से सहमत होते हैं।',
-      'pa':
-          'ਜਾਰੀ ਰੱਖ ਕੇ, ਤੁਸੀਂ Amazon ਦੀ ਵਰਤੋਂ ਦੀਆਂ ਸ਼ਰਤਾਂ ਅਤੇ ਗੋਪਨੀਯਤਾ ਨੋਟਿਸ ਨਾਲ ਸਹਿਮਤ ਹੁੰਦੇ ਹੋ।',
-      'ta':
-          'தொடர்வதன் மூலம், Amazon இன் பயன்பாட்டு நிபந்தனைகள் மற்றும் தனியுரிமை அறிவிப்பை ஏற்கிறீர்கள்.',
+    '2r6uiis3': {
+      'en': 'By Continuing, you agree to Amazon \'s ',
+      'es': '',
+      'fr': '',
+      'hi': '',
+      'pa': '',
+      'ta': '',
+    },
+    '969awf2z': {
+      'en': 'Condition of Use',
+      'es': '',
+      'fr': '',
+      'hi': '',
+      'pa': '',
+      'ta': '',
+    },
+    'hrk1ciu9': {
+      'en': 'and ',
+      'es': '',
+      'fr': '',
+      'hi': '',
+      'pa': '',
+      'ta': '',
+    },
+    'sdvxd8ue': {
+      'en': 'Privacy Notice',
+      'es': '',
+      'fr': '',
+      'hi': '',
+      'pa': '',
+      'ta': '',
     },
     '6iluvuha': {
       'en': 'New to Amazon ?',
@@ -624,41 +677,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'hi': 'घर',
       'pa': 'ਘਰ',
       'ta': 'வீடு',
-    },
-  },
-  // Search
-  {
-    'yax1mldp': {
-      'en': 'Search',
-      'es': 'Búsqueda',
-      'fr': 'Chercher',
-      'hi': 'खोज',
-      'pa': 'ਖੋਜ',
-      'ta': 'தேடு',
-    },
-    '7j480fmr': {
-      'en': 'Min',
-      'es': 'mínimo',
-      'fr': 'Min',
-      'hi': 'मिनट',
-      'pa': 'ਘੱਟੋ-ਘੱਟ',
-      'ta': 'குறைந்தபட்சம்',
-    },
-    'y4xffxu1': {
-      'en': 'prime',
-      'es': 'principal',
-      'fr': 'prime',
-      'hi': 'प्रधान',
-      'pa': 'ਪ੍ਰਧਾਨ',
-      'ta': 'முதன்மை',
-    },
-    'uol6hk3r': {
-      'en': 'Search',
-      'es': 'Búsqueda',
-      'fr': 'Chercher',
-      'hi': 'खोज',
-      'pa': 'ਖੋਜ',
-      'ta': 'தேடு',
     },
   },
   // Mystuffmenu
@@ -807,14 +825,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'pa': 'ਭਾਸ਼ਾ',
       'ta': 'மொழி',
     },
-    'di1lhot6': {
-      'en': 'English',
-      'es': 'inglés',
-      'fr': 'Anglais',
-      'hi': 'अंग्रेज़ी',
-      'pa': 'ਅੰਗਰੇਜ਼ੀ',
-      'ta': 'ஆங்கிலம்',
-    },
     'a4vsxkz4': {
       'en': 'Help & Feedback',
       'es': 'Ayuda y comentarios',
@@ -900,6 +910,14 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'hi': 'प्रस्तुत करना',
       'pa': 'ਜਮ੍ਹਾਂ ਕਰੋ',
       'ta': 'சமர்ப்பிக்கவும்',
+    },
+    'zzfjq62x': {
+      'en': 'Hindi',
+      'es': '',
+      'fr': '',
+      'hi': '',
+      'pa': '',
+      'ta': '',
     },
     'tum1e3bu': {
       'en': 'Home',

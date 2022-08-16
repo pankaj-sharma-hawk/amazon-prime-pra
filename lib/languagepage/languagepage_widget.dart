@@ -1,8 +1,11 @@
+import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_radio_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
+import '../flutter_flow/custom_functions.dart' as functions;
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -125,7 +128,29 @@ class _LanguagepageWidgetState extends State<LanguagepageWidget> {
                 padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
                 child: FFButtonWidget(
                   onPressed: () async {
-                    setAppLanguage(context, FFAppState().hinditag);
+                    final usersUpdateData = createUsersRecordData(
+                      language: radioButtonValue,
+                    );
+                    await currentUserReference!.update(usersUpdateData);
+                    setState(() => FFAppState().Alang = radioButtonValue!);
+                    setAppLanguage(
+                        context,
+                        valueOrDefault<String>(
+                          functions.langconv(radioButtonValue),
+                          'English',
+                        ));
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text(
+                          'Language Changed Succesfully',
+                          style: TextStyle(
+                            color: FlutterFlowTheme.of(context).primaryBtnText,
+                          ),
+                        ),
+                        duration: Duration(milliseconds: 4000),
+                        backgroundColor: Color(0xFF66C186),
+                      ),
+                    );
                   },
                   text: FFLocalizations.of(context).getText(
                     'mx64ytwh' /* Submit */,
@@ -145,6 +170,31 @@ class _LanguagepageWidgetState extends State<LanguagepageWidget> {
                     borderRadius: BorderRadius.circular(8),
                   ),
                 ),
+              ),
+              AuthUserStreamWidget(
+                child: Text(
+                  valueOrDefault(currentUserDocument?.language, ''),
+                  style: FlutterFlowTheme.of(context).bodyText1.override(
+                        fontFamily: 'Poppins',
+                        color: FlutterFlowTheme.of(context).primaryBtnText,
+                      ),
+                ),
+              ),
+              Text(
+                FFLocalizations.of(context).getText(
+                  'zzfjq62x' /* Hindi */,
+                ),
+                style: FlutterFlowTheme.of(context).bodyText1.override(
+                      fontFamily: 'Poppins',
+                      color: FlutterFlowTheme.of(context).primaryBtnText,
+                    ),
+              ),
+              Text(
+                FFAppState().Alang,
+                style: FlutterFlowTheme.of(context).bodyText1.override(
+                      fontFamily: 'Poppins',
+                      color: FlutterFlowTheme.of(context).primaryBtnText,
+                    ),
               ),
             ],
           ),

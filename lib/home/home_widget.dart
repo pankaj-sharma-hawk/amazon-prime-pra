@@ -1,7 +1,10 @@
+import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
+import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -17,6 +20,18 @@ class _HomeWidgetState extends State<HomeWidget> {
   PageController? pageViewController2;
   PageController? pageViewController3;
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  @override
+  void initState() {
+    super.initState();
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      setAppLanguage(
+          context,
+          functions
+              .langconv(valueOrDefault(currentUserDocument?.language, '')));
+    });
+  }
 
   @override
   Widget build(BuildContext context) {

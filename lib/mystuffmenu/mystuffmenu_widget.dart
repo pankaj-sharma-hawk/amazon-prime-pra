@@ -631,9 +631,8 @@ class _MystuffmenuWidgetState extends State<MystuffmenuWidget> {
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
                                           Text(
-                                            FFLocalizations.of(context).getText(
-                                              'di1lhot6' /* English */,
-                                            ),
+                                            FFLocalizations.of(context)
+                                                .languageCode,
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyText1
                                                 .override(

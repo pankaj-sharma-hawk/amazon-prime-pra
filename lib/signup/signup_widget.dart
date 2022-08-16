@@ -102,7 +102,8 @@ class _SignupWidgetState extends State<SignupWidget> {
                         ),
                         style: FlutterFlowTheme.of(context).bodyText1.override(
                               fontFamily: 'Poppins',
-                              color: FlutterFlowTheme.of(context).secondaryText,
+                              color:
+                                  FlutterFlowTheme.of(context).primaryBtnText,
                               fontSize: 18,
                               fontWeight: FontWeight.w500,
                             ),
@@ -122,7 +123,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                         obscureText: false,
                         decoration: InputDecoration(
                           hintText: FFLocalizations.of(context).getText(
-                            'koym4lc6' /* mobile number or email */,
+                            'koym4lc6' /* Email Id */,
                           ),
                           enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(
@@ -143,11 +144,12 @@ class _SignupWidgetState extends State<SignupWidget> {
                         ),
                         style: FlutterFlowTheme.of(context).bodyText1.override(
                               fontFamily: 'Poppins',
-                              color: FlutterFlowTheme.of(context).secondaryText,
+                              color:
+                                  FlutterFlowTheme.of(context).primaryBtnText,
                               fontSize: 18,
                               fontWeight: FontWeight.w500,
                             ),
-                        keyboardType: TextInputType.number,
+                        keyboardType: TextInputType.emailAddress,
                       ),
                     ),
                   ],
@@ -204,7 +206,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                               .override(
                                 fontFamily: 'Poppins',
                                 color:
-                                    FlutterFlowTheme.of(context).secondaryText,
+                                    FlutterFlowTheme.of(context).primaryBtnText,
                                 fontSize: 18,
                                 fontWeight: FontWeight.w500,
                               ),
@@ -270,16 +272,21 @@ class _SignupWidgetState extends State<SignupWidget> {
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
-                      FFLocalizations.of(context).getText(
-                        'ursubv54' /* Already have an account? */,
+                    InkWell(
+                      onTap: () async {
+                        context.pushNamed('Signin');
+                      },
+                      child: Text(
+                        FFLocalizations.of(context).getText(
+                          'ursubv54' /* Already have an account? */,
+                        ),
+                        style: FlutterFlowTheme.of(context).bodyText1.override(
+                              fontFamily: 'Poppins',
+                              color: Color(0xFF0F78AF),
+                              fontSize: 13,
+                              fontWeight: FontWeight.normal,
+                            ),
                       ),
-                      style: FlutterFlowTheme.of(context).bodyText1.override(
-                            fontFamily: 'Poppins',
-                            color: Color(0xFF0F78AF),
-                            fontSize: 13,
-                            fontWeight: FontWeight.normal,
-                          ),
                     ),
                   ],
                 ),

@@ -127,7 +127,7 @@ class _SigninWidgetState extends State<SigninWidget> {
                               .override(
                                 fontFamily: 'Poppins',
                                 color:
-                                    FlutterFlowTheme.of(context).secondaryText,
+                                    FlutterFlowTheme.of(context).primaryBtnText,
                                 fontSize: 18,
                                 fontWeight: FontWeight.w500,
                               ),
@@ -187,7 +187,7 @@ class _SigninWidgetState extends State<SigninWidget> {
                                 FlutterFlowTheme.of(context).bodyText1.override(
                                       fontFamily: 'Poppins',
                                       color: FlutterFlowTheme.of(context)
-                                          .secondaryText,
+                                          .primaryBtnText,
                                       fontSize: 18,
                                       fontWeight: FontWeight.w500,
                                     ),
@@ -241,24 +241,84 @@ class _SigninWidgetState extends State<SigninWidget> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(10, 20, 10, 0),
+                  padding: EdgeInsetsDirectional.fromSTEB(10, 15, 10, 40),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Expanded(
-                        child: Text(
-                          FFLocalizations.of(context).getText(
-                            'z2ky61t8' /* By Continuing , you agree to A... */,
-                          ),
-                          maxLines: 2,
-                          style: FlutterFlowTheme.of(context)
-                              .bodyText1
-                              .override(
-                                fontFamily: 'Poppins',
-                                color:
-                                    FlutterFlowTheme.of(context).primaryBtnText,
-                              ),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Text(
+                                  FFLocalizations.of(context).getText(
+                                    '2r6uiis3' /* By Continuing, you agree to Am... */,
+                                  ),
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyText1
+                                      .override(
+                                        fontFamily: 'Poppins',
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryBtnText,
+                                      ),
+                                ),
+                                InkWell(
+                                  onTap: () async {
+                                    await launchURL(
+                                        'https://www.amazon.in/gp/help/customer/display.html?nodeId=G2B9L3YR7LR8J4XP');
+                                  },
+                                  child: Text(
+                                    FFLocalizations.of(context).getText(
+                                      '969awf2z' /* Condition of Use */,
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyText1
+                                        .override(
+                                          fontFamily: 'Poppins',
+                                          color: Color(0xFF0F78AF),
+                                        ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Text(
+                                  FFLocalizations.of(context).getText(
+                                    'hrk1ciu9' /* and  */,
+                                  ),
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyText1
+                                      .override(
+                                        fontFamily: 'Poppins',
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryBtnText,
+                                      ),
+                                ),
+                                InkWell(
+                                  onTap: () async {
+                                    await launchURL(
+                                        'https://www.amazon.in/gp/help/customer/display.html?nodeId=202136010');
+                                  },
+                                  child: Text(
+                                    FFLocalizations.of(context).getText(
+                                      'sdvxd8ue' /* Privacy Notice */,
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyText1
+                                        .override(
+                                          fontFamily: 'Poppins',
+                                          color: Color(0xFF0F78AF),
+                                        ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
                         ),
                       ),
                     ],

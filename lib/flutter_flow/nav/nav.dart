@@ -107,16 +107,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => SignupWidget(),
             ),
             FFRoute(
-              name: 'Signin',
-              path: 'signin',
-              builder: (context, params) => SigninWidget(),
-            ),
-            FFRoute(
               name: 'Search',
               path: 'search',
               builder: (context, params) => params.isEmpty
                   ? NavBarPage(initialPage: 'Search')
                   : SearchWidget(),
+            ),
+            FFRoute(
+              name: 'Signin',
+              path: 'signin',
+              builder: (context, params) => SigninWidget(),
             ),
             FFRoute(
               name: 'Mystuffmenu',
@@ -305,7 +305,7 @@ class FFRoute {
                   child: Builder(
                     builder: (context) => Image.asset(
                       'assets/images/unnamed.png',
-                      fit: BoxFit.fitWidth,
+                      fit: BoxFit.scaleDown,
                     ),
                   ),
                 )

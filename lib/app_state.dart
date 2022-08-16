@@ -23,6 +23,8 @@ class FFAppState {
   String englishtag = 'English';
 
   List<String> options = [];
+
+  String Alang = '';
 }
 
 LatLng? _latLngFromString(String? val) {
