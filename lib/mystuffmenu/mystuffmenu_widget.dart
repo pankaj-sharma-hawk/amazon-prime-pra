@@ -1,9 +1,6 @@
 import '../auth/auth_util.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
-import '../languagepage/languagepage_widget.dart';
-import '../main.dart';
-import '../signin/signin_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -44,13 +41,7 @@ class _MystuffmenuWidgetState extends State<MystuffmenuWidget> {
                                 EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
                             child: InkWell(
                               onTap: () async {
-                                await Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) =>
-                                        NavBarPage(initialPage: 'MyStuff'),
-                                  ),
-                                );
+                                context.pushNamed('MyStuff');
                               },
                               child: Icon(
                                 Icons.keyboard_backspace,
@@ -440,14 +431,9 @@ class _MystuffmenuWidgetState extends State<MystuffmenuWidget> {
                                   10, 10, 10, 10),
                               child: InkWell(
                                 onTap: () async {
+                                  GoRouter.of(context).prepareAuthEvent();
                                   await signOut();
-                                  await Navigator.pushAndRemoveUntil(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => SigninWidget(),
-                                    ),
-                                    (r) => false,
-                                  );
+                                  context.goNamedAuth('Signin', mounted);
                                 },
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
@@ -613,13 +599,7 @@ class _MystuffmenuWidgetState extends State<MystuffmenuWidget> {
                                   10, 10, 10, 10),
                               child: InkWell(
                                 onTap: () async {
-                                  await Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) =>
-                                          LanguagepageWidget(),
-                                    ),
-                                  );
+                                  context.pushNamed('Languagepage');
                                 },
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,

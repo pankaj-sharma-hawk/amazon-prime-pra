@@ -1,7 +1,6 @@
 import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
-import '../info_page/info_page_widget.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
@@ -144,15 +143,18 @@ class _SearchWidgetState extends State<SearchWidget> {
                           padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 5),
                           child: InkWell(
                             onTap: () async {
-                              await Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => InfoPageWidget(
-                                    infodocument: searchchildItem,
-                                    epno: 1,
-                                    epmin: searchchildItem.minutes,
-                                  ),
-                                ),
+                              context.pushNamed(
+                                'InfoPage',
+                                queryParams: {
+                                  'infodocument': serializeParam(
+                                      searchchildItem, ParamType.Document),
+                                  'epno': serializeParam(1, ParamType.int),
+                                  'epmin': serializeParam(
+                                      searchchildItem.minutes, ParamType.int),
+                                }.withoutNulls,
+                                extra: <String, dynamic>{
+                                  'infodocument': searchchildItem,
+                                },
                               );
                               await Future.delayed(
                                   const Duration(milliseconds: 2000));

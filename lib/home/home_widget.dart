@@ -1,7 +1,6 @@
 import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
-import '../info_page/info_page_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -177,20 +176,27 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                   InkWell(
                                                                     onTap:
                                                                         () async {
-                                                                      await Navigator
-                                                                          .push(
-                                                                        context,
-                                                                        MaterialPageRoute(
-                                                                          builder: (context) =>
-                                                                              InfoPageWidget(
-                                                                            infodocument:
-                                                                                pageViewVideodataRecord,
-                                                                            epno:
-                                                                                1,
-                                                                            epmin:
-                                                                                pageViewVideodataRecord.minutes,
-                                                                          ),
-                                                                        ),
+                                                                      context
+                                                                          .pushNamed(
+                                                                        'InfoPage',
+                                                                        queryParams:
+                                                                            {
+                                                                          'infodocument': serializeParam(
+                                                                              pageViewVideodataRecord,
+                                                                              ParamType.Document),
+                                                                          'epno': serializeParam(
+                                                                              1,
+                                                                              ParamType.int),
+                                                                          'epmin': serializeParam(
+                                                                              pageViewVideodataRecord.minutes,
+                                                                              ParamType.int),
+                                                                        }.withoutNulls,
+                                                                        extra: <
+                                                                            String,
+                                                                            dynamic>{
+                                                                          'infodocument':
+                                                                              pageViewVideodataRecord,
+                                                                        },
                                                                       );
                                                                       await Future.delayed(const Duration(
                                                                           milliseconds:
@@ -421,15 +427,16 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                                 padding: EdgeInsetsDirectional.fromSTEB(7, 0, 7, 0),
                                                                                 child: InkWell(
                                                                                   onTap: () async {
-                                                                                    await Navigator.push(
-                                                                                      context,
-                                                                                      MaterialPageRoute(
-                                                                                        builder: (context) => InfoPageWidget(
-                                                                                          infodocument: listViewVideodataRecord,
-                                                                                          epno: 1,
-                                                                                          epmin: listViewVideodataRecord.minutes,
-                                                                                        ),
-                                                                                      ),
+                                                                                    context.pushNamed(
+                                                                                      'InfoPage',
+                                                                                      queryParams: {
+                                                                                        'infodocument': serializeParam(listViewVideodataRecord, ParamType.Document),
+                                                                                        'epno': serializeParam(1, ParamType.int),
+                                                                                        'epmin': serializeParam(listViewVideodataRecord.minutes, ParamType.int),
+                                                                                      }.withoutNulls,
+                                                                                      extra: <String, dynamic>{
+                                                                                        'infodocument': listViewVideodataRecord,
+                                                                                      },
                                                                                     );
                                                                                     await Future.delayed(const Duration(milliseconds: 2000));
                                                                                   },
@@ -594,15 +601,16 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                                   padding: EdgeInsetsDirectional.fromSTEB(7, 0, 7, 0),
                                                                                   child: InkWell(
                                                                                     onTap: () async {
-                                                                                      await Navigator.push(
-                                                                                        context,
-                                                                                        MaterialPageRoute(
-                                                                                          builder: (context) => InfoPageWidget(
-                                                                                            infodocument: listViewVideodataRecord,
-                                                                                            epno: 1,
-                                                                                            epmin: listViewVideodataRecord.minutes,
-                                                                                          ),
-                                                                                        ),
+                                                                                      context.pushNamed(
+                                                                                        'InfoPage',
+                                                                                        queryParams: {
+                                                                                          'infodocument': serializeParam(listViewVideodataRecord, ParamType.Document),
+                                                                                          'epno': serializeParam(1, ParamType.int),
+                                                                                          'epmin': serializeParam(listViewVideodataRecord.minutes, ParamType.int),
+                                                                                        }.withoutNulls,
+                                                                                        extra: <String, dynamic>{
+                                                                                          'infodocument': listViewVideodataRecord,
+                                                                                        },
                                                                                       );
                                                                                       await Future.delayed(const Duration(milliseconds: 2000));
                                                                                     },
@@ -768,15 +776,16 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                                   padding: EdgeInsetsDirectional.fromSTEB(7, 0, 7, 0),
                                                                                   child: InkWell(
                                                                                     onTap: () async {
-                                                                                      await Navigator.push(
-                                                                                        context,
-                                                                                        MaterialPageRoute(
-                                                                                          builder: (context) => InfoPageWidget(
-                                                                                            infodocument: listViewVideodataRecord,
-                                                                                            epno: 1,
-                                                                                            epmin: listViewVideodataRecord.minutes,
-                                                                                          ),
-                                                                                        ),
+                                                                                      context.pushNamed(
+                                                                                        'InfoPage',
+                                                                                        queryParams: {
+                                                                                          'infodocument': serializeParam(listViewVideodataRecord, ParamType.Document),
+                                                                                          'epno': serializeParam(1, ParamType.int),
+                                                                                          'epmin': serializeParam(listViewVideodataRecord.minutes, ParamType.int),
+                                                                                        }.withoutNulls,
+                                                                                        extra: <String, dynamic>{
+                                                                                          'infodocument': listViewVideodataRecord,
+                                                                                        },
                                                                                       );
                                                                                       await Future.delayed(const Duration(milliseconds: 2000));
                                                                                     },
@@ -942,15 +951,16 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                                   padding: EdgeInsetsDirectional.fromSTEB(7, 0, 7, 0),
                                                                                   child: InkWell(
                                                                                     onTap: () async {
-                                                                                      await Navigator.push(
-                                                                                        context,
-                                                                                        MaterialPageRoute(
-                                                                                          builder: (context) => InfoPageWidget(
-                                                                                            infodocument: listViewVideodataRecord,
-                                                                                            epno: 1,
-                                                                                            epmin: listViewVideodataRecord.minutes,
-                                                                                          ),
-                                                                                        ),
+                                                                                      context.pushNamed(
+                                                                                        'InfoPage',
+                                                                                        queryParams: {
+                                                                                          'infodocument': serializeParam(listViewVideodataRecord, ParamType.Document),
+                                                                                          'epno': serializeParam(1, ParamType.int),
+                                                                                          'epmin': serializeParam(listViewVideodataRecord.minutes, ParamType.int),
+                                                                                        }.withoutNulls,
+                                                                                        extra: <String, dynamic>{
+                                                                                          'infodocument': listViewVideodataRecord,
+                                                                                        },
                                                                                       );
                                                                                       await Future.delayed(const Duration(milliseconds: 2000));
                                                                                     },
@@ -1116,15 +1126,16 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                                   padding: EdgeInsetsDirectional.fromSTEB(7, 0, 7, 0),
                                                                                   child: InkWell(
                                                                                     onTap: () async {
-                                                                                      await Navigator.push(
-                                                                                        context,
-                                                                                        MaterialPageRoute(
-                                                                                          builder: (context) => InfoPageWidget(
-                                                                                            infodocument: listViewVideodataRecord,
-                                                                                            epno: 1,
-                                                                                            epmin: listViewVideodataRecord.minutes,
-                                                                                          ),
-                                                                                        ),
+                                                                                      context.pushNamed(
+                                                                                        'InfoPage',
+                                                                                        queryParams: {
+                                                                                          'infodocument': serializeParam(listViewVideodataRecord, ParamType.Document),
+                                                                                          'epno': serializeParam(1, ParamType.int),
+                                                                                          'epmin': serializeParam(listViewVideodataRecord.minutes, ParamType.int),
+                                                                                        }.withoutNulls,
+                                                                                        extra: <String, dynamic>{
+                                                                                          'infodocument': listViewVideodataRecord,
+                                                                                        },
                                                                                       );
                                                                                       await Future.delayed(const Duration(milliseconds: 2000));
                                                                                     },
@@ -1290,15 +1301,16 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                                   padding: EdgeInsetsDirectional.fromSTEB(7, 0, 7, 0),
                                                                                   child: InkWell(
                                                                                     onTap: () async {
-                                                                                      await Navigator.push(
-                                                                                        context,
-                                                                                        MaterialPageRoute(
-                                                                                          builder: (context) => InfoPageWidget(
-                                                                                            infodocument: listViewVideodataRecord,
-                                                                                            epno: 1,
-                                                                                            epmin: listViewVideodataRecord.minutes,
-                                                                                          ),
-                                                                                        ),
+                                                                                      context.pushNamed(
+                                                                                        'InfoPage',
+                                                                                        queryParams: {
+                                                                                          'infodocument': serializeParam(listViewVideodataRecord, ParamType.Document),
+                                                                                          'epno': serializeParam(1, ParamType.int),
+                                                                                          'epmin': serializeParam(listViewVideodataRecord.minutes, ParamType.int),
+                                                                                        }.withoutNulls,
+                                                                                        extra: <String, dynamic>{
+                                                                                          'infodocument': listViewVideodataRecord,
+                                                                                        },
                                                                                       );
                                                                                       await Future.delayed(const Duration(milliseconds: 2000));
                                                                                     },
@@ -1464,15 +1476,16 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                                   padding: EdgeInsetsDirectional.fromSTEB(7, 0, 7, 0),
                                                                                   child: InkWell(
                                                                                     onTap: () async {
-                                                                                      await Navigator.push(
-                                                                                        context,
-                                                                                        MaterialPageRoute(
-                                                                                          builder: (context) => InfoPageWidget(
-                                                                                            infodocument: listViewVideodataRecord,
-                                                                                            epno: 1,
-                                                                                            epmin: listViewVideodataRecord.minutes,
-                                                                                          ),
-                                                                                        ),
+                                                                                      context.pushNamed(
+                                                                                        'InfoPage',
+                                                                                        queryParams: {
+                                                                                          'infodocument': serializeParam(listViewVideodataRecord, ParamType.Document),
+                                                                                          'epno': serializeParam(1, ParamType.int),
+                                                                                          'epmin': serializeParam(listViewVideodataRecord.minutes, ParamType.int),
+                                                                                        }.withoutNulls,
+                                                                                        extra: <String, dynamic>{
+                                                                                          'infodocument': listViewVideodataRecord,
+                                                                                        },
                                                                                       );
                                                                                       await Future.delayed(const Duration(milliseconds: 2000));
                                                                                     },
@@ -1604,20 +1617,27 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                   InkWell(
                                                                     onTap:
                                                                         () async {
-                                                                      await Navigator
-                                                                          .push(
-                                                                        context,
-                                                                        MaterialPageRoute(
-                                                                          builder: (context) =>
-                                                                              InfoPageWidget(
-                                                                            infodocument:
-                                                                                pageViewVideodataRecord,
-                                                                            epno:
-                                                                                1,
-                                                                            epmin:
-                                                                                pageViewVideodataRecord.minutes,
-                                                                          ),
-                                                                        ),
+                                                                      context
+                                                                          .pushNamed(
+                                                                        'InfoPage',
+                                                                        queryParams:
+                                                                            {
+                                                                          'infodocument': serializeParam(
+                                                                              pageViewVideodataRecord,
+                                                                              ParamType.Document),
+                                                                          'epno': serializeParam(
+                                                                              1,
+                                                                              ParamType.int),
+                                                                          'epmin': serializeParam(
+                                                                              pageViewVideodataRecord.minutes,
+                                                                              ParamType.int),
+                                                                        }.withoutNulls,
+                                                                        extra: <
+                                                                            String,
+                                                                            dynamic>{
+                                                                          'infodocument':
+                                                                              pageViewVideodataRecord,
+                                                                        },
                                                                       );
                                                                       await Future.delayed(const Duration(
                                                                           milliseconds:
@@ -1848,15 +1868,16 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                                 padding: EdgeInsetsDirectional.fromSTEB(7, 0, 7, 0),
                                                                                 child: InkWell(
                                                                                   onTap: () async {
-                                                                                    await Navigator.push(
-                                                                                      context,
-                                                                                      MaterialPageRoute(
-                                                                                        builder: (context) => InfoPageWidget(
-                                                                                          infodocument: listViewVideodataRecord,
-                                                                                          epno: 1,
-                                                                                          epmin: listViewVideodataRecord.minutes,
-                                                                                        ),
-                                                                                      ),
+                                                                                    context.pushNamed(
+                                                                                      'InfoPage',
+                                                                                      queryParams: {
+                                                                                        'infodocument': serializeParam(listViewVideodataRecord, ParamType.Document),
+                                                                                        'epno': serializeParam(1, ParamType.int),
+                                                                                        'epmin': serializeParam(listViewVideodataRecord.minutes, ParamType.int),
+                                                                                      }.withoutNulls,
+                                                                                      extra: <String, dynamic>{
+                                                                                        'infodocument': listViewVideodataRecord,
+                                                                                      },
                                                                                     );
                                                                                     await Future.delayed(const Duration(milliseconds: 2000));
                                                                                   },
@@ -2021,15 +2042,16 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                                   padding: EdgeInsetsDirectional.fromSTEB(7, 0, 7, 0),
                                                                                   child: InkWell(
                                                                                     onTap: () async {
-                                                                                      await Navigator.push(
-                                                                                        context,
-                                                                                        MaterialPageRoute(
-                                                                                          builder: (context) => InfoPageWidget(
-                                                                                            infodocument: listViewVideodataRecord,
-                                                                                            epno: 1,
-                                                                                            epmin: listViewVideodataRecord.minutes,
-                                                                                          ),
-                                                                                        ),
+                                                                                      context.pushNamed(
+                                                                                        'InfoPage',
+                                                                                        queryParams: {
+                                                                                          'infodocument': serializeParam(listViewVideodataRecord, ParamType.Document),
+                                                                                          'epno': serializeParam(1, ParamType.int),
+                                                                                          'epmin': serializeParam(listViewVideodataRecord.minutes, ParamType.int),
+                                                                                        }.withoutNulls,
+                                                                                        extra: <String, dynamic>{
+                                                                                          'infodocument': listViewVideodataRecord,
+                                                                                        },
                                                                                       );
                                                                                       await Future.delayed(const Duration(milliseconds: 2000));
                                                                                     },
@@ -2195,15 +2217,16 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                                   padding: EdgeInsetsDirectional.fromSTEB(7, 0, 7, 0),
                                                                                   child: InkWell(
                                                                                     onTap: () async {
-                                                                                      await Navigator.push(
-                                                                                        context,
-                                                                                        MaterialPageRoute(
-                                                                                          builder: (context) => InfoPageWidget(
-                                                                                            infodocument: listViewVideodataRecord,
-                                                                                            epno: 1,
-                                                                                            epmin: listViewVideodataRecord.minutes,
-                                                                                          ),
-                                                                                        ),
+                                                                                      context.pushNamed(
+                                                                                        'InfoPage',
+                                                                                        queryParams: {
+                                                                                          'infodocument': serializeParam(listViewVideodataRecord, ParamType.Document),
+                                                                                          'epno': serializeParam(1, ParamType.int),
+                                                                                          'epmin': serializeParam(listViewVideodataRecord.minutes, ParamType.int),
+                                                                                        }.withoutNulls,
+                                                                                        extra: <String, dynamic>{
+                                                                                          'infodocument': listViewVideodataRecord,
+                                                                                        },
                                                                                       );
                                                                                       await Future.delayed(const Duration(milliseconds: 2000));
                                                                                     },
@@ -2369,15 +2392,16 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                                   padding: EdgeInsetsDirectional.fromSTEB(7, 0, 7, 0),
                                                                                   child: InkWell(
                                                                                     onTap: () async {
-                                                                                      await Navigator.push(
-                                                                                        context,
-                                                                                        MaterialPageRoute(
-                                                                                          builder: (context) => InfoPageWidget(
-                                                                                            infodocument: listViewVideodataRecord,
-                                                                                            epno: 1,
-                                                                                            epmin: listViewVideodataRecord.minutes,
-                                                                                          ),
-                                                                                        ),
+                                                                                      context.pushNamed(
+                                                                                        'InfoPage',
+                                                                                        queryParams: {
+                                                                                          'infodocument': serializeParam(listViewVideodataRecord, ParamType.Document),
+                                                                                          'epno': serializeParam(1, ParamType.int),
+                                                                                          'epmin': serializeParam(listViewVideodataRecord.minutes, ParamType.int),
+                                                                                        }.withoutNulls,
+                                                                                        extra: <String, dynamic>{
+                                                                                          'infodocument': listViewVideodataRecord,
+                                                                                        },
                                                                                       );
                                                                                       await Future.delayed(const Duration(milliseconds: 2000));
                                                                                     },
@@ -2543,15 +2567,16 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                                   padding: EdgeInsetsDirectional.fromSTEB(7, 0, 7, 0),
                                                                                   child: InkWell(
                                                                                     onTap: () async {
-                                                                                      await Navigator.push(
-                                                                                        context,
-                                                                                        MaterialPageRoute(
-                                                                                          builder: (context) => InfoPageWidget(
-                                                                                            infodocument: listViewVideodataRecord,
-                                                                                            epno: 1,
-                                                                                            epmin: listViewVideodataRecord.minutes,
-                                                                                          ),
-                                                                                        ),
+                                                                                      context.pushNamed(
+                                                                                        'InfoPage',
+                                                                                        queryParams: {
+                                                                                          'infodocument': serializeParam(listViewVideodataRecord, ParamType.Document),
+                                                                                          'epno': serializeParam(1, ParamType.int),
+                                                                                          'epmin': serializeParam(listViewVideodataRecord.minutes, ParamType.int),
+                                                                                        }.withoutNulls,
+                                                                                        extra: <String, dynamic>{
+                                                                                          'infodocument': listViewVideodataRecord,
+                                                                                        },
                                                                                       );
                                                                                       await Future.delayed(const Duration(milliseconds: 2000));
                                                                                     },
@@ -2717,15 +2742,16 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                                   padding: EdgeInsetsDirectional.fromSTEB(7, 0, 7, 0),
                                                                                   child: InkWell(
                                                                                     onTap: () async {
-                                                                                      await Navigator.push(
-                                                                                        context,
-                                                                                        MaterialPageRoute(
-                                                                                          builder: (context) => InfoPageWidget(
-                                                                                            infodocument: listViewVideodataRecord,
-                                                                                            epno: 1,
-                                                                                            epmin: listViewVideodataRecord.minutes,
-                                                                                          ),
-                                                                                        ),
+                                                                                      context.pushNamed(
+                                                                                        'InfoPage',
+                                                                                        queryParams: {
+                                                                                          'infodocument': serializeParam(listViewVideodataRecord, ParamType.Document),
+                                                                                          'epno': serializeParam(1, ParamType.int),
+                                                                                          'epmin': serializeParam(listViewVideodataRecord.minutes, ParamType.int),
+                                                                                        }.withoutNulls,
+                                                                                        extra: <String, dynamic>{
+                                                                                          'infodocument': listViewVideodataRecord,
+                                                                                        },
                                                                                       );
                                                                                       await Future.delayed(const Duration(milliseconds: 2000));
                                                                                     },
@@ -2891,15 +2917,16 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                                   padding: EdgeInsetsDirectional.fromSTEB(7, 0, 7, 0),
                                                                                   child: InkWell(
                                                                                     onTap: () async {
-                                                                                      await Navigator.push(
-                                                                                        context,
-                                                                                        MaterialPageRoute(
-                                                                                          builder: (context) => InfoPageWidget(
-                                                                                            infodocument: listViewVideodataRecord,
-                                                                                            epno: 1,
-                                                                                            epmin: listViewVideodataRecord.minutes,
-                                                                                          ),
-                                                                                        ),
+                                                                                      context.pushNamed(
+                                                                                        'InfoPage',
+                                                                                        queryParams: {
+                                                                                          'infodocument': serializeParam(listViewVideodataRecord, ParamType.Document),
+                                                                                          'epno': serializeParam(1, ParamType.int),
+                                                                                          'epmin': serializeParam(listViewVideodataRecord.minutes, ParamType.int),
+                                                                                        }.withoutNulls,
+                                                                                        extra: <String, dynamic>{
+                                                                                          'infodocument': listViewVideodataRecord,
+                                                                                        },
                                                                                       );
                                                                                       await Future.delayed(const Duration(milliseconds: 2000));
                                                                                     },
@@ -3030,20 +3057,27 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                   InkWell(
                                                                     onTap:
                                                                         () async {
-                                                                      await Navigator
-                                                                          .push(
-                                                                        context,
-                                                                        MaterialPageRoute(
-                                                                          builder: (context) =>
-                                                                              InfoPageWidget(
-                                                                            infodocument:
-                                                                                pageViewVideodataRecord,
-                                                                            epno:
-                                                                                1,
-                                                                            epmin:
-                                                                                pageViewVideodataRecord.minutes,
-                                                                          ),
-                                                                        ),
+                                                                      context
+                                                                          .pushNamed(
+                                                                        'InfoPage',
+                                                                        queryParams:
+                                                                            {
+                                                                          'infodocument': serializeParam(
+                                                                              pageViewVideodataRecord,
+                                                                              ParamType.Document),
+                                                                          'epno': serializeParam(
+                                                                              1,
+                                                                              ParamType.int),
+                                                                          'epmin': serializeParam(
+                                                                              pageViewVideodataRecord.minutes,
+                                                                              ParamType.int),
+                                                                        }.withoutNulls,
+                                                                        extra: <
+                                                                            String,
+                                                                            dynamic>{
+                                                                          'infodocument':
+                                                                              pageViewVideodataRecord,
+                                                                        },
                                                                       );
                                                                       await Future.delayed(const Duration(
                                                                           milliseconds:
@@ -3274,15 +3308,16 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                                 padding: EdgeInsetsDirectional.fromSTEB(7, 0, 7, 0),
                                                                                 child: InkWell(
                                                                                   onTap: () async {
-                                                                                    await Navigator.push(
-                                                                                      context,
-                                                                                      MaterialPageRoute(
-                                                                                        builder: (context) => InfoPageWidget(
-                                                                                          infodocument: listViewVideodataRecord,
-                                                                                          epno: 1,
-                                                                                          epmin: listViewVideodataRecord.minutes,
-                                                                                        ),
-                                                                                      ),
+                                                                                    context.pushNamed(
+                                                                                      'InfoPage',
+                                                                                      queryParams: {
+                                                                                        'infodocument': serializeParam(listViewVideodataRecord, ParamType.Document),
+                                                                                        'epno': serializeParam(1, ParamType.int),
+                                                                                        'epmin': serializeParam(listViewVideodataRecord.minutes, ParamType.int),
+                                                                                      }.withoutNulls,
+                                                                                      extra: <String, dynamic>{
+                                                                                        'infodocument': listViewVideodataRecord,
+                                                                                      },
                                                                                     );
                                                                                     await Future.delayed(const Duration(milliseconds: 2000));
                                                                                   },
@@ -3447,13 +3482,14 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                                   padding: EdgeInsetsDirectional.fromSTEB(7, 0, 7, 0),
                                                                                   child: InkWell(
                                                                                     onTap: () async {
-                                                                                      await Navigator.push(
-                                                                                        context,
-                                                                                        MaterialPageRoute(
-                                                                                          builder: (context) => InfoPageWidget(
-                                                                                            infodocument: listViewVideodataRecord,
-                                                                                          ),
-                                                                                        ),
+                                                                                      context.pushNamed(
+                                                                                        'InfoPage',
+                                                                                        queryParams: {
+                                                                                          'infodocument': serializeParam(listViewVideodataRecord, ParamType.Document),
+                                                                                        }.withoutNulls,
+                                                                                        extra: <String, dynamic>{
+                                                                                          'infodocument': listViewVideodataRecord,
+                                                                                        },
                                                                                       );
                                                                                       await Future.delayed(const Duration(milliseconds: 2000));
                                                                                     },
@@ -3619,13 +3655,14 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                                   padding: EdgeInsetsDirectional.fromSTEB(7, 0, 7, 0),
                                                                                   child: InkWell(
                                                                                     onTap: () async {
-                                                                                      await Navigator.push(
-                                                                                        context,
-                                                                                        MaterialPageRoute(
-                                                                                          builder: (context) => InfoPageWidget(
-                                                                                            infodocument: listViewVideodataRecord,
-                                                                                          ),
-                                                                                        ),
+                                                                                      context.pushNamed(
+                                                                                        'InfoPage',
+                                                                                        queryParams: {
+                                                                                          'infodocument': serializeParam(listViewVideodataRecord, ParamType.Document),
+                                                                                        }.withoutNulls,
+                                                                                        extra: <String, dynamic>{
+                                                                                          'infodocument': listViewVideodataRecord,
+                                                                                        },
                                                                                       );
                                                                                       await Future.delayed(const Duration(milliseconds: 2000));
                                                                                     },
@@ -3791,13 +3828,14 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                                   padding: EdgeInsetsDirectional.fromSTEB(7, 0, 7, 0),
                                                                                   child: InkWell(
                                                                                     onTap: () async {
-                                                                                      await Navigator.push(
-                                                                                        context,
-                                                                                        MaterialPageRoute(
-                                                                                          builder: (context) => InfoPageWidget(
-                                                                                            infodocument: listViewVideodataRecord,
-                                                                                          ),
-                                                                                        ),
+                                                                                      context.pushNamed(
+                                                                                        'InfoPage',
+                                                                                        queryParams: {
+                                                                                          'infodocument': serializeParam(listViewVideodataRecord, ParamType.Document),
+                                                                                        }.withoutNulls,
+                                                                                        extra: <String, dynamic>{
+                                                                                          'infodocument': listViewVideodataRecord,
+                                                                                        },
                                                                                       );
                                                                                       await Future.delayed(const Duration(milliseconds: 2000));
                                                                                     },
@@ -3963,12 +4001,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                                   padding: EdgeInsetsDirectional.fromSTEB(7, 0, 7, 0),
                                                                                   child: InkWell(
                                                                                     onTap: () async {
-                                                                                      await Navigator.push(
-                                                                                        context,
-                                                                                        MaterialPageRoute(
-                                                                                          builder: (context) => InfoPageWidget(),
-                                                                                        ),
-                                                                                      );
+                                                                                      context.pushNamed('InfoPage');
                                                                                       await Future.delayed(const Duration(milliseconds: 2000));
                                                                                     },
                                                                                     child: Material(
@@ -4133,13 +4166,14 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                                   padding: EdgeInsetsDirectional.fromSTEB(7, 0, 7, 0),
                                                                                   child: InkWell(
                                                                                     onTap: () async {
-                                                                                      await Navigator.push(
-                                                                                        context,
-                                                                                        MaterialPageRoute(
-                                                                                          builder: (context) => InfoPageWidget(
-                                                                                            infodocument: listViewVideodataRecord,
-                                                                                          ),
-                                                                                        ),
+                                                                                      context.pushNamed(
+                                                                                        'InfoPage',
+                                                                                        queryParams: {
+                                                                                          'infodocument': serializeParam(listViewVideodataRecord, ParamType.Document),
+                                                                                        }.withoutNulls,
+                                                                                        extra: <String, dynamic>{
+                                                                                          'infodocument': listViewVideodataRecord,
+                                                                                        },
                                                                                       );
                                                                                       await Future.delayed(const Duration(milliseconds: 2000));
                                                                                     },
@@ -4305,13 +4339,14 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                                   padding: EdgeInsetsDirectional.fromSTEB(7, 0, 7, 0),
                                                                                   child: InkWell(
                                                                                     onTap: () async {
-                                                                                      await Navigator.push(
-                                                                                        context,
-                                                                                        MaterialPageRoute(
-                                                                                          builder: (context) => InfoPageWidget(
-                                                                                            infodocument: listViewVideodataRecord,
-                                                                                          ),
-                                                                                        ),
+                                                                                      context.pushNamed(
+                                                                                        'InfoPage',
+                                                                                        queryParams: {
+                                                                                          'infodocument': serializeParam(listViewVideodataRecord, ParamType.Document),
+                                                                                        }.withoutNulls,
+                                                                                        extra: <String, dynamic>{
+                                                                                          'infodocument': listViewVideodataRecord,
+                                                                                        },
                                                                                       );
                                                                                       await Future.delayed(const Duration(milliseconds: 2000));
                                                                                     },

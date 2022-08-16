@@ -3,8 +3,6 @@ import '../backend/backend.dart';
 import '../components/videodelete_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
-import '../info_page/info_page_widget.dart';
-import '../mystuffmenu/mystuffmenu_widget.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -38,12 +36,7 @@ class _MyStuffWidgetState extends State<MyStuffWidget> {
                   children: [
                     InkWell(
                       onTap: () async {
-                        await Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => MystuffmenuWidget(),
-                          ),
-                        );
+                        context.pushNamed('Mystuffmenu');
                       },
                       child: Icon(
                         Icons.settings_outlined,
@@ -141,18 +134,24 @@ class _MyStuffWidgetState extends State<MyStuffWidget> {
                                                     : null;
                                             return InkWell(
                                               onTap: () async {
-                                                await Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        InfoPageWidget(
-                                                      infodocument:
-                                                          rowVideodataRecord,
-                                                      epno: 1,
-                                                      epmin: rowVideodataRecord!
-                                                          .minutes,
-                                                    ),
-                                                  ),
+                                                context.pushNamed(
+                                                  'InfoPage',
+                                                  queryParams: {
+                                                    'infodocument':
+                                                        serializeParam(
+                                                            rowVideodataRecord,
+                                                            ParamType.Document),
+                                                    'epno': serializeParam(
+                                                        1, ParamType.int),
+                                                    'epmin': serializeParam(
+                                                        rowVideodataRecord!
+                                                            .minutes,
+                                                        ParamType.int),
+                                                  }.withoutNulls,
+                                                  extra: <String, dynamic>{
+                                                    'infodocument':
+                                                        rowVideodataRecord,
+                                                  },
                                                 );
                                                 await Future.delayed(
                                                     const Duration(

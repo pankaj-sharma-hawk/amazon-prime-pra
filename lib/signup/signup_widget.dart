@@ -3,9 +3,7 @@ import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import '../main.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_html/flutter_html.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SignupWidget extends StatefulWidget {
@@ -224,6 +222,8 @@ class _SignupWidgetState extends State<SignupWidget> {
                   children: [
                     FFButtonWidget(
                       onPressed: () async {
+                        GoRouter.of(context).prepareAuthEvent();
+
                         final user = await createAccountWithEmail(
                           context,
                           emailTextFieldController!.text,
@@ -240,14 +240,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                             .doc(user.uid)
                             .update(usersCreateData);
 
-                        await Navigator.pushAndRemoveUntil(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) =>
-                                NavBarPage(initialPage: 'Home'),
-                          ),
-                          (r) => false,
-                        );
+                        context.goNamedAuth('Home', mounted);
                       },
                       text: FFLocalizations.of(context).getText(
                         'zuggmulc' /* Continue */,
@@ -310,15 +303,84 @@ class _SignupWidgetState extends State<SignupWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(10, 5, 10, 50),
+                padding: EdgeInsetsDirectional.fromSTEB(10, 5, 10, 40),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Expanded(
-                      child: Html(
-                        data:
-                            ' <h5 style=\"color:white;\"> By creating an account , you agree to Amazon\'s <a href=\"https://www.w3schools.com\">Conditions</a> of Use and <a href=\"https://www.google.com\">Privacy Notice</a>.</h5>',
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Text(
+                                FFLocalizations.of(context).getText(
+                                  'wrdcj1qu' /* By Continuing, you agree to Am... */,
+                                ),
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyText1
+                                    .override(
+                                      fontFamily: 'Poppins',
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryBtnText,
+                                    ),
+                              ),
+                              InkWell(
+                                onTap: () async {
+                                  await launchURL(
+                                      'https://www.amazon.in/gp/help/customer/display.html?nodeId=G2B9L3YR7LR8J4XP');
+                                },
+                                child: Text(
+                                  FFLocalizations.of(context).getText(
+                                    'rjlfncpc' /* Condition of Use */,
+                                  ),
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyText1
+                                      .override(
+                                        fontFamily: 'Poppins',
+                                        color: Color(0xFF0F78AF),
+                                      ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Text(
+                                FFLocalizations.of(context).getText(
+                                  'xeadxf0c' /* and  */,
+                                ),
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyText1
+                                    .override(
+                                      fontFamily: 'Poppins',
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryBtnText,
+                                    ),
+                              ),
+                              InkWell(
+                                onTap: () async {
+                                  await launchURL(
+                                      'https://www.amazon.in/gp/help/customer/display.html?nodeId=202136010');
+                                },
+                                child: Text(
+                                  FFLocalizations.of(context).getText(
+                                    'l0n5l4ur' /* Privacy Notice */,
+                                  ),
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyText1
+                                      .override(
+                                        fontFamily: 'Poppins',
+                                        color: Color(0xFF0F78AF),
+                                      ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
                     ),
                   ],

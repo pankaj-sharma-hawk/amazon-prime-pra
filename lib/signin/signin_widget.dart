@@ -2,8 +2,6 @@ import '../auth/auth_util.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import '../main.dart';
-import '../signup/signup_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -207,6 +205,8 @@ class _SigninWidgetState extends State<SigninWidget> {
                     children: [
                       FFButtonWidget(
                         onPressed: () async {
+                          GoRouter.of(context).prepareAuthEvent();
+
                           final user = await signInWithEmail(
                             context,
                             emailIdTextFieldController!.text,
@@ -216,14 +216,7 @@ class _SigninWidgetState extends State<SigninWidget> {
                             return;
                           }
 
-                          await Navigator.pushAndRemoveUntil(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) =>
-                                  NavBarPage(initialPage: 'Home'),
-                            ),
-                            (r) => false,
-                          );
+                          context.goNamedAuth('Home', mounted);
                         },
                         text: FFLocalizations.of(context).getText(
                           't0pp1h1l' /* Sign-In */,
@@ -316,12 +309,7 @@ class _SigninWidgetState extends State<SigninWidget> {
                     children: [
                       FFButtonWidget(
                         onPressed: () async {
-                          await Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => SignupWidget(),
-                            ),
-                          );
+                          context.pushNamed('Signup');
                         },
                         text: FFLocalizations.of(context).getText(
                           '58k7gaw1' /* Create a new Amazon Account */,

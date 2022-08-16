@@ -2,8 +2,6 @@ import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
-import '../main.dart';
-import '../watch_page/watch_page_widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
@@ -67,13 +65,7 @@ class _InfoPageWidgetState extends State<InfoPageWidget> {
                                   alignment: AlignmentDirectional(-0.95, -0.94),
                                   child: InkWell(
                                     onTap: () async {
-                                      await Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) =>
-                                              NavBarPage(initialPage: 'Home'),
-                                        ),
-                                      );
+                                      context.pushNamed('Home');
                                     },
                                     child: FaIcon(
                                       FontAwesomeIcons.arrowLeft,
@@ -194,15 +186,13 @@ class _InfoPageWidgetState extends State<InfoPageWidget> {
                                         0, 2, 0, 0),
                                     child: InkWell(
                                       onTap: () async {
-                                        await Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) =>
-                                                WatchPageWidget(
-                                              videolink:
-                                                  widget.infodocument!.videourl,
-                                            ),
-                                          ),
+                                        context.pushNamed(
+                                          'WatchPage',
+                                          queryParams: {
+                                            'videolink': serializeParam(
+                                                widget.infodocument!.videourl,
+                                                ParamType.String),
+                                          }.withoutNulls,
                                         );
                                       },
                                       child: Row(
@@ -253,13 +243,13 @@ class _InfoPageWidgetState extends State<InfoPageWidget> {
                           children: [
                             InkWell(
                               onTap: () async {
-                                await Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => WatchPageWidget(
-                                      videolink: widget.infodocument!.videourl,
-                                    ),
-                                  ),
+                                context.pushNamed(
+                                  'WatchPage',
+                                  queryParams: {
+                                    'videolink': serializeParam(
+                                        widget.infodocument!.videourl,
+                                        ParamType.String),
+                                  }.withoutNulls,
                                 );
                               },
                               child: Column(
@@ -786,20 +776,26 @@ class _InfoPageWidgetState extends State<InfoPageWidget> {
                                             10, 10, 10, 10),
                                         child: InkWell(
                                           onTap: () async {
-                                            await Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                builder: (context) =>
-                                                    InfoPageWidget(
-                                                  infodocument:
-                                                      widget.infodocument,
-                                                  epno: valueOrDefault<int>(
-                                                    episodeschildItem.id,
-                                                    1,
-                                                  ),
-                                                  epmin: episodeschildItem.min,
-                                                ),
-                                              ),
+                                            context.pushNamed(
+                                              'InfoPage',
+                                              queryParams: {
+                                                'infodocument': serializeParam(
+                                                    widget.infodocument,
+                                                    ParamType.Document),
+                                                'epno': serializeParam(
+                                                    valueOrDefault<int>(
+                                                      episodeschildItem.id,
+                                                      1,
+                                                    ),
+                                                    ParamType.int),
+                                                'epmin': serializeParam(
+                                                    episodeschildItem.min,
+                                                    ParamType.int),
+                                              }.withoutNulls,
+                                              extra: <String, dynamic>{
+                                                'infodocument':
+                                                    widget.infodocument,
+                                              },
                                             );
                                           },
                                           child: Text(
