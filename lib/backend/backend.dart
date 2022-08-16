@@ -9,6 +9,7 @@ import 'schema/main_data_record.dart';
 import 'schema/videodata_record.dart';
 import 'schema/home_design_record.dart';
 import 'schema/test_record.dart';
+import 'schema/language_record.dart';
 import 'schema/serializers.dart';
 
 export 'dart:async' show StreamSubscription;
@@ -21,6 +22,7 @@ export 'schema/main_data_record.dart';
 export 'schema/videodata_record.dart';
 export 'schema/home_design_record.dart';
 export 'schema/test_record.dart';
+export 'schema/language_record.dart';
 
 /// Functions to query UsersRecords (as a Stream and as a Future).
 Stream<List<UsersRecord>> queryUsersRecord({
@@ -226,6 +228,48 @@ Future<FFFirestorePage<TestRecord>> queryTestRecordPage({
     queryCollectionPage(
       TestRecord.collection,
       TestRecord.serializer,
+      queryBuilder: queryBuilder,
+      nextPageMarker: nextPageMarker,
+      pageSize: pageSize,
+      isStream: isStream,
+    );
+
+/// Functions to query LanguageRecords (as a Stream and as a Future).
+Stream<List<LanguageRecord>> queryLanguageRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      LanguageRecord.collection,
+      LanguageRecord.serializer,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<LanguageRecord>> queryLanguageRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      LanguageRecord.collection,
+      LanguageRecord.serializer,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<FFFirestorePage<LanguageRecord>> queryLanguageRecordPage({
+  Query Function(Query)? queryBuilder,
+  DocumentSnapshot? nextPageMarker,
+  required int pageSize,
+  required bool isStream,
+}) =>
+    queryCollectionPage(
+      LanguageRecord.collection,
+      LanguageRecord.serializer,
       queryBuilder: queryBuilder,
       nextPageMarker: nextPageMarker,
       pageSize: pageSize,

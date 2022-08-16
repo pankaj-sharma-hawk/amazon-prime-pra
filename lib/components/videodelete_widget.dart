@@ -95,7 +95,9 @@ class _VideodeleteWidgetState extends State<VideodeleteWidget> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  'Remove From Watchlist',
+                                  FFLocalizations.of(context).getText(
+                                    'jep8ee03' /* Remove From Watchlist */,
+                                  ),
                                   style: FlutterFlowTheme.of(context)
                                       .subtitle2
                                       .override(

@@ -139,7 +139,9 @@ class _InfoPageWidgetState extends State<InfoPageWidget> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'prime',
+                                  FFLocalizations.of(context).getText(
+                                    'idcdbtp5' /* prime */,
+                                  ),
                                   style: FlutterFlowTheme.of(context)
                                       .bodyText1
                                       .override(
@@ -152,7 +154,9 @@ class _InfoPageWidgetState extends State<InfoPageWidget> {
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0, 0, 0, 2),
                                   child: Text(
-                                    'Included with Prime',
+                                    FFLocalizations.of(context).getText(
+                                      '83uusd4x' /* Included with Prime */,
+                                    ),
                                     style: FlutterFlowTheme.of(context)
                                         .bodyText1
                                         .override(
@@ -217,7 +221,9 @@ class _InfoPageWidgetState extends State<InfoPageWidget> {
                                             ),
                                           ),
                                           Text(
-                                            'Watch Now',
+                                            FFLocalizations.of(context).getText(
+                                              'ykf14d6d' /* Watch Now */,
+                                            ),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyText1
                                                 .override(
@@ -269,7 +275,9 @@ class _InfoPageWidgetState extends State<InfoPageWidget> {
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0, 2, 0, 0),
                                     child: Text(
-                                      'Trailer',
+                                      FFLocalizations.of(context).getText(
+                                        'wmezvk2f' /* Trailer */,
+                                      ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyText1
                                           .override(
@@ -314,7 +322,9 @@ class _InfoPageWidgetState extends State<InfoPageWidget> {
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0, 2, 0, 0),
                                     child: Text(
-                                      'Download',
+                                      FFLocalizations.of(context).getText(
+                                        'c5tqvtz4' /* Download */,
+                                      ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyText1
                                           .override(
@@ -366,7 +376,9 @@ class _InfoPageWidgetState extends State<InfoPageWidget> {
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0, 2, 0, 0),
                                     child: Text(
-                                      'Watchlist',
+                                      FFLocalizations.of(context).getText(
+                                        'g94ozlzl' /* Watchlist */,
+                                      ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyText1
                                           .override(
@@ -399,7 +411,9 @@ class _InfoPageWidgetState extends State<InfoPageWidget> {
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0, 2, 0, 0),
                                     child: Text(
-                                      'Share',
+                                      FFLocalizations.of(context).getText(
+                                        '4o4r2oli' /* Share */,
+                                      ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyText1
                                           .override(
@@ -454,7 +468,9 @@ class _InfoPageWidgetState extends State<InfoPageWidget> {
                               padding:
                                   EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
                               child: Text(
-                                'IMDb  ',
+                                FFLocalizations.of(context).getText(
+                                  'jmo0e1e1' /* IMDb   */,
+                                ),
                                 style: FlutterFlowTheme.of(context)
                                     .bodyText1
                                     .override(
@@ -515,7 +531,9 @@ class _InfoPageWidgetState extends State<InfoPageWidget> {
                               ),
                             ),
                             Text(
-                              'Min',
+                              FFLocalizations.of(context).getText(
+                                'jvbwyv8b' /* Min */,
+                              ),
                               style: FlutterFlowTheme.of(context)
                                   .bodyText1
                                   .override(
@@ -553,7 +571,9 @@ class _InfoPageWidgetState extends State<InfoPageWidget> {
                               padding:
                                   EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
                               child: Text(
-                                'Languages: ',
+                                FFLocalizations.of(context).getText(
+                                  't0lu894t' /* Languages:  */,
+                                ),
                                 style: FlutterFlowTheme.of(context)
                                     .bodyText1
                                     .override(
@@ -577,7 +597,9 @@ class _InfoPageWidgetState extends State<InfoPageWidget> {
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
                                           Text(
-                                            'Audio',
+                                            FFLocalizations.of(context).getText(
+                                              '2y35ob62' /* Audio */,
+                                            ),
                                             style: FlutterFlowTheme.of(context)
                                                 .title1
                                                 .override(
@@ -650,7 +672,9 @@ class _InfoPageWidgetState extends State<InfoPageWidget> {
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
                                         Text(
-                                          'SubTitles',
+                                          FFLocalizations.of(context).getText(
+                                            '8hkz3uze' /* SubTitles */,
+                                          ),
                                           style: FlutterFlowTheme.of(context)
                                               .title1
                                               .override(
@@ -726,7 +750,9 @@ class _InfoPageWidgetState extends State<InfoPageWidget> {
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
                                   Text(
-                                    'List of Episodes  - ',
+                                    FFLocalizations.of(context).getText(
+                                      'ciw10x4c' /* List of Episodes  -  */,
+                                    ),
                                     style: FlutterFlowTheme.of(context)
                                         .bodyText1
                                         .override(

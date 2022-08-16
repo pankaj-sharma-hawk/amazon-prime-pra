@@ -81,7 +81,9 @@ class _SearchWidgetState extends State<SearchWidget> {
                         autofocus: true,
                         obscureText: false,
                         decoration: InputDecoration(
-                          hintText: 'Search',
+                          hintText: FFLocalizations.of(context).getText(
+                            'yax1mldp' /* Search */,
+                          ),
                           hintStyle: FlutterFlowTheme.of(context).bodyText2,
                           enabledBorder: UnderlineInputBorder(
                             borderSide: BorderSide(
@@ -234,7 +236,11 @@ class _SearchWidgetState extends State<SearchWidget> {
                                                               .bodyText1,
                                                     ),
                                                     Text(
-                                                      'Min',
+                                                      FFLocalizations.of(
+                                                              context)
+                                                          .getText(
+                                                        '7j480fmr' /* Min */,
+                                                      ),
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -253,7 +259,10 @@ class _SearchWidgetState extends State<SearchWidget> {
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(4, 0, 0, 0),
                                               child: Text(
-                                                'prime',
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                                  'y4xffxu1' /* prime */,
+                                                ),
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyText1

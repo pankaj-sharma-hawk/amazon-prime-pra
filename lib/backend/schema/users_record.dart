@@ -29,6 +29,8 @@ abstract class UsersRecord implements Built<UsersRecord, UsersRecordBuilder> {
 
   BuiltList<int>? get videorefint;
 
+  String? get language;
+
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference? get ffRef;
   DocumentReference get reference => ffRef!;
@@ -40,7 +42,8 @@ abstract class UsersRecord implements Built<UsersRecord, UsersRecordBuilder> {
     ..uid = ''
     ..phoneNumber = ''
     ..videoref = ListBuilder()
-    ..videorefint = ListBuilder();
+    ..videorefint = ListBuilder()
+    ..language = '';
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('users');
@@ -70,6 +73,7 @@ Map<String, dynamic> createUsersRecordData({
   String? uid,
   DateTime? createdTime,
   String? phoneNumber,
+  String? language,
 }) {
   final firestoreData = serializers.toFirestore(
     UsersRecord.serializer,
@@ -82,7 +86,8 @@ Map<String, dynamic> createUsersRecordData({
         ..createdTime = createdTime
         ..phoneNumber = phoneNumber
         ..videoref = null
-        ..videorefint = null,
+        ..videorefint = null
+        ..language = language,
     ),
   );
 

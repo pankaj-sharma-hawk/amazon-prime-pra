@@ -82,13 +82,22 @@ class _HomeWidgetState extends State<HomeWidget> {
                                         .secondaryColor,
                                     tabs: [
                                       Tab(
-                                        text: 'Home',
+                                        text:
+                                            FFLocalizations.of(context).getText(
+                                          'gyb9brji' /* Home */,
+                                        ),
                                       ),
                                       Tab(
-                                        text: 'Movies',
+                                        text:
+                                            FFLocalizations.of(context).getText(
+                                          '4wgfduau' /* Movies */,
+                                        ),
                                       ),
                                       Tab(
-                                        text: 'TV Series',
+                                        text:
+                                            FFLocalizations.of(context).getText(
+                                          'uogaoq4q' /* TV Series */,
+                                        ),
                                       ),
                                     ],
                                   ),
@@ -347,7 +356,9 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                               0),
                                                                           child:
                                                                               Text(
-                                                                            '>',
+                                                                            FFLocalizations.of(context).getText(
+                                                                              'p69rzily' /* > */,
+                                                                            ),
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                   fontFamily: 'Poppins',
                                                                                   color: FlutterFlowTheme.of(context).primaryBtnText,
@@ -519,7 +530,9 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                               0),
                                                                           child:
                                                                               Text(
-                                                                            '>',
+                                                                            FFLocalizations.of(context).getText(
+                                                                              't9efdlx6' /* > */,
+                                                                            ),
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                   fontFamily: 'Poppins',
                                                                                   color: FlutterFlowTheme.of(context).primaryBtnText,
@@ -691,7 +704,9 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                               0),
                                                                           child:
                                                                               Text(
-                                                                            '>',
+                                                                            FFLocalizations.of(context).getText(
+                                                                              'ketx4i91' /* > */,
+                                                                            ),
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                   fontFamily: 'Poppins',
                                                                                   color: FlutterFlowTheme.of(context).primaryBtnText,
@@ -863,7 +878,9 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                               0),
                                                                           child:
                                                                               Text(
-                                                                            '>',
+                                                                            FFLocalizations.of(context).getText(
+                                                                              '3b455sqg' /* > */,
+                                                                            ),
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                   fontFamily: 'Poppins',
                                                                                   color: FlutterFlowTheme.of(context).primaryBtnText,
@@ -1035,7 +1052,9 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                               0),
                                                                           child:
                                                                               Text(
-                                                                            '>',
+                                                                            FFLocalizations.of(context).getText(
+                                                                              'uj2ardlz' /* > */,
+                                                                            ),
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                   fontFamily: 'Poppins',
                                                                                   color: FlutterFlowTheme.of(context).primaryBtnText,
@@ -1207,7 +1226,9 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                               0),
                                                                           child:
                                                                               Text(
-                                                                            '>',
+                                                                            FFLocalizations.of(context).getText(
+                                                                              'g9ujhbs2' /* > */,
+                                                                            ),
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                   fontFamily: 'Poppins',
                                                                                   color: FlutterFlowTheme.of(context).primaryBtnText,
@@ -1379,7 +1400,9 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                               0),
                                                                           child:
                                                                               Text(
-                                                                            '>',
+                                                                            FFLocalizations.of(context).getText(
+                                                                              'od8korui' /* > */,
+                                                                            ),
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                   fontFamily: 'Poppins',
                                                                                   color: FlutterFlowTheme.of(context).primaryBtnText,
@@ -1760,7 +1783,9 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                               0),
                                                                           child:
                                                                               Text(
-                                                                            '>',
+                                                                            FFLocalizations.of(context).getText(
+                                                                              'dyz1bsad' /* > */,
+                                                                            ),
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                   fontFamily: 'Poppins',
                                                                                   color: FlutterFlowTheme.of(context).primaryBtnText,
@@ -1932,7 +1957,9 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                               0),
                                                                           child:
                                                                               Text(
-                                                                            '>',
+                                                                            FFLocalizations.of(context).getText(
+                                                                              'oej7uhgy' /* > */,
+                                                                            ),
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                   fontFamily: 'Poppins',
                                                                                   color: FlutterFlowTheme.of(context).primaryBtnText,
@@ -2104,7 +2131,9 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                               0),
                                                                           child:
                                                                               Text(
-                                                                            '>',
+                                                                            FFLocalizations.of(context).getText(
+                                                                              'yayplsr8' /* > */,
+                                                                            ),
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                   fontFamily: 'Poppins',
                                                                                   color: FlutterFlowTheme.of(context).primaryBtnText,
@@ -2276,7 +2305,9 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                               0),
                                                                           child:
                                                                               Text(
-                                                                            '>',
+                                                                            FFLocalizations.of(context).getText(
+                                                                              't7ulivru' /* > */,
+                                                                            ),
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                   fontFamily: 'Poppins',
                                                                                   color: FlutterFlowTheme.of(context).primaryBtnText,
@@ -2448,7 +2479,9 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                               0),
                                                                           child:
                                                                               Text(
-                                                                            '>',
+                                                                            FFLocalizations.of(context).getText(
+                                                                              'buo4b6ij' /* > */,
+                                                                            ),
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                   fontFamily: 'Poppins',
                                                                                   color: FlutterFlowTheme.of(context).primaryBtnText,
@@ -2620,7 +2653,9 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                               0),
                                                                           child:
                                                                               Text(
-                                                                            '>',
+                                                                            FFLocalizations.of(context).getText(
+                                                                              'phmkh4ry' /* > */,
+                                                                            ),
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                   fontFamily: 'Poppins',
                                                                                   color: FlutterFlowTheme.of(context).primaryBtnText,
@@ -2792,7 +2827,9 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                               0),
                                                                           child:
                                                                               Text(
-                                                                            '>',
+                                                                            FFLocalizations.of(context).getText(
+                                                                              'vr9cjkya' /* > */,
+                                                                            ),
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                   fontFamily: 'Poppins',
                                                                                   color: FlutterFlowTheme.of(context).primaryBtnText,
@@ -3172,7 +3209,9 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                               0),
                                                                           child:
                                                                               Text(
-                                                                            '>',
+                                                                            FFLocalizations.of(context).getText(
+                                                                              'is9ornbs' /* > */,
+                                                                            ),
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                   fontFamily: 'Poppins',
                                                                                   color: FlutterFlowTheme.of(context).primaryBtnText,
@@ -3344,7 +3383,9 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                               0),
                                                                           child:
                                                                               Text(
-                                                                            '>',
+                                                                            FFLocalizations.of(context).getText(
+                                                                              'fccqbece' /* > */,
+                                                                            ),
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                   fontFamily: 'Poppins',
                                                                                   color: FlutterFlowTheme.of(context).primaryBtnText,
@@ -3514,7 +3555,9 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                               0),
                                                                           child:
                                                                               Text(
-                                                                            '>',
+                                                                            FFLocalizations.of(context).getText(
+                                                                              'qblll1gy' /* > */,
+                                                                            ),
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                   fontFamily: 'Poppins',
                                                                                   color: FlutterFlowTheme.of(context).primaryBtnText,
@@ -3684,7 +3727,9 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                               0),
                                                                           child:
                                                                               Text(
-                                                                            '>',
+                                                                            FFLocalizations.of(context).getText(
+                                                                              'pfc0bsqk' /* > */,
+                                                                            ),
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                   fontFamily: 'Poppins',
                                                                                   color: FlutterFlowTheme.of(context).primaryBtnText,
@@ -3854,7 +3899,9 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                               0),
                                                                           child:
                                                                               Text(
-                                                                            '>',
+                                                                            FFLocalizations.of(context).getText(
+                                                                              'i1a1f183' /* > */,
+                                                                            ),
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                   fontFamily: 'Poppins',
                                                                                   color: FlutterFlowTheme.of(context).primaryBtnText,
@@ -4022,7 +4069,9 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                               0),
                                                                           child:
                                                                               Text(
-                                                                            '>',
+                                                                            FFLocalizations.of(context).getText(
+                                                                              'pt9ezosv' /* > */,
+                                                                            ),
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                   fontFamily: 'Poppins',
                                                                                   color: FlutterFlowTheme.of(context).primaryBtnText,
@@ -4192,7 +4241,9 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                               0),
                                                                           child:
                                                                               Text(
-                                                                            '>',
+                                                                            FFLocalizations.of(context).getText(
+                                                                              'opwtxv77' /* > */,
+                                                                            ),
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                   fontFamily: 'Poppins',
                                                                                   color: FlutterFlowTheme.of(context).primaryBtnText,

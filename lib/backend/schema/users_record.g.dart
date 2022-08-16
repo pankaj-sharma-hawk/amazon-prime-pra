@@ -79,6 +79,13 @@ class _$UsersRecordSerializer implements StructuredSerializer<UsersRecord> {
             specifiedType:
                 const FullType(BuiltList, const [const FullType(int)])));
     }
+    value = object.language;
+    if (value != null) {
+      result
+        ..add('language')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
     value = object.ffRef;
     if (value != null) {
       result
@@ -138,6 +145,10 @@ class _$UsersRecordSerializer implements StructuredSerializer<UsersRecord> {
                       const FullType(BuiltList, const [const FullType(int)]))!
               as BuiltList<Object?>);
           break;
+        case 'language':
+          result.language = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
         case 'Document__Reference__Field':
           result.ffRef = serializers.deserialize(value,
               specifiedType: const FullType(DocumentReference, const [
@@ -169,6 +180,8 @@ class _$UsersRecord extends UsersRecord {
   @override
   final BuiltList<int>? videorefint;
   @override
+  final String? language;
+  @override
   final DocumentReference<Object?>? ffRef;
 
   factory _$UsersRecord([void Function(UsersRecordBuilder)? updates]) =>
@@ -183,6 +196,7 @@ class _$UsersRecord extends UsersRecord {
       this.phoneNumber,
       this.videoref,
       this.videorefint,
+      this.language,
       this.ffRef})
       : super._();
 
@@ -205,6 +219,7 @@ class _$UsersRecord extends UsersRecord {
         phoneNumber == other.phoneNumber &&
         videoref == other.videoref &&
         videorefint == other.videorefint &&
+        language == other.language &&
         ffRef == other.ffRef;
   }
 
@@ -217,14 +232,16 @@ class _$UsersRecord extends UsersRecord {
                     $jc(
                         $jc(
                             $jc(
-                                $jc($jc(0, email.hashCode),
-                                    displayName.hashCode),
-                                photoUrl.hashCode),
-                            uid.hashCode),
-                        createdTime.hashCode),
-                    phoneNumber.hashCode),
-                videoref.hashCode),
-            videorefint.hashCode),
+                                $jc(
+                                    $jc($jc(0, email.hashCode),
+                                        displayName.hashCode),
+                                    photoUrl.hashCode),
+                                uid.hashCode),
+                            createdTime.hashCode),
+                        phoneNumber.hashCode),
+                    videoref.hashCode),
+                videorefint.hashCode),
+            language.hashCode),
         ffRef.hashCode));
   }
 
@@ -239,6 +256,7 @@ class _$UsersRecord extends UsersRecord {
           ..add('phoneNumber', phoneNumber)
           ..add('videoref', videoref)
           ..add('videorefint', videorefint)
+          ..add('language', language)
           ..add('ffRef', ffRef))
         .toString();
   }
@@ -283,6 +301,10 @@ class UsersRecordBuilder implements Builder<UsersRecord, UsersRecordBuilder> {
   set videorefint(ListBuilder<int>? videorefint) =>
       _$this._videorefint = videorefint;
 
+  String? _language;
+  String? get language => _$this._language;
+  set language(String? language) => _$this._language = language;
+
   DocumentReference<Object?>? _ffRef;
   DocumentReference<Object?>? get ffRef => _$this._ffRef;
   set ffRef(DocumentReference<Object?>? ffRef) => _$this._ffRef = ffRef;
@@ -302,6 +324,7 @@ class UsersRecordBuilder implements Builder<UsersRecord, UsersRecordBuilder> {
       _phoneNumber = $v.phoneNumber;
       _videoref = $v.videoref?.toBuilder();
       _videorefint = $v.videorefint?.toBuilder();
+      _language = $v.language;
       _ffRef = $v.ffRef;
       _$v = null;
     }
@@ -335,6 +358,7 @@ class UsersRecordBuilder implements Builder<UsersRecord, UsersRecordBuilder> {
               phoneNumber: phoneNumber,
               videoref: _videoref?.build(),
               videorefint: _videorefint?.build(),
+              language: language,
               ffRef: ffRef);
     } catch (_) {
       late String _$failedField;

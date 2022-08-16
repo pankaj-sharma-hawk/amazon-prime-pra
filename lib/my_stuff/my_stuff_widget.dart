@@ -4,7 +4,6 @@ import '../components/videodelete_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../info_page/info_page_widget.dart';
-import '../main.dart';
 import '../mystuffmenu/mystuffmenu_widget.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
@@ -69,7 +68,9 @@ class _MyStuffWidgetState extends State<MyStuffWidget> {
                             FlutterFlowTheme.of(context).primaryBtnText,
                         tabs: [
                           Tab(
-                            text: 'Watchlist',
+                            text: FFLocalizations.of(context).getText(
+                              'lrudixap' /* Watchlist */,
+                            ),
                           ),
                         ],
                       ),
@@ -265,7 +266,10 @@ class _MyStuffWidgetState extends State<MyStuffWidget> {
                                                                             .bodyText1,
                                                                       ),
                                                                       Text(
-                                                                        'Min',
+                                                                        FFLocalizations.of(context)
+                                                                            .getText(
+                                                                          '8b8vsppf' /* Min */,
+                                                                        ),
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyText1,
                                                                       ),
@@ -289,7 +293,11 @@ class _MyStuffWidgetState extends State<MyStuffWidget> {
                                                                             0,
                                                                             0),
                                                                 child: Text(
-                                                                  'prime',
+                                                                  FFLocalizations.of(
+                                                                          context)
+                                                                      .getText(
+                                                                    'jsyw0029' /* prime */,
+                                                                  ),
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyText1
@@ -348,17 +356,6 @@ class _MyStuffWidgetState extends State<MyStuffWidget> {
                                                                           ),
                                                                         );
                                                                       },
-                                                                    );
-                                                                    await Navigator
-                                                                        .pushAndRemoveUntil(
-                                                                      context,
-                                                                      MaterialPageRoute(
-                                                                        builder:
-                                                                            (context) =>
-                                                                                NavBarPage(initialPage: 'MyStuff'),
-                                                                      ),
-                                                                      (r) =>
-                                                                          false,
                                                                     );
                                                                   },
                                                                   child: Icon(

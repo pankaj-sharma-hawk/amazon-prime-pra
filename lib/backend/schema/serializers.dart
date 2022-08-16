@@ -5,6 +5,7 @@ import 'main_data_record.dart';
 import 'videodata_record.dart';
 import 'home_design_record.dart';
 import 'test_record.dart';
+import 'language_record.dart';
 
 import 'index.dart';
 
@@ -21,6 +22,7 @@ const kDocumentReferenceField = 'Document__Reference__Field';
   VideodataRecord,
   HomeDesignRecord,
   TestRecord,
+  LanguageRecord,
   MovieObjectStruct,
   SeriesStruct,
 ])

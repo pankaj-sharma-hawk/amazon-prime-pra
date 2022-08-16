@@ -18,9 +18,11 @@ class FFAppState {
 
   late SharedPreferences prefs;
 
-  String hinditag = 'Hindi';
+  String hinditag = 'hi';
 
   String englishtag = 'English';
+
+  List<String> options = [];
 }
 
 LatLng? _latLngFromString(String? val) {

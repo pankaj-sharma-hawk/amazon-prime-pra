@@ -74,7 +74,14 @@ class _MyAppState extends State<MyApp> {
         GlobalCupertinoLocalizations.delegate,
       ],
       locale: _locale,
-      supportedLocales: const [Locale('en', '')],
+      supportedLocales: const [
+        Locale('en'),
+        Locale('hi'),
+        Locale('ta'),
+        Locale('fr'),
+        Locale('es'),
+        Locale('pa'),
+      ],
       theme: ThemeData(brightness: Brightness.light),
       themeMode: _themeMode,
       home: initialUser == null || displaySplashImage
@@ -126,9 +133,9 @@ class _NavBarPageState extends State<NavBarPage> {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentIndex,
         onTap: (i) => setState(() => _currentPage = tabs.keys.toList()[i]),
-        backgroundColor: Colors.white,
-        selectedItemColor: FlutterFlowTheme.of(context).primaryColor,
-        unselectedItemColor: Color(0x8A000000),
+        backgroundColor: Color(0xFF0B1415),
+        selectedItemColor: Color(0xFF6556E6),
+        unselectedItemColor: FlutterFlowTheme.of(context).primaryBtnText,
         showSelectedLabels: true,
         showUnselectedLabels: true,
         type: BottomNavigationBarType.fixed,
@@ -142,7 +149,9 @@ class _NavBarPageState extends State<NavBarPage> {
               Icons.home,
               size: 24,
             ),
-            label: 'Home',
+            label: FFLocalizations.of(context).getText(
+              'b0k0uqyn' /* Home */,
+            ),
             tooltip: '',
           ),
           BottomNavigationBarItem(
@@ -150,7 +159,9 @@ class _NavBarPageState extends State<NavBarPage> {
               Icons.search,
               size: 24,
             ),
-            label: 'Search',
+            label: FFLocalizations.of(context).getText(
+              'uol6hk3r' /* Search */,
+            ),
             tooltip: '',
           ),
           BottomNavigationBarItem(
@@ -158,7 +169,9 @@ class _NavBarPageState extends State<NavBarPage> {
               Icons.account_circle_rounded,
               size: 30,
             ),
-            label: 'My Stuff',
+            label: FFLocalizations.of(context).getText(
+              '554xc7cs' /* My Stuff */,
+            ),
             tooltip: '',
           )
         ],

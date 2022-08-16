@@ -8,6 +8,7 @@ part of 'serializers.dart';
 
 Serializers _$serializers = (new Serializers().toBuilder()
       ..add(HomeDesignRecord.serializer)
+      ..add(LanguageRecord.serializer)
       ..add(MainDataRecord.serializer)
       ..add(MovieObjectStruct.serializer)
       ..add(SeriesStruct.serializer)

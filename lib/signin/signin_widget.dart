@@ -59,7 +59,9 @@ class _SigninWidgetState extends State<SigninWidget> {
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Text(
-                        'Sign-In',
+                        FFLocalizations.of(context).getText(
+                          'lkg07g3j' /* Sign-In */,
+                        ),
                         style: FlutterFlowTheme.of(context).bodyText1.override(
                               fontFamily: 'Poppins',
                               color:
@@ -79,7 +81,9 @@ class _SigninWidgetState extends State<SigninWidget> {
                       Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(0, 0, 5, 0),
                         child: Text(
-                          'Forget password?',
+                          FFLocalizations.of(context).getText(
+                            '5eo3mkul' /* Forget password? */,
+                          ),
                           style:
                               FlutterFlowTheme.of(context).bodyText1.override(
                                     fontFamily: 'Poppins',
@@ -100,7 +104,9 @@ class _SigninWidgetState extends State<SigninWidget> {
                           controller: emailIdTextFieldController,
                           obscureText: false,
                           decoration: InputDecoration(
-                            hintText: 'Email Id',
+                            hintText: FFLocalizations.of(context).getText(
+                              '7lbyafey' /* Email Id */,
+                            ),
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
                                 color: Color(0xFFD8C7C7),
@@ -144,7 +150,9 @@ class _SigninWidgetState extends State<SigninWidget> {
                             controller: passwordTextFieldController,
                             obscureText: !passwordTextFieldVisibility,
                             decoration: InputDecoration(
-                              hintText: 'Password',
+                              hintText: FFLocalizations.of(context).getText(
+                                '3cmwcqac' /* Password */,
+                              ),
                               enabledBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
                                   color: Color(0xFFD8C7C7),
@@ -217,7 +225,9 @@ class _SigninWidgetState extends State<SigninWidget> {
                             (r) => false,
                           );
                         },
-                        text: 'Sign-In',
+                        text: FFLocalizations.of(context).getText(
+                          't0pp1h1l' /* Sign-In */,
+                        ),
                         options: FFButtonOptions(
                           width: 340,
                           height: 40,
@@ -245,7 +255,9 @@ class _SigninWidgetState extends State<SigninWidget> {
                     children: [
                       Expanded(
                         child: Text(
-                          'By Continuing , you agree to Amazon\'s Conditions of Use and Privacy Notice.',
+                          FFLocalizations.of(context).getText(
+                            'z2ky61t8' /* By Continuing , you agree to A... */,
+                          ),
                           maxLines: 2,
                           style: FlutterFlowTheme.of(context)
                               .bodyText1
@@ -280,7 +292,9 @@ class _SigninWidgetState extends State<SigninWidget> {
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Text(
-                            'New to Amazon ?',
+                            FFLocalizations.of(context).getText(
+                              '6iluvuha' /* New to Amazon ? */,
+                            ),
                             style:
                                 FlutterFlowTheme.of(context).bodyText1.override(
                                       fontFamily: 'Poppins',
@@ -309,7 +323,9 @@ class _SigninWidgetState extends State<SigninWidget> {
                             ),
                           );
                         },
-                        text: 'Create a new Amazon Account',
+                        text: FFLocalizations.of(context).getText(
+                          '58k7gaw1' /* Create a new Amazon Account */,
+                        ),
                         options: FFButtonOptions(
                           width: 340,
                           height: 40,
@@ -336,7 +352,9 @@ class _SigninWidgetState extends State<SigninWidget> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Text(
-                        'Condition of Use',
+                        FFLocalizations.of(context).getText(
+                          'q9j4y463' /* Condition of Use */,
+                        ),
                         style: FlutterFlowTheme.of(context).bodyText1.override(
                               fontFamily: 'Poppins',
                               color: Color(0xFF0F78AF),
@@ -344,7 +362,9 @@ class _SigninWidgetState extends State<SigninWidget> {
                             ),
                       ),
                       Text(
-                        'Privacy Notice',
+                        FFLocalizations.of(context).getText(
+                          'j58nz0tw' /* Privacy Notice */,
+                        ),
                         style: FlutterFlowTheme.of(context).bodyText1.override(
                               fontFamily: 'Poppins',
                               color: Color(0xFF0F78AF),
@@ -352,7 +372,9 @@ class _SigninWidgetState extends State<SigninWidget> {
                             ),
                       ),
                       Text(
-                        'Help',
+                        FFLocalizations.of(context).getText(
+                          '4qkpkmpt' /* Help */,
+                        ),
                         style: FlutterFlowTheme.of(context).bodyText1.override(
                               fontFamily: 'Poppins',
                               color: Color(0xFF0F78AF),
@@ -375,7 +397,9 @@ class _SigninWidgetState extends State<SigninWidget> {
                           size: 24,
                         ),
                         Text(
-                          '1996-2022, Amazon.com, inc. ',
+                          FFLocalizations.of(context).getText(
+                            'k8ibsa4y' /* 1996-2022, Amazon.com, inc.  */,
+                          ),
                           style: FlutterFlowTheme.of(context)
                               .bodyText1
                               .override(

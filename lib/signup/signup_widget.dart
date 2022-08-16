@@ -5,6 +5,7 @@ import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import '../main.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SignupWidget extends StatefulWidget {
@@ -59,7 +60,9 @@ class _SignupWidgetState extends State<SignupWidget> {
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Text(
-                      'Sign up with your mobile number',
+                      FFLocalizations.of(context).getText(
+                        'ag5lbb2t' /* Sign up with your mobile numbe... */,
+                      ),
                       style: FlutterFlowTheme.of(context).bodyText1.override(
                             fontFamily: 'Poppins',
                             color: FlutterFlowTheme.of(context).primaryBtnText,
@@ -79,7 +82,9 @@ class _SignupWidgetState extends State<SignupWidget> {
                         controller: nameTextFieldController,
                         obscureText: false,
                         decoration: InputDecoration(
-                          hintText: 'First and Last name',
+                          hintText: FFLocalizations.of(context).getText(
+                            '5erwv1ly' /* First and Last name */,
+                          ),
                           enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(
                               color: Color(0xFFD8C7C7),
@@ -118,7 +123,9 @@ class _SignupWidgetState extends State<SignupWidget> {
                         controller: emailTextFieldController,
                         obscureText: false,
                         decoration: InputDecoration(
-                          hintText: 'mobile number or email',
+                          hintText: FFLocalizations.of(context).getText(
+                            'koym4lc6' /* mobile number or email */,
+                          ),
                           enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(
                               color: Color(0xFFD8C7C7),
@@ -160,7 +167,9 @@ class _SignupWidgetState extends State<SignupWidget> {
                           controller: passwordTextFieldController,
                           obscureText: !passwordTextFieldVisibility,
                           decoration: InputDecoration(
-                            hintText: 'Create a Password',
+                            hintText: FFLocalizations.of(context).getText(
+                              'pv1llqb6' /* Create a Password */,
+                            ),
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
                                 color: Color(0xFFD8C7C7),
@@ -240,7 +249,9 @@ class _SignupWidgetState extends State<SignupWidget> {
                           (r) => false,
                         );
                       },
-                      text: 'Continue',
+                      text: FFLocalizations.of(context).getText(
+                        'zuggmulc' /* Continue */,
+                      ),
                       options: FFButtonOptions(
                         width: 340,
                         height: 40,
@@ -267,7 +278,9 @@ class _SignupWidgetState extends State<SignupWidget> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      'Already have an account?',
+                      FFLocalizations.of(context).getText(
+                        'ursubv54' /* Already have an account? */,
+                      ),
                       style: FlutterFlowTheme.of(context).bodyText1.override(
                             fontFamily: 'Poppins',
                             color: Color(0xFF0F78AF),
@@ -284,7 +297,9 @@ class _SignupWidgetState extends State<SignupWidget> {
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Text(
-                      'Message and Data rates may apply.',
+                      FFLocalizations.of(context).getText(
+                        'rf565gr7' /* Message and Data rates may app... */,
+                      ),
                       style: FlutterFlowTheme.of(context).bodyText1.override(
                             fontFamily: 'Poppins',
                             color: FlutterFlowTheme.of(context).primaryBtnText,
@@ -301,15 +316,9 @@ class _SignupWidgetState extends State<SignupWidget> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Expanded(
-                      child: Text(
-                        'By creating an account , you agree to Amazon\'s Conditions of Use and Privacy Notice.',
-                        maxLines: 2,
-                        style: FlutterFlowTheme.of(context).bodyText1.override(
-                              fontFamily: 'Poppins',
-                              color: Color(0x9AE0D7D7),
-                              fontSize: 12,
-                              fontWeight: FontWeight.normal,
-                            ),
+                      child: Html(
+                        data:
+                            ' <h5 style=\"color:white;\"> By creating an account , you agree to Amazon\'s <a href=\"https://www.w3schools.com\">Conditions</a> of Use and <a href=\"https://www.google.com\">Privacy Notice</a>.</h5>',
                       ),
                     ),
                   ],
@@ -327,7 +336,9 @@ class _SignupWidgetState extends State<SignupWidget> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Text(
-                      'Condition of Use',
+                      FFLocalizations.of(context).getText(
+                        'dhl1nzrt' /* Condition of Use */,
+                      ),
                       style: FlutterFlowTheme.of(context).bodyText1.override(
                             fontFamily: 'Poppins',
                             color: Color(0xFF0F78AF),
@@ -336,7 +347,9 @@ class _SignupWidgetState extends State<SignupWidget> {
                           ),
                     ),
                     Text(
-                      'Privacy Notice',
+                      FFLocalizations.of(context).getText(
+                        'tmp0jupu' /* Privacy Notice */,
+                      ),
                       style: FlutterFlowTheme.of(context).bodyText1.override(
                             fontFamily: 'Poppins',
                             color: Color(0xFF0F78AF),
@@ -345,7 +358,9 @@ class _SignupWidgetState extends State<SignupWidget> {
                           ),
                     ),
                     Text(
-                      'Help',
+                      FFLocalizations.of(context).getText(
+                        'a596cihk' /* Help */,
+                      ),
                       style: FlutterFlowTheme.of(context).bodyText1.override(
                             fontFamily: 'Poppins',
                             color: Color(0xFF0F78AF),
@@ -369,7 +384,9 @@ class _SignupWidgetState extends State<SignupWidget> {
                         size: 24,
                       ),
                       Text(
-                        '1996-2022, Amazon.com, inc. ',
+                        FFLocalizations.of(context).getText(
+                          '3kl61wlb' /* 1996-2022, Amazon.com, inc.  */,
+                        ),
                         style: FlutterFlowTheme.of(context).bodyText1.override(
                               fontFamily: 'Poppins',
                               color:
