@@ -111,9 +111,25 @@ class _SigninWidgetState extends State<SigninWidget> {
                           controller: emailIdTextFieldController,
                           obscureText: false,
                           decoration: InputDecoration(
+                            labelStyle:
+                                FlutterFlowTheme.of(context).bodyText1.override(
+                                      fontFamily: 'Poppins',
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryBtnText,
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w500,
+                                    ),
                             hintText: FFLocalizations.of(context).getText(
                               '7lbyafey' /* Email Id */,
                             ),
+                            hintStyle:
+                                FlutterFlowTheme.of(context).bodyText1.override(
+                                      fontFamily: 'Poppins',
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryBtnText,
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w500,
+                                    ),
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
                                 color: Color(0xFFD8C7C7),
