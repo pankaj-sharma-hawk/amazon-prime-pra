@@ -3,6 +3,7 @@ import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/custom_functions.dart' as functions;
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -182,45 +183,48 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                             final pageViewVideodataRecord =
                                                                 pageViewVideodataRecordList[
                                                                     pageViewIndex];
-                                                            return Container(
-                                                              width: double
-                                                                  .infinity,
-                                                              height: 220,
-                                                              child: Stack(
-                                                                children: [
-                                                                  InkWell(
-                                                                    onTap:
-                                                                        () async {
-                                                                      context
-                                                                          .pushNamed(
-                                                                        'InfoPage',
-                                                                        queryParams:
-                                                                            {
-                                                                          'infodocument': serializeParam(
-                                                                              pageViewVideodataRecord,
-                                                                              ParamType.Document),
-                                                                          'epno': serializeParam(
-                                                                              1,
-                                                                              ParamType.int),
-                                                                          'epmin': serializeParam(
-                                                                              pageViewVideodataRecord.minutes,
-                                                                              ParamType.int),
-                                                                        }.withoutNulls,
-                                                                        extra: <
-                                                                            String,
-                                                                            dynamic>{
-                                                                          'infodocument':
-                                                                              pageViewVideodataRecord,
-                                                                        },
-                                                                      );
-                                                                      await Future.delayed(const Duration(
-                                                                          milliseconds:
-                                                                              2000));
-                                                                    },
-                                                                    child: Image
-                                                                        .network(
-                                                                      pageViewVideodataRecord
-                                                                          .imageurl!,
+                                                            return InkWell(
+                                                              onTap: () async {
+                                                                context
+                                                                    .pushNamed(
+                                                                  'InfoPage',
+                                                                  queryParams: {
+                                                                    'infodocument': serializeParam(
+                                                                        pageViewVideodataRecord,
+                                                                        ParamType
+                                                                            .Document),
+                                                                    'epno': serializeParam(
+                                                                        1,
+                                                                        ParamType
+                                                                            .int),
+                                                                    'epmin': serializeParam(
+                                                                        pageViewVideodataRecord
+                                                                            .minutes,
+                                                                        ParamType
+                                                                            .int),
+                                                                  }.withoutNulls,
+                                                                  extra: <
+                                                                      String,
+                                                                      dynamic>{
+                                                                    'infodocument':
+                                                                        pageViewVideodataRecord,
+                                                                  },
+                                                                );
+                                                                await Future.delayed(
+                                                                    const Duration(
+                                                                        milliseconds:
+                                                                            2000));
+                                                              },
+                                                              child: Container(
+                                                                width: double
+                                                                    .infinity,
+                                                                height: 220,
+                                                                child: Stack(
+                                                                  children: [
+                                                                    CachedNetworkImage(
+                                                                      imageUrl:
+                                                                          pageViewVideodataRecord
+                                                                              .imageurl!,
                                                                       width: double
                                                                           .infinity,
                                                                       height:
@@ -228,29 +232,36 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                       fit: BoxFit
                                                                           .cover,
                                                                     ),
-                                                                  ),
-                                                                  Align(
-                                                                    alignment:
-                                                                        AlignmentDirectional(
-                                                                            0.02,
-                                                                            0.77),
-                                                                    child: Text(
-                                                                      pageViewVideodataRecord
-                                                                          .name!,
-                                                                      style: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyText1
-                                                                          .override(
-                                                                            fontFamily:
-                                                                                'Poppins',
-                                                                            color:
-                                                                                FlutterFlowTheme.of(context).primaryBtnText,
-                                                                            fontSize:
-                                                                                18,
-                                                                          ),
+                                                                    Container(
+                                                                      width: double
+                                                                          .infinity,
+                                                                      height:
+                                                                          220,
+                                                                      decoration:
+                                                                          BoxDecoration(
+                                                                        color: Color(
+                                                                            0x89000000),
+                                                                      ),
                                                                     ),
-                                                                  ),
-                                                                ],
+                                                                    Align(
+                                                                      alignment: AlignmentDirectional(
+                                                                          0.02,
+                                                                          0.77),
+                                                                      child:
+                                                                          Text(
+                                                                        pageViewVideodataRecord
+                                                                            .name!,
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .bodyText1
+                                                                            .override(
+                                                                              fontFamily: 'Poppins',
+                                                                              color: FlutterFlowTheme.of(context).primaryBtnText,
+                                                                              fontSize: 18,
+                                                                            ),
+                                                                      ),
+                                                                    ),
+                                                                  ],
+                                                                ),
                                                               ),
                                                             );
                                                           },
@@ -466,11 +477,18 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                                       ),
                                                                                       child: Stack(
                                                                                         children: [
-                                                                                          Image.network(
-                                                                                            listViewVideodataRecord.imageurl!,
+                                                                                          CachedNetworkImage(
+                                                                                            imageUrl: listViewVideodataRecord.imageurl!,
                                                                                             width: 130,
                                                                                             height: 100,
                                                                                             fit: BoxFit.cover,
+                                                                                          ),
+                                                                                          Container(
+                                                                                            width: 130,
+                                                                                            height: 100,
+                                                                                            decoration: BoxDecoration(
+                                                                                              color: Color(0x84030303),
+                                                                                            ),
                                                                                           ),
                                                                                           Align(
                                                                                             alignment: AlignmentDirectional(0, 0.94),
@@ -640,11 +658,18 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                                         ),
                                                                                         child: Stack(
                                                                                           children: [
-                                                                                            Image.network(
-                                                                                              listViewVideodataRecord.imageurl!,
+                                                                                            CachedNetworkImage(
+                                                                                              imageUrl: listViewVideodataRecord.imageurl!,
                                                                                               width: 130,
                                                                                               height: 100,
                                                                                               fit: BoxFit.cover,
+                                                                                            ),
+                                                                                            Container(
+                                                                                              width: 130,
+                                                                                              height: 100,
+                                                                                              decoration: BoxDecoration(
+                                                                                                color: Color(0x84030303),
+                                                                                              ),
                                                                                             ),
                                                                                             Align(
                                                                                               alignment: AlignmentDirectional(0, 0.94),
@@ -815,11 +840,18 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                                         ),
                                                                                         child: Stack(
                                                                                           children: [
-                                                                                            Image.network(
-                                                                                              listViewVideodataRecord.imageurl!,
+                                                                                            CachedNetworkImage(
+                                                                                              imageUrl: listViewVideodataRecord.imageurl!,
                                                                                               width: 130,
                                                                                               height: 100,
                                                                                               fit: BoxFit.cover,
+                                                                                            ),
+                                                                                            Container(
+                                                                                              width: 130,
+                                                                                              height: 100,
+                                                                                              decoration: BoxDecoration(
+                                                                                                color: Color(0x84030303),
+                                                                                              ),
                                                                                             ),
                                                                                             Align(
                                                                                               alignment: AlignmentDirectional(0, 0.94),
@@ -990,11 +1022,18 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                                         ),
                                                                                         child: Stack(
                                                                                           children: [
-                                                                                            Image.network(
-                                                                                              listViewVideodataRecord.imageurl!,
+                                                                                            CachedNetworkImage(
+                                                                                              imageUrl: listViewVideodataRecord.imageurl!,
                                                                                               width: 130,
                                                                                               height: 100,
                                                                                               fit: BoxFit.cover,
+                                                                                            ),
+                                                                                            Container(
+                                                                                              width: 130,
+                                                                                              height: 100,
+                                                                                              decoration: BoxDecoration(
+                                                                                                color: Color(0x84030303),
+                                                                                              ),
                                                                                             ),
                                                                                             Align(
                                                                                               alignment: AlignmentDirectional(0, 0.94),
@@ -1165,11 +1204,18 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                                         ),
                                                                                         child: Stack(
                                                                                           children: [
-                                                                                            Image.network(
-                                                                                              listViewVideodataRecord.imageurl!,
+                                                                                            CachedNetworkImage(
+                                                                                              imageUrl: listViewVideodataRecord.imageurl!,
                                                                                               width: 130,
                                                                                               height: 100,
                                                                                               fit: BoxFit.cover,
+                                                                                            ),
+                                                                                            Container(
+                                                                                              width: 130,
+                                                                                              height: 100,
+                                                                                              decoration: BoxDecoration(
+                                                                                                color: Color(0x84030303),
+                                                                                              ),
                                                                                             ),
                                                                                             Align(
                                                                                               alignment: AlignmentDirectional(0, 0.94),
@@ -1346,6 +1392,13 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                                               height: 100,
                                                                                               fit: BoxFit.cover,
                                                                                             ),
+                                                                                            Container(
+                                                                                              width: 130,
+                                                                                              height: 100,
+                                                                                              decoration: BoxDecoration(
+                                                                                                color: Color(0x84030303),
+                                                                                              ),
+                                                                                            ),
                                                                                             Align(
                                                                                               alignment: AlignmentDirectional(0, 0.94),
                                                                                               child: Text(
@@ -1515,11 +1568,18 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                                         ),
                                                                                         child: Stack(
                                                                                           children: [
-                                                                                            Image.network(
-                                                                                              listViewVideodataRecord.imageurl!,
+                                                                                            CachedNetworkImage(
+                                                                                              imageUrl: listViewVideodataRecord.imageurl!,
                                                                                               width: 130,
                                                                                               height: 100,
                                                                                               fit: BoxFit.cover,
+                                                                                            ),
+                                                                                            Container(
+                                                                                              width: 130,
+                                                                                              height: 100,
+                                                                                              decoration: BoxDecoration(
+                                                                                                color: Color(0x84030303),
+                                                                                              ),
                                                                                             ),
                                                                                             Align(
                                                                                               alignment: AlignmentDirectional(0, 0.94),
@@ -1658,10 +1718,11 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                           milliseconds:
                                                                               2000));
                                                                     },
-                                                                    child: Image
-                                                                        .network(
-                                                                      pageViewVideodataRecord
-                                                                          .imageurl!,
+                                                                    child:
+                                                                        CachedNetworkImage(
+                                                                      imageUrl:
+                                                                          pageViewVideodataRecord
+                                                                              .imageurl!,
                                                                       width: double
                                                                           .infinity,
                                                                       height:
@@ -1907,8 +1968,8 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                                       ),
                                                                                       child: Stack(
                                                                                         children: [
-                                                                                          Image.network(
-                                                                                            listViewVideodataRecord.imageurl!,
+                                                                                          CachedNetworkImage(
+                                                                                            imageUrl: listViewVideodataRecord.imageurl!,
                                                                                             width: 130,
                                                                                             height: 100,
                                                                                             fit: BoxFit.cover,
@@ -2081,8 +2142,8 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                                         ),
                                                                                         child: Stack(
                                                                                           children: [
-                                                                                            Image.network(
-                                                                                              listViewVideodataRecord.imageurl!,
+                                                                                            CachedNetworkImage(
+                                                                                              imageUrl: listViewVideodataRecord.imageurl!,
                                                                                               width: 130,
                                                                                               height: 100,
                                                                                               fit: BoxFit.cover,
@@ -2256,8 +2317,8 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                                         ),
                                                                                         child: Stack(
                                                                                           children: [
-                                                                                            Image.network(
-                                                                                              listViewVideodataRecord.imageurl!,
+                                                                                            CachedNetworkImage(
+                                                                                              imageUrl: listViewVideodataRecord.imageurl!,
                                                                                               width: 130,
                                                                                               height: 100,
                                                                                               fit: BoxFit.cover,
@@ -2606,8 +2667,8 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                                         ),
                                                                                         child: Stack(
                                                                                           children: [
-                                                                                            Image.network(
-                                                                                              listViewVideodataRecord.imageurl!,
+                                                                                            CachedNetworkImage(
+                                                                                              imageUrl: listViewVideodataRecord.imageurl!,
                                                                                               width: 130,
                                                                                               height: 100,
                                                                                               fit: BoxFit.cover,
@@ -2781,8 +2842,8 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                                         ),
                                                                                         child: Stack(
                                                                                           children: [
-                                                                                            Image.network(
-                                                                                              listViewVideodataRecord.imageurl!,
+                                                                                            CachedNetworkImage(
+                                                                                              imageUrl: listViewVideodataRecord.imageurl!,
                                                                                               width: 130,
                                                                                               height: 100,
                                                                                               fit: BoxFit.cover,
@@ -2956,8 +3017,8 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                                         ),
                                                                                         child: Stack(
                                                                                           children: [
-                                                                                            Image.network(
-                                                                                              listViewVideodataRecord.imageurl!,
+                                                                                            CachedNetworkImage(
+                                                                                              imageUrl: listViewVideodataRecord.imageurl!,
                                                                                               width: 130,
                                                                                               height: 100,
                                                                                               fit: BoxFit.cover,

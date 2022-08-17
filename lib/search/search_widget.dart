@@ -32,88 +32,102 @@ class _SearchWidgetState extends State<SearchWidget> {
       body: SafeArea(
         child: GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 20),
-                  child: Material(
-                    color: Colors.transparent,
-                    elevation: 20,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(2),
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Row(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Expanded(
+                    child: Text(
+                      '',
+                      style: FlutterFlowTheme.of(context).bodyText1.override(
+                            fontFamily: 'Poppins',
+                            fontSize: 18,
+                          ),
                     ),
-                    child: Container(
-                      width: double.infinity,
-                      height: 40,
-                      decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).secondaryBackground,
-                        boxShadow: [
-                          BoxShadow(
-                            blurRadius: 4,
-                            color: Color(0x33000000),
-                            offset: Offset(0, 2),
+                  ),
+                ],
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 20),
+                child: Material(
+                  color: Colors.transparent,
+                  elevation: 20,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(2),
+                  ),
+                  child: Container(
+                    width: double.infinity,
+                    height: 40,
+                    decoration: BoxDecoration(
+                      color: FlutterFlowTheme.of(context).secondaryBackground,
+                      boxShadow: [
+                        BoxShadow(
+                          blurRadius: 4,
+                          color: Color(0x33000000),
+                          offset: Offset(0, 2),
+                        )
+                      ],
+                      borderRadius: BorderRadius.circular(2),
+                      border: Border.all(
+                        width: 2,
+                      ),
+                    ),
+                    child: TextFormField(
+                      controller: textController,
+                      onChanged: (_) => EasyDebounce.debounce(
+                        'textController',
+                        Duration(milliseconds: 200),
+                        () async {
+                          setState(() => algoliaSearchResults = null);
+                          await VideodataRecord.search(
+                            term: textController!.text,
+                            maxResults: 10,
                           )
-                        ],
-                        borderRadius: BorderRadius.circular(2),
-                        border: Border.all(
-                          width: 2,
+                              .then((r) => algoliaSearchResults = r)
+                              .onError((_, __) => algoliaSearchResults = [])
+                              .whenComplete(() => setState(() {}));
+                        },
+                      ),
+                      autofocus: true,
+                      obscureText: false,
+                      decoration: InputDecoration(
+                        hintText: FFLocalizations.of(context).getText(
+                          'yax1mldp' /* Search */,
+                        ),
+                        hintStyle: FlutterFlowTheme.of(context).bodyText2,
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Color(0x00000000),
+                            width: 1,
+                          ),
+                          borderRadius: const BorderRadius.only(
+                            topLeft: Radius.circular(4.0),
+                            topRight: Radius.circular(4.0),
+                          ),
+                        ),
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Color(0x00000000),
+                            width: 1,
+                          ),
+                          borderRadius: const BorderRadius.only(
+                            topLeft: Radius.circular(4.0),
+                            topRight: Radius.circular(4.0),
+                          ),
+                        ),
+                        prefixIcon: Icon(
+                          Icons.search_rounded,
                         ),
                       ),
-                      child: TextFormField(
-                        controller: textController,
-                        onChanged: (_) => EasyDebounce.debounce(
-                          'textController',
-                          Duration(milliseconds: 200),
-                          () async {
-                            setState(() => algoliaSearchResults = null);
-                            await VideodataRecord.search(
-                              term: textController!.text,
-                              maxResults: 10,
-                            )
-                                .then((r) => algoliaSearchResults = r)
-                                .onError((_, __) => algoliaSearchResults = [])
-                                .whenComplete(() => setState(() {}));
-                          },
-                        ),
-                        autofocus: true,
-                        obscureText: false,
-                        decoration: InputDecoration(
-                          hintText: FFLocalizations.of(context).getText(
-                            'yax1mldp' /* Search */,
-                          ),
-                          hintStyle: FlutterFlowTheme.of(context).bodyText2,
-                          enabledBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Color(0x00000000),
-                              width: 1,
-                            ),
-                            borderRadius: const BorderRadius.only(
-                              topLeft: Radius.circular(4.0),
-                              topRight: Radius.circular(4.0),
-                            ),
-                          ),
-                          focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Color(0x00000000),
-                              width: 1,
-                            ),
-                            borderRadius: const BorderRadius.only(
-                              topLeft: Radius.circular(4.0),
-                              topRight: Radius.circular(4.0),
-                            ),
-                          ),
-                          prefixIcon: Icon(
-                            Icons.search_rounded,
-                          ),
-                        ),
-                        style: FlutterFlowTheme.of(context).bodyText1,
-                      ),
+                      style: FlutterFlowTheme.of(context).bodyText1,
                     ),
                   ),
                 ),
-                Builder(
+              ),
+              Expanded(
+                child: Builder(
                   builder: (context) {
                     if (algoliaSearchResults! == null) {
                       return Center(
@@ -290,8 +304,8 @@ class _SearchWidgetState extends State<SearchWidget> {
                     );
                   },
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),

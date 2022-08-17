@@ -46,6 +46,22 @@ class _InfoPageWidgetState extends State<InfoPageWidget> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Expanded(
+                            child: Text(
+                              '',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyText1
+                                  .override(
+                                    fontFamily: 'Poppins',
+                                    fontSize: 18,
+                                  ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           Expanded(
@@ -62,14 +78,25 @@ class _InfoPageWidgetState extends State<InfoPageWidget> {
                                   ),
                                 ),
                                 Align(
+                                  alignment: AlignmentDirectional(0, 283),
+                                  child: Container(
+                                    width: double.infinity,
+                                    height: 227,
+                                    decoration: BoxDecoration(
+                                      color: Color(0x8C050505),
+                                    ),
+                                  ),
+                                ),
+                                Align(
                                   alignment: AlignmentDirectional(-0.95, -0.94),
                                   child: InkWell(
                                     onTap: () async {
-                                      context.pushNamed('Home');
+                                      context.pop();
                                     },
                                     child: FaIcon(
                                       FontAwesomeIcons.arrowLeft,
-                                      color: Color(0xDF000000),
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryBtnText,
                                       size: 30,
                                     ),
                                   ),
@@ -433,7 +460,6 @@ class _InfoPageWidgetState extends State<InfoPageWidget> {
                                     10, 0, 10, 0),
                                 child: Text(
                                   widget.infodocument!.description!,
-                                  maxLines: 8,
                                   style: FlutterFlowTheme.of(context)
                                       .bodyText1
                                       .override(
@@ -661,19 +687,21 @@ class _InfoPageWidgetState extends State<InfoPageWidget> {
                                     header: Row(
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
-                                        Text(
-                                          FFLocalizations.of(context).getText(
-                                            '8hkz3uze' /* SubTitles */,
+                                        Expanded(
+                                          child: Text(
+                                            FFLocalizations.of(context).getText(
+                                              '8hkz3uze' /* SubTitles */,
+                                            ),
+                                            style: FlutterFlowTheme.of(context)
+                                                .title1
+                                                .override(
+                                                  fontFamily: 'Poppins',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryBtnText,
+                                                  fontSize: 14,
+                                                ),
                                           ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .title1
-                                              .override(
-                                                fontFamily: 'Poppins',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryBtnText,
-                                                fontSize: 14,
-                                              ),
                                         ),
                                       ],
                                     ),
@@ -739,18 +767,20 @@ class _InfoPageWidgetState extends State<InfoPageWidget> {
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
-                                  Text(
-                                    FFLocalizations.of(context).getText(
-                                      'ciw10x4c' /* List of Episodes  -  */,
+                                  Expanded(
+                                    child: Text(
+                                      FFLocalizations.of(context).getText(
+                                        'ciw10x4c' /* List of Episodes  -  */,
+                                      ),
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyText1
+                                          .override(
+                                            fontFamily: 'Poppins',
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryBtnText,
+                                            fontSize: 24,
+                                          ),
                                     ),
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyText1
-                                        .override(
-                                          fontFamily: 'Poppins',
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryBtnText,
-                                          fontSize: 24,
-                                        ),
                                   ),
                                 ],
                               ),

@@ -28,6 +28,20 @@ class _MyStuffWidgetState extends State<MyStuffWidget> {
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
+              Row(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Expanded(
+                    child: Text(
+                      '',
+                      style: FlutterFlowTheme.of(context).bodyText1.override(
+                            fontFamily: 'Poppins',
+                            fontSize: 18,
+                          ),
+                    ),
+                  ),
+                ],
+              ),
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 0, 10, 0),
                 child: Row(
@@ -56,7 +70,12 @@ class _MyStuffWidgetState extends State<MyStuffWidget> {
                       TabBar(
                         labelColor: Color(0xDF000000),
                         unselectedLabelColor: Color(0xDF000000),
-                        labelStyle: FlutterFlowTheme.of(context).bodyText1,
+                        labelStyle:
+                            FlutterFlowTheme.of(context).bodyText1.override(
+                                  fontFamily: 'Poppins',
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                ),
                         indicatorColor:
                             FlutterFlowTheme.of(context).primaryBtnText,
                         tabs: [

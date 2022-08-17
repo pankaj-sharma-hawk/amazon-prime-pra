@@ -102,6 +102,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
+              name: 'Signin',
+              path: 'signin',
+              builder: (context, params) => SigninWidget(),
+            ),
+            FFRoute(
               name: 'Signup',
               path: 'signup',
               builder: (context, params) => SignupWidget(),
@@ -114,14 +119,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   : SearchWidget(),
             ),
             FFRoute(
-              name: 'Signin',
-              path: 'signin',
-              builder: (context, params) => SigninWidget(),
-            ),
-            FFRoute(
               name: 'Mystuffmenu',
               path: 'mystuffmenu',
               builder: (context, params) => MystuffmenuWidget(),
+            ),
+            FFRoute(
+              name: 'Languagepage',
+              path: 'languagepage',
+              builder: (context, params) => LanguagepageWidget(),
             ),
             FFRoute(
               name: 'MyStuff',
@@ -131,9 +136,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   : MyStuffWidget(),
             ),
             FFRoute(
-              name: 'Languagepage',
-              path: 'languagepage',
-              builder: (context, params) => LanguagepageWidget(),
+              name: 'Forgetpassword',
+              path: 'forgetpassword',
+              builder: (context, params) => ForgetpasswordWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ).toRoute(appStateNotifier),
@@ -305,7 +310,7 @@ class FFRoute {
                   child: Builder(
                     builder: (context) => Image.asset(
                       'assets/images/unnamed.png',
-                      fit: BoxFit.scaleDown,
+                      fit: BoxFit.contain,
                     ),
                   ),
                 )
