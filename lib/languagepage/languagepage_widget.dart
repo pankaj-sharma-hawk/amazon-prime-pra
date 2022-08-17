@@ -1,5 +1,6 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
+import '../backend/push_notifications/push_notifications_util.dart';
 import '../flutter_flow/flutter_flow_radio_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -168,6 +169,14 @@ class _LanguagepageWidgetState extends State<LanguagepageWidget> {
                         duration: Duration(milliseconds: 4000),
                         backgroundColor: Color(0xFF66C186),
                       ),
+                    );
+                    triggerPushNotification(
+                      notificationTitle: 'Amazon Prime',
+                      notificationText: 'My Test Notification',
+                      notificationSound: 'default',
+                      userRefs: [currentUserReference!],
+                      initialPageName: 'Home',
+                      parameterData: {},
                     );
                   },
                   text: FFLocalizations.of(context).getText(

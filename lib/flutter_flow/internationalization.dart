@@ -513,6 +513,41 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ta': 'வீடு',
     },
   },
+  // Search
+  {
+    'yax1mldp': {
+      'en': 'Search',
+      'es': 'Búsqueda',
+      'fr': 'Chercher',
+      'hi': 'खोज',
+      'pa': 'ਖੋਜ',
+      'ta': 'தேடு',
+    },
+    '7j480fmr': {
+      'en': 'Min',
+      'es': 'mínimo',
+      'fr': 'Min',
+      'hi': 'मिनट',
+      'pa': 'ਘੱਟੋ-ਘੱਟ',
+      'ta': 'குறைந்தபட்சம்',
+    },
+    'y4xffxu1': {
+      'en': 'prime',
+      'es': 'principal',
+      'fr': 'prime',
+      'hi': 'प्रधान',
+      'pa': 'ਪ੍ਰਧਾਨ',
+      'ta': 'முதன்மை',
+    },
+    'uol6hk3r': {
+      'en': 'Search',
+      'es': 'Búsqueda',
+      'fr': 'Chercher',
+      'hi': 'खोज',
+      'pa': 'ਖੋਜ',
+      'ta': 'தேடு',
+    },
+  },
   // Signup
   {
     'ag5lbb2t': {
@@ -642,41 +677,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'hi': 'घर',
       'pa': 'ਘਰ',
       'ta': 'வீடு',
-    },
-  },
-  // Search
-  {
-    'yax1mldp': {
-      'en': 'Search',
-      'es': 'Búsqueda',
-      'fr': 'Chercher',
-      'hi': 'खोज',
-      'pa': 'ਖੋਜ',
-      'ta': 'தேடு',
-    },
-    '7j480fmr': {
-      'en': 'Min',
-      'es': 'mínimo',
-      'fr': 'Min',
-      'hi': 'मिनट',
-      'pa': 'ਘੱਟੋ-ਘੱਟ',
-      'ta': 'குறைந்தபட்சம்',
-    },
-    'y4xffxu1': {
-      'en': 'prime',
-      'es': 'principal',
-      'fr': 'prime',
-      'hi': 'प्रधान',
-      'pa': 'ਪ੍ਰਧਾਨ',
-      'ta': 'முதன்மை',
-    },
-    'uol6hk3r': {
-      'en': 'Search',
-      'es': 'Búsqueda',
-      'fr': 'Chercher',
-      'hi': 'खोज',
-      'pa': 'ਖੋਜ',
-      'ta': 'தேடு',
     },
   },
   // Mystuffmenu
@@ -850,41 +850,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ta': 'வீடு',
     },
   },
-  // Languagepage
-  {
-    'ymmohwxz': {
-      'en': 'Choose Language ',
-      'es': 'Elige lengua',
-      'fr': 'Choisissez la langue',
-      'hi': 'भाषा चुनें',
-      'pa': 'ਭਾਸ਼ਾ ਚੁਣੋ',
-      'ta': 'மொழியைத் தேர்ந்தெடுக்கவும்',
-    },
-    'e7hduzxl': {
-      'en': 'Option 1',
-      'es': 'Opción 1',
-      'fr': 'Option 1',
-      'hi': 'विकल्प 1',
-      'pa': 'ਵਿਕਲਪ 1',
-      'ta': 'விருப்பம் 1',
-    },
-    'mx64ytwh': {
-      'en': 'Submit',
-      'es': 'Enviar',
-      'fr': 'Soumettre',
-      'hi': 'प्रस्तुत करना',
-      'pa': 'ਜਮ੍ਹਾਂ ਕਰੋ',
-      'ta': 'சமர்ப்பிக்கவும்',
-    },
-    'tum1e3bu': {
-      'en': 'Home',
-      'es': 'Hogar',
-      'fr': 'Maison',
-      'hi': 'घर',
-      'pa': 'ਘਰ',
-      'ta': 'வீடு',
-    },
-  },
   // MyStuff
   {
     'lrudixap': {
@@ -918,6 +883,41 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'hi': 'मेरा सामान',
       'pa': 'ਮੇਰੀ ਸਮੱਗਰੀ',
       'ta': 'என்னுடைய பொருட்கள்',
+    },
+  },
+  // Languagepage
+  {
+    'ymmohwxz': {
+      'en': 'Choose Language ',
+      'es': 'Elige lengua',
+      'fr': 'Choisissez la langue',
+      'hi': 'भाषा चुनें',
+      'pa': 'ਭਾਸ਼ਾ ਚੁਣੋ',
+      'ta': 'மொழியைத் தேர்ந்தெடுக்கவும்',
+    },
+    'e7hduzxl': {
+      'en': 'Option 1',
+      'es': 'Opción 1',
+      'fr': 'Option 1',
+      'hi': 'विकल्प 1',
+      'pa': 'ਵਿਕਲਪ 1',
+      'ta': 'விருப்பம் 1',
+    },
+    'mx64ytwh': {
+      'en': 'Submit',
+      'es': 'Enviar',
+      'fr': 'Soumettre',
+      'hi': 'प्रस्तुत करना',
+      'pa': 'ਜਮ੍ਹਾਂ ਕਰੋ',
+      'ta': 'சமர்ப்பிக்கவும்',
+    },
+    'tum1e3bu': {
+      'en': 'Home',
+      'es': 'Hogar',
+      'fr': 'Maison',
+      'hi': 'घर',
+      'pa': 'ਘਰ',
+      'ta': 'வீடு',
     },
   },
   // Forgetpassword

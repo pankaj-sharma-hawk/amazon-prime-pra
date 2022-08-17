@@ -6,6 +6,8 @@ import 'package:page_transition/page_transition.dart';
 import '../flutter_flow_theme.dart';
 import '../../backend/backend.dart';
 import '../../auth/firebase_user_provider.dart';
+import '../../backend/push_notifications/push_notifications_handler.dart'
+    show PushNotificationsHandler;
 
 import '../../index.dart';
 import '../../main.dart';
@@ -107,11 +109,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => SigninWidget(),
             ),
             FFRoute(
-              name: 'Signup',
-              path: 'signup',
-              builder: (context, params) => SignupWidget(),
-            ),
-            FFRoute(
               name: 'Search',
               path: 'search',
               builder: (context, params) => params.isEmpty
@@ -119,14 +116,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   : SearchWidget(),
             ),
             FFRoute(
+              name: 'Signup',
+              path: 'signup',
+              builder: (context, params) => SignupWidget(),
+            ),
+            FFRoute(
               name: 'Mystuffmenu',
               path: 'mystuffmenu',
               builder: (context, params) => MystuffmenuWidget(),
-            ),
-            FFRoute(
-              name: 'Languagepage',
-              path: 'languagepage',
-              builder: (context, params) => LanguagepageWidget(),
             ),
             FFRoute(
               name: 'MyStuff',
@@ -134,6 +131,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => params.isEmpty
                   ? NavBarPage(initialPage: 'MyStuff')
                   : MyStuffWidget(),
+            ),
+            FFRoute(
+              name: 'Languagepage',
+              path: 'languagepage',
+              builder: (context, params) => LanguagepageWidget(),
             ),
             FFRoute(
               name: 'Forgetpassword',
@@ -314,7 +316,7 @@ class FFRoute {
                     ),
                   ),
                 )
-              : page;
+              : PushNotificationsHandler(child: page);
 
           final transitionInfo = state.transitionInfo;
           return transitionInfo.hasTransition
